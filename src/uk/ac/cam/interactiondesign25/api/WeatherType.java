@@ -1,3 +1,5 @@
+package uk.ac.cam.interactiondesign25.api;
+
 public enum WeatherType {
     UNKNOWN,            // NA
     SUNNY,              // 1

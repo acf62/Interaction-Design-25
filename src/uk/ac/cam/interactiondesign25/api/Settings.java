@@ -1,3 +1,5 @@
+package uk.ac.cam.interactiondesign25.api;
+
 public class Settings {
     private boolean Celcius;
     private boolean BlueYellowColourblind;

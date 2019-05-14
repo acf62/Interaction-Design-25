@@ -1,3 +1,5 @@
+package uk.ac.cam.interactiondesign25.api;
+
 public class Weather {
     private Settings settings;
     private int locationID;
