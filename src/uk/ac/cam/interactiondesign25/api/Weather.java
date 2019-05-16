@@ -60,7 +60,7 @@ public class Weather {
     public int[] getTodayThreeHourlyTemperatures(){
         int[] result = {0,0,0,0,0};
 		if ( active ) {
-			/*JSONObject weatherObject = new JSONObject ( ThreeHourlyForecast );
+			JSONObject weatherObject = new JSONObject ( ThreeHourlyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
@@ -70,12 +70,18 @@ public class Weather {
 				JSONArray a = j.getJSONArray("Rep");
 				JSONObject day = a.getJSONObject(0);
 				result[i] = day.getInt("Dm");
-			}*/
+			}
 		}
 		return result;
     }
 
-    // Returns a textual description of today's weather
+	public static void main(String[] args){
+		// for testing purposes
+		Weather w = new Weather("settings");
+		w.getTodayThreeHourlyTemperatures();
+	}
+
+	// Returns a textual description of today's weather
     public String getTodayWeatherDescription(){
         return "Cloudy and mildly depressing";
     }
