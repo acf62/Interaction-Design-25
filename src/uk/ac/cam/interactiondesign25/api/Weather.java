@@ -29,16 +29,16 @@ public class Weather {
 	
 	private long lastUpdateTime = 0;
 	
-    public Weather(String settingsFilename){
-        settings = new Settings(settingsFilename);
-        locationID = 310042; // default to cambridge
+	public Weather(String settingsFilename){
+		settings = new Settings(settingsFilename);
+		locationID = 310042; // default to cambridge
 		if ( active) {
 			doAPICallIfNecessary();
 		}
-    }
+	}
 
-    // Returns today's maximum and minimum temperatures
-    public int[] getTodayTemperatures(){
+	// Returns today's maximum and minimum temperatures
+	public int[] getTodayTemperatures(){
 		int[] result = {0,0};
 		if ( active ) {
 			doAPICallIfNecessary();
@@ -60,11 +60,11 @@ public class Weather {
 			}
 		}
 		return result;
-    }
+	}
 
-    // Returns today's 3-hourly temperature forecasts
-    public int[] getTodayThreeHourlyTemperatures(){
-        int[] result = {0,0,0,0,0};
+	// Returns today's 3-hourly temperature forecasts
+	public int[] getTodayThreeHourlyTemperatures(){
+		int[] result = {0,0,0,0,0};
 		if ( active ) {
 			doAPICallIfNecessary();
 			JSONArray Period = new JSONObject ( threeHourlyForecast )
@@ -156,12 +156,12 @@ public class Weather {
 			}
 		}
 		return result;
-    }
+	}
 
-    // Returns textual descriptions of the weather each day this week,
-    // starting with today
-    public String[] getWeekWeatherDescription(){
-        String[] result = {"", "", "", "", ""};
+	// Returns textual descriptions of the weather each day this week,
+	// starting with today
+	public String[] getWeekWeatherDescription(){
+		String[] result = {"", "", "", "", ""};
 		if ( active ) {
 			String[] codes = {
 				"Clear night",
@@ -211,17 +211,17 @@ public class Weather {
 			}
 		}
 		return result;
-    }
+	}
 
-    // Returns types of the weather each day this week, starting with today
-    public WeatherType[] getWeekWeatherTypes(){
+	// Returns types of the weather each day this week, starting with today
+	public WeatherType[] getWeekWeatherTypes(){
 		WeatherType[] result = {
-                WeatherType.UNKNOWN,
-                WeatherType.UNKNOWN,
-                WeatherType.UNKNOWN,
-                WeatherType.UNKNOWN,
-                WeatherType.UNKNOWN,
-        };
+				WeatherType.UNKNOWN,
+				WeatherType.UNKNOWN,
+				WeatherType.UNKNOWN,
+				WeatherType.UNKNOWN,
+				WeatherType.UNKNOWN,
+		};
 		if ( active ) {
 			doAPICallIfNecessary();
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
@@ -304,8 +304,8 @@ public class Weather {
 		}
 	}
 
-    // Checks user settings for whether they use celsius or Fahrenheit
-    private boolean usecelsius(){
-        return settings.getCelsius();
-    }
+	// Checks user settings for whether they use celsius or Fahrenheit
+	private boolean usecelsius(){
+		return settings.getCelsius();
+	}
 }
