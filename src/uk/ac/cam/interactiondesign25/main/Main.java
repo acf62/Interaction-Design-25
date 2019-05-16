@@ -12,8 +12,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main_scene.fxml"));
-        primaryStage.setTitle("Weather App");
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI.fxml"));
+        primaryStage.setTitle("Settings");
         //String IconPath = getClass().getResource("/icon.png").toString();
         //primaryStage.getIcons().add(new Image(IconPath));
         Scene scene = new Scene(root, 1150, 750);

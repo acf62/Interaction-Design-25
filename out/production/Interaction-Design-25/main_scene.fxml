@@ -29,7 +29,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../Εικόνες/αρχείο%20λήψης.png" />
                            </image>
@@ -49,7 +49,7 @@
                <children>
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image2" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../Εικόνες/αρχείο%20λήψης.png" />
                            </image>
@@ -65,7 +65,7 @@
                   </HBox>
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image3" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../Εικόνες/images.png" />
                            </image>
@@ -81,7 +81,7 @@
                   </HBox>
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image4" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../Εικόνες/αρχείο%20λήψης.png" />
                            </image>
@@ -97,7 +97,7 @@
                   </HBox>
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image5" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../Εικόνες/images.png" />
                            </image>
