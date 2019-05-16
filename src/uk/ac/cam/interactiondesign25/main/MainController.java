@@ -2,11 +2,16 @@ package uk.ac.cam.interactiondesign25.main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller {
+
+public class MainController implements Initializable {
 
     @FXML
     private ImageView image1;
@@ -51,4 +56,9 @@ public class Controller {
 
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        image1.setImage(new Image("file:resources/sunny.png"));
+    }
 }
