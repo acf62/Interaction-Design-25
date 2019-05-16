@@ -8,18 +8,6 @@ public class Settings {
     private boolean BlueYellowColourblind;
     private boolean RedGreenColourblind;
 
-    private void writeBack(){
-        try (FileWriter f = new FileWriter(filename)) {
-            BufferedWriter w = new BufferedWriter(f);
-            w.write(((Celcius)?"1":"0")+"\n");
-            w.write(((BlueYellowColourblind)?"1":"0")+"\n");
-            w.write(((RedGreenColourblind)?"1":"0")+"\n");
-            w.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public Settings(String fn){
         filename = fn;
         try (FileReader f = new FileReader(filename)){
@@ -36,6 +24,19 @@ public class Settings {
             RedGreenColourblind = false;
             writeBack();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Writes over the file with the current boolean values
+    private void writeBack(){
+        try (FileWriter f = new FileWriter(filename)) {
+            BufferedWriter w = new BufferedWriter(f);
+            w.write(((Celcius)?"1":"0")+"\n");
+            w.write(((BlueYellowColourblind)?"1":"0")+"\n");
+            w.write(((RedGreenColourblind)?"1":"0")+"\n");
+            w.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
