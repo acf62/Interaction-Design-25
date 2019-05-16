@@ -87,3 +87,5 @@ manifest\.mf
 build\.xml
 
 nbproject/
+
+dist/
