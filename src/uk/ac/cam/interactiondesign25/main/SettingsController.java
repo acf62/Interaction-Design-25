@@ -37,14 +37,14 @@ public class SettingsController implements Initializable {
 
     @FXML
     void celsiusClick(ActionEvent event) {
-        settings.setCelcius(true);
+        settings.setCelsius(true);
         celsius.setStyle(selectedColor);
         fahrenheit.setStyle(unselectedColor);
     }
 
     @FXML
     void fahrenheitClick(ActionEvent event) {
-        settings.setCelcius(false);
+        settings.setCelsius(false);
         fahrenheit.setStyle(selectedColor);
         celsius.setStyle(unselectedColor);
     }
@@ -84,7 +84,7 @@ public class SettingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (settings.getCelcius()) {
+        if (settings.getCelsius()) {
             celsius.setStyle(selectedColor);
             fahrenheit.setStyle(unselectedColor);
         } else {
