@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import org.json.JSONArray;
@@ -19,7 +20,7 @@ public class Weather {
 	
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
-	private final boolean active = false; //Used during development to reduce number of API calls
+	private final boolean active = true; //Used during development to reduce number of API calls
 	
 	private final long updateTime = 600; //update time in seconds
 
@@ -29,11 +30,48 @@ public class Weather {
 	
 	private long lastUpdateTime = 0;
 	
-	public Weather(String settingsFilename){
-		settings = new Settings(settingsFilename);
-		locationID = 310042; // default to cambridge
+	private Sitelist siteList;
+	
+	private static final String[] codes = {
+				"Clear night",
+				"Sunny day",
+				"Partly cloudy",
+				"Partly cloudy",
+				"Error",
+				"Mist",
+				"Fog",
+				"Cloudy",
+				"Overcast",
+				"Light rain shower",
+				"Light rain shower",
+				"Drizzle",
+				"Light rain",
+				"Heavy rain shower",
+				"Heavy rain shower",
+				"Heavy rain",
+				"Sleet shower",
+				"Sleet shower",
+				"Sleet",
+				"Hail shower",
+				"Hail shower",
+				"Hail",
+				"Light snow shower",
+				"Light snow shower",
+				"Light snow",
+				"Heavy snow shower",
+				"Heavy snow shower",
+				"Heavy snow",
+				"Thunder shower",
+				"Thunder shower",
+				"Thunder"
+			};
+	
+    public Weather(String settingsFilename){
+        settings = new Settings(settingsFilename);
+        locationID = 310042; // default to cambridge
 		if ( active) {
 			doAPICallIfNecessary();
+			siteList = new Sitelist(baseUrl + "val/wxfcs/all/json/sitelist?key=" + apiKey );
 		}
 	}
 
@@ -101,13 +139,27 @@ public class Weather {
 	public static void main(String[] args){
 		// for testing purposes
 		Weather w = new Weather("settings");
-		w.getTodayThreeHourlyTemperatures();
+		System.out.println(Arrays.toString(w.getWeekWeatherDescription()));
 	}
 
 	// Returns a textual description of today's weather
-	public String getTodayWeatherDescription(){
-		return "Cloudy and mildly depressing";
-	}
+    public String getTodayWeatherDescription(){
+		String result = "";
+		if ( active ) {
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
+			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
+			JSONObject Location = DV.getJSONObject("Location");
+			JSONArray Period = Location.getJSONArray("Period");
+			
+			JSONObject j = Period.getJSONObject(0);
+			JSONArray a = j.getJSONArray("Rep");
+			JSONObject day = a.getJSONObject(0);
+			int weatherCode = day.getInt("W");
+			result = codes[weatherCode];
+		}
+		return result;
+    }
 
 	// Returns type of today's weather (for use in selecting icons)
 	public WeatherType getTodayWeatherType(){
@@ -163,39 +215,6 @@ public class Weather {
 	public String[] getWeekWeatherDescription(){
 		String[] result = {"", "", "", "", ""};
 		if ( active ) {
-			String[] codes = {
-				"Clear night",
-				"Sunny day",
-				"Partly cloudy",
-				"Partly cloudy",
-				"Error",
-				"Mist",
-				"Fog",
-				"Cloudy",
-				"Overcast",
-				"Light rain shower",
-				"Light rain shower",
-				"Drizzle",
-				"Light rain",
-				"Heavy rain shower",
-				"Heavy rain shower",
-				"Heavy rain",
-				"Sleet shower",
-				"Sleet shower",
-				"Sleet",
-				"Hail shower",
-				"Hail shower",
-				"Hail",
-				"Light snow shower",
-				"Light snow shower",
-				"Light snow",
-				"Heavy snow shower",
-				"Heavy snow shower",
-				"Heavy snow",
-				"Thunder shower",
-				"Thunder shower",
-				"Thunder"
-			};
 			doAPICallIfNecessary();
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
@@ -286,7 +305,6 @@ public class Weather {
 		String result = "";
 		try {
 			URL url = new URL(baseUrl + "val/wxfcs/all/json/" + locationID + "?res=3hourly&key=" + apiKey );
-			//url = new URL(baseUrl + "val/wxfcs/all/json/sitelist" + "?key=" + apiKey );
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			BufferedReader rd = new BufferedReader ( new InputStreamReader ( conn.getInputStream() ) );
