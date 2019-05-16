@@ -179,6 +179,7 @@ public class Weather {
         if (!haveData()){
             downloadWeeklyForecast();
             downloadThreeHourlyForecast();
+			lastUpdateTime = System.currentTimeMillis();
 			System.out.println ( "Did API calls" );
         } else {
 			System.out.println ( "Used cache" );
@@ -188,7 +189,7 @@ public class Weather {
     // Returns true if we already have up-to-date data for the location
     private boolean haveData(){
 		//lastUpdateTime starts at 0 and currentTimeMillis is since 1970 so this will pass on first try
-		return System.currentTimeMillis() - lastUpdateTime >= 1000*updateTime;
+		return System.currentTimeMillis() - lastUpdateTime < 1000*updateTime;
     }
 	
 	private void downloadWeeklyForecast() {
