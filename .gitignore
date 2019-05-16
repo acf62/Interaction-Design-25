@@ -16,3 +16,5 @@ manifest\.mf
 README\.md
 /build/
 settings
+
+settingsTest

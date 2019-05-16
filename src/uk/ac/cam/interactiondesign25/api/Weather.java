@@ -1,6 +1,7 @@
 package uk.ac.cam.interactiondesign25.api;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,7 +24,7 @@ public class Weather {
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
 	private final boolean active = true; //Used during development to reduce number of API calls
-	private final boolean test = true;
+	private final boolean test = false;
 
 	private final long updateTime = 600; //update time in seconds
 
@@ -35,51 +37,51 @@ public class Weather {
 	private Sitelist siteList;
 	
 	private static final String[] codes = {
-				"Clear night",
-				"Sunny day",
-				"Partly cloudy",
-				"Partly cloudy",
-				"Error",
-				"Mist",
-				"Fog",
-				"Cloudy",
-				"Overcast",
-				"Light rain shower",
-				"Light rain shower",
-				"Drizzle",
-				"Light rain",
-				"Heavy rain shower",
-				"Heavy rain shower",
-				"Heavy rain",
-				"Sleet shower",
-				"Sleet shower",
-				"Sleet",
-				"Hail shower",
-				"Hail shower",
-				"Hail",
-				"Light snow shower",
-				"Light snow shower",
-				"Light snow",
-				"Heavy snow shower",
-				"Heavy snow shower",
-				"Heavy snow",
-				"Thunder shower",
-				"Thunder shower",
-				"Thunder"
-			};
+		"Clear night",
+		"Sunny day",
+		"Partly cloudy",
+		"Partly cloudy",
+		"Error",
+		"Mist",
+		"Fog",
+		"Cloudy",
+		"Overcast",
+		"Light rain shower",
+		"Light rain shower",
+		"Drizzle",
+		"Light rain",
+		"Heavy rain shower",
+		"Heavy rain shower",
+		"Heavy rain",
+		"Sleet shower",
+		"Sleet shower",
+		"Sleet",
+		"Hail shower",
+		"Hail shower",
+		"Hail",
+		"Light snow shower",
+		"Light snow shower",
+		"Light snow",
+		"Heavy snow shower",
+		"Heavy snow shower",
+		"Heavy snow",
+		"Thunder shower",
+		"Thunder shower",
+		"Thunder"
+	};
 	
 
 	public static void main(String[] args){
 		Weather w = new Weather("settingsTest");
 
-		try(BufferedReader r = new BufferedReader(new FileReader("resources\\3hourlytestdata"))){
+		try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "3hourlytestdata"))){
 			w.threeHourlyForecast = r.readLine();
 		} catch (IOException e){
 			System.out.println("Setup failed");
 			throw new Error();
 		}
 
-		try(BufferedReader r = new BufferedReader(new FileReader("resources\\dailytestdata"))){
+		try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "dailytestdata"))){
 			w.weeklyForecast = r.readLine();
 		} catch (IOException e){
 			System.out.println("Setup failed");
@@ -98,7 +100,7 @@ public class Weather {
 			System.out.println("getTodayThreeHourlyTemperatures() broken");
 		}
 
-		String exp = "";
+		String exp = "Partly cloudy";
 		String res = w.getTodayWeatherDescription();
 		if (!exp.equals(res)){
 			System.out.println("getTodayWeatherDescription() broken");
@@ -154,6 +156,14 @@ public class Weather {
 	public void setLocationID(int location){
 		locationID = location;
 		lastUpdateTime = 0;
+	}
+	
+	public List<String> autocomplete ( String input, int cutoffLength ) {
+		return siteList.autocomplete(input, cutoffLength);
+	}
+	
+	public int getLocationIDFromName ( String name ) {
+		return siteList.getId(name);
 	}
 
 	// Returns today's maximum and minimum temperatures
