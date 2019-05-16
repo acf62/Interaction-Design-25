@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,23 +18,29 @@ public class Weather {
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
 	private final boolean active = false; //Used during development to reduce number of API calls
+	
+	private final long updateTime = 600; //update time in seconds
 
 	//JSON data
-	private String WeeklyForecast;
-	private String ThreeHourlyForecast;
+	private String weeklyForecast;
+	private String threeHourlyForecast;
 	
 	private long lastUpdateTime = 0;
 	
     public Weather(String settingsFilename){
         settings = new Settings(settingsFilename);
         locationID = 310042; // default to cambridge
+		if ( active) {
+			doAPICallIfNecessary();
+		}
     }
 
     // Returns today's maximum and minimum temperatures
     public int[] getTodayTemperatures(){
 		int[] result = {0,0};
 		if ( active ) {
-			JSONObject weatherObject = new JSONObject ( WeeklyForecast );
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
@@ -60,6 +64,7 @@ public class Weather {
     public int[] getTodayThreeHourlyTemperatures(){
         int[] result = {0,0,0,0,0};
 		if ( active ) {
+			doAPICallIfNecessary();
 			JSONObject weatherObject = new JSONObject ( ThreeHourlyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
@@ -89,7 +94,8 @@ public class Weather {
     // Returns type of today's weather (for use in selecting icons)
     public WeatherType getTodayWeatherType(){
 		if ( active ) {
-			JSONObject weatherObject = new JSONObject ( WeeklyForecast );
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
@@ -109,7 +115,8 @@ public class Weather {
     public int[][] getWeekTemperatures(){
 		int[][] result = {{0,0}, {0,0}, {0,0}, {0,0}, {0,0}};
 		if ( active ) {
-			JSONObject weatherObject = new JSONObject ( WeeklyForecast );
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
@@ -140,32 +147,48 @@ public class Weather {
     }
 
     // Returns types of the weather each day this week, starting with today
-    public WeatherType[] getWeekWeatherType(){
-        return new WeatherType[]{
+    public WeatherType[] getWeekWeatherTypes(){
+		WeatherType[] result = {
                 WeatherType.UNKNOWN,
                 WeatherType.UNKNOWN,
                 WeatherType.UNKNOWN,
                 WeatherType.UNKNOWN,
                 WeatherType.UNKNOWN,
         };
+		if ( active ) {
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
+			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
+			JSONObject Location = DV.getJSONObject("Location");
+			JSONArray Period = Location.getJSONArray("Period");
+			
+			for ( int i = 0; i < Period.length() && i < 5; ++i ) {
+				JSONObject j = Period.getJSONObject(i);
+				JSONArray a = j.getJSONArray("Rep");
+				JSONObject day = a.getJSONObject(0);
+				int weatherCode = day.getInt("W");
+				result[i] = WeatherType.convert(weatherCode);
+			}
+		}
+		return result;
+
     }
 
     // Calls the API and caches the results locally unless already have data
     private void doAPICallIfNecessary(){
         if (!haveData()){
             downloadWeeklyForecast();
-			downloadThreeHourlyForecast();
-        }
+            downloadThreeHourlyForecast();
+			System.out.println ( "Did API calls" );
+        } else {
+			System.out.println ( "Used cache" );
+		}
     }
 
     // Returns true if we already have up-to-date data for the location
     private boolean haveData(){
-		
-		if ( System.currentTimeMillis() - lastUpdateTime >= 60000 ) {
-			downloadWeeklyForecast();
-			downloadThreeHourlyForecast();
-		}
-        return true;
+		//lastUpdateTime starts at 0 and currentTimeMillis is since 1970 so this will pass on first try
+		return System.currentTimeMillis() - lastUpdateTime >= 1000*updateTime;
     }
 	
 	private void downloadWeeklyForecast() {
@@ -181,7 +204,7 @@ public class Weather {
 				result += line;
 			}
 			rd.close();
-			WeeklyForecast = result;
+			weeklyForecast = result;
 		} catch (MalformedURLException ex) {
 			System.out.println("URL malformed");
 			ex.printStackTrace();
@@ -204,7 +227,7 @@ public class Weather {
 				result += line;
 			}
 			rd.close();
-			ThreeHourlyForecast = result;
+			threeHourlyForecast = result;
 		} catch (MalformedURLException ex) {
 			System.out.println("URL malformed");
 		} catch (IOException ex) {
