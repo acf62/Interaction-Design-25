@@ -1,6 +1,7 @@
 package uk.ac.cam.interactiondesign25.api;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -21,7 +22,8 @@ public class Weather {
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
 	private final boolean active = true; //Used during development to reduce number of API calls
-	
+	private final boolean test = true;
+
 	private final long updateTime = 600; //update time in seconds
 
 	//JSON data
@@ -66,13 +68,92 @@ public class Weather {
 				"Thunder"
 			};
 	
-    public Weather(String settingsFilename){
-        settings = new Settings(settingsFilename);
-        locationID = 310042; // default to cambridge
+
+	public static void main(String[] args){
+		Weather w = new Weather("settingsTest");
+
+		try(BufferedReader r = new BufferedReader(new FileReader("resources\\3hourlytestdata"))){
+			w.threeHourlyForecast = r.readLine();
+		} catch (IOException e){
+			System.out.println("Setup failed");
+			throw new Error();
+		}
+
+		try(BufferedReader r = new BufferedReader(new FileReader("resources\\dailytestdata"))){
+			w.weeklyForecast = r.readLine();
+		} catch (IOException e){
+			System.out.println("Setup failed");
+			throw new Error();
+		}
+
+		int[] expected = new int[]{17, 10};
+		int[] result = w.getTodayTemperatures();
+		if (!Arrays.equals(expected, result)) {
+			System.out.println("getTodayTemperatures() broken");
+		}
+
+		expected = new int[]{16, 14, 11, 10, 10}; //depends on time of day
+		result = w.getTodayThreeHourlyTemperatures();
+		if (false) {
+			System.out.println("getTodayThreeHourlyTemperatures() broken");
+		}
+
+		String exp = "";
+		String res = w.getTodayWeatherDescription();
+		if (!exp.equals(res)){
+			System.out.println("getTodayWeatherDescription() broken");
+			System.out.println(res);
+		}
+
+		WeatherType e = WeatherType.PARTIALLY_CLOUDY;
+		WeatherType r = w.getTodayWeatherType();
+		if (e != r){
+			System.out.println("getTodayWeatherType() broken");
+		}
+
+		int[][] Expected = new int[][]{{17, 10}, {14, 10}, {16, 8}, {18, 10}, {17, 10}};
+		int[][] Result = w.getWeekTemperatures();
+		if (!Arrays.deepEquals(Expected, Result)){
+			System.out.println("getWeekTemperatures() broken");
+		}
+
+		String[] Exp = new String[]{
+				"Partly cloudy",
+				"Light rain",
+				"Cloudy",
+				"Light rain shower",
+				"Cloudy",
+		};
+		String[] Res = w.getWeekWeatherDescription();
+		if (!Arrays.equals(Exp, Res)){
+			System.out.println("getWeekWeatherDescription() broken");
+		}
+
+		WeatherType[] E = new WeatherType[]{
+				WeatherType.PARTIALLY_CLOUDY,
+				WeatherType.RAINY,
+				WeatherType.CLOUDY,
+				WeatherType.RAINY,
+				WeatherType.CLOUDY,
+		};
+		WeatherType[] R = w.getWeekWeatherTypes();
+		if (!Arrays.equals(E, R)){
+			System.out.println("getWeekWeatherTypes() broken");
+		}
+	}
+
+	public Weather(String settingsFilename){
+		settings = new Settings(settingsFilename);
+		locationID = 310042; // default to cambridge
 		if ( active) {
 			doAPICallIfNecessary();
 			siteList = new Sitelist(baseUrl + "val/wxfcs/all/json/sitelist?key=" + apiKey );
 		}
+	}
+
+	public void setLocationID(int location){
+		locationID = location;
+		lastUpdateTime = 0;
 	}
 
 	// Returns today's maximum and minimum temperatures
@@ -134,12 +215,6 @@ public class Weather {
 			}
 		}
 		return result;
-	}
-
-	public static void main(String[] args){
-		// for testing purposes
-		Weather w = new Weather("settings");
-		System.out.println(Arrays.toString(w.getWeekWeatherDescription()));
 	}
 
 	// Returns a textual description of today's weather
@@ -262,6 +337,9 @@ public class Weather {
 
 	// Calls the API and caches the results locally unless already have data
 	private void doAPICallIfNecessary(){
+		if( test ){
+			return;
+		}
 		if (!haveData()){
 			downloadWeeklyForecast();
 			downloadThreeHourlyForecast();
