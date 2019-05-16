@@ -54,7 +54,7 @@ public class Weather {
 			result[0] = day.getInt("Dm");
 			result[1] = night.getInt("Nm");
 			
-			if ( !useCelcius() ) {
+			if ( !usecelsius() ) {
 				result[0] = toFahrenheit(result[0]);
 				result[1] = toFahrenheit(result[1]);
 			}
@@ -148,7 +148,7 @@ public class Weather {
 				result[i][1] = night.getInt("Nm");
 			}
 			
-			if ( !useCelcius() ) {
+			if ( !usecelsius() ) {
 				for ( int i = 0; i < Period.length() && i < 5; ++i ) {
 					result[i][0] = toFahrenheit(result[i][0]);
 					result[i][1] = toFahrenheit(result[i][1]);
@@ -304,8 +304,8 @@ public class Weather {
 		}
 	}
 
-    // Checks user settings for whether they use Celcius or Fahrenheit
-    private boolean useCelcius(){
+    // Checks user settings for whether they use celsius or Fahrenheit
+    private boolean usecelsius(){
         return settings.getCelsius();
     }
 }
