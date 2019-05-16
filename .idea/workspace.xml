@@ -33,6 +33,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1751203454">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1668" />
+          <entry key="txt" value="31" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1668" />
+          <entry key="PLAIN_TEXT" value="31" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="3hourlytestdata" value="1" />
+          <entry key="3weeklydata" value="1" />
+          <entry key="3weeklytestdata" value="1" />
+          <entry key="dailydata" value="2" />
+          <entry key="java" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="4" />
+          <entry key="PLAIN_TEXT" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -63,7 +94,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Main.java">
+        <entry file="file://$PROJECT_DIR$/resources/3hourlytestdata">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
               <caret line="14" column="66" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
@@ -150,6 +181,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dan\IdeaProjects\Interaction-Design-25" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\huika\OneDrive\Documents\GitHub\Interaction-Design-25\src\uk\ac\cam\interactiondesign25\main" />
       <recent name="C:\Users\mobil\IdeaProjects\Interaction-Design-25\resources" />
@@ -202,6 +236,21 @@
       <option name="presentableId" value="Default" />
       <updated>1557845281908</updated>
     </task>
+    <task id="LOCAL-00001" summary="tabs everywhere">
+      <created>1558017549564</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558017549564</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add some tests.">
+      <created>1558024152558</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558024152558</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -236,6 +285,11 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="tabs everywhere" />
+    <MESSAGE value="Add some tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some tests." />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/main_scene.fxml">
       <provider selected="true" editor-type-id="text-editor">
@@ -245,7 +299,8 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/api/Weather.java">
+    <entry file="file://$PROJECT_DIR$/infodump" />
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/api/test/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
