@@ -34,7 +34,26 @@ public class Weather {
 
     // Returns today's maximum and minimum temperatures
     public int[] getTodayTemperatures(){
-        return new int[]{0,0};
+		int[] result = {0,0};
+		if ( active ) {
+			JSONObject weatherObject = new JSONObject ( WeeklyForecast );
+			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
+			JSONObject Location = DV.getJSONObject("Location");
+			JSONArray Period = Location.getJSONArray("Period");
+			
+			JSONObject j = Period.getJSONObject(0);
+			JSONArray a = j.getJSONArray("Rep");
+			JSONObject day = a.getJSONObject(0);
+			JSONObject night = a.getJSONObject(1);
+			result[0] = day.getInt("Dm");
+			result[1] = night.getInt("Nm");
+			
+			if ( !useCelcius() ) {
+				result[0] = toFahrenheit(result[0]);
+				result[1] = toFahrenheit(result[1]);
+			}
+		}
+		return result;
     }
 
     // Returns today's 3-hourly temperature forecasts
