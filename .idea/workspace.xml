@@ -2,11 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bdbd748-3700-45ec-85de-bbbe3f12b624" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/GUI.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Images.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/iconfinder_Weather_Weather_Forecast_Cloudy_Season_Cloud_3859132.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/cloudy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/iconfinder_Weather_Weather_Forecast_Flake_Flakes_Snowflake_3859134.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/snow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/iconfinder_Weather_Weather_Forecast_Hot_Sun_Day_3859136.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/sunny.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/iconfinder_Weather_Weather_Forecast_Lightning_Cloud_Storm_3859137.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/thunderstorm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/iconfinder_Weather_Weather_Forecast_Rain_Cloud_Climate_3859144.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/rain.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/iconfinder_Weather_Weather_Forecast_Sunny_Sun_Cloudy_3859147.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/partly_cloudy.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Interaction-Design-25/main_scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interaction-Design-25/main_scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconfinder_Weather_Weather_Forecast_Cloudy_Season_Cloud_3859132.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/cloudy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconfinder_Weather_Weather_Forecast_Flake_Flakes_Snowflake_3859134.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/snow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconfinder_Weather_Weather_Forecast_Hot_Sun_Day_3859136.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sunny.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconfinder_Weather_Weather_Forecast_Lightning_Cloud_Storm_3859137.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/thunderstorm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconfinder_Weather_Weather_Forecast_Rain_Cloud_Climate_3859144.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/rain.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/iconfinder_Weather_Weather_Forecast_Sunny_Sun_Cloudy_3859147.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/partly_cloudy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/main_scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/main_scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/api/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -40,12 +57,12 @@
         <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/api/WeatherType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
@@ -61,16 +78,16 @@
         <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Stylesheet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="6" column="62" lean-forward="true" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/SettingsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+            <state relative-caret-position="197">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,6 +132,7 @@
     <option name="width" value="1650" />
     <option name="height" value="1080" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -122,50 +140,11 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Interaction-Design-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Interaction-Design-25" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Interaction-Design-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Interaction-Design-25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Interaction-Design-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Interaction-Design-25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interactiondesign25" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Interaction-Design-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Interaction-Design-25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interactiondesign25" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Interaction-Design-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Interaction-Design-25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="interactiondesign25" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Interaction-Design-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558018182501" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558018379431" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -229,7 +208,7 @@
     <frame x="-6" y="-6" width="1549" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20925553" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20925553" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -238,7 +217,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41298342" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.41298342" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -276,14 +255,14 @@
     <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/api/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/Stylesheet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="6" column="62" lean-forward="true" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -307,17 +286,7 @@
     <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/api/WeatherType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/SettingsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -325,6 +294,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
           <caret line="14" column="66" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/cam/interactiondesign25/main/SettingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
