@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.interactiondesign25.main.Controller">
+   <children>
+      <HBox alignment="TOP_CENTER" minHeight="100.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="2000.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weather in Cambridge" textAlignment="CENTER" wrappingWidth="500.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <Button fx:id="settingsButton" alignment="CENTER" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#settingsClick" style="-fx-background-image: settings.png; -fx-background-color: WHITE;" />
+         </children>
+      </HBox>
+      <VBox prefHeight="5000.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="2500.0" prefWidth="2000.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Εικόνες/αρχείο%20λήψης.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="10000.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="2000.0">
+               <children>
+                  <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
+                     <children>
+                        <ImageView fx:id="image2" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Εικόνες/αρχείο%20λήψης.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
+                     <children>
+                        <ImageView fx:id="image3" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Εικόνες/images.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Raining" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
+                     <children>
+                        <ImageView fx:id="image4" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Εικόνες/αρχείο%20λήψης.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
+                     <children>
+                        <ImageView fx:id="image5" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Εικόνες/images.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Raining" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children></HBox>
+         </children>
+      </VBox>
+      <HBox minHeight="100.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="dayButton" minHeight="100.0" mnemonicParsing="false" onAction="#dayClick" prefWidth="2000.0" text="Day" />
+            <Button fx:id="weekButton" minHeight="100.0" mnemonicParsing="false" onAction="#weekClick" prefWidth="2000.0" text="Week" />
+            <Button fx:id="locationButton" minHeight="100.0" mnemonicParsing="false" onAction="#locationClick" prefWidth="2000.0" text="Location" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
