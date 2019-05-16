@@ -19,7 +19,7 @@ public class Weather {
 	
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
-	private final boolean active = true; //Used during development to reduce number of API calls
+	private final boolean active = false; //Used during development to reduce number of API calls
 	
 	private final long updateTime = 600; //update time in seconds
 
@@ -29,16 +29,16 @@ public class Weather {
 	
 	private long lastUpdateTime = 0;
 	
-	public Weather(String settingsFilename){
-		settings = new Settings(settingsFilename);
-		locationID = 310042; // default to cambridge
+    public Weather(String settingsFilename){
+        settings = new Settings(settingsFilename);
+        locationID = 310042; // default to cambridge
 		if ( active) {
 			doAPICallIfNecessary();
 		}
-	}
+    }
 
-	// Returns today's maximum and minimum temperatures
-	public int[] getTodayTemperatures(){
+    // Returns today's maximum and minimum temperatures
+    public int[] getTodayTemperatures(){
 		int[] result = {0,0};
 		if ( active ) {
 			doAPICallIfNecessary();
@@ -60,51 +60,41 @@ public class Weather {
 			}
 		}
 		return result;
-	}
+    }
 
-	// Returns today's 3-hourly temperature forecasts
-	public int[] getTodayThreeHourlyTemperatures(){
-		int[] result = {0,0,0,0,0};
+    // Returns today's 3-hourly temperature forecasts
+    public int[] getTodayThreeHourlyTemperatures(){
+        int[] result = {0,0,0,0,0};
 		if ( active ) {
 			doAPICallIfNecessary();
-			JSONArray Period = new JSONObject ( threeHourlyForecast )
-					.getJSONObject("SiteRep")
-					.getJSONObject("DV")
-					.getJSONObject("Location")
-					.getJSONArray("Period");
-
-			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-			int chunksLeftToday = (26-currentHour)/3;
-			int chunksFromTomorrow = 5 - chunksLeftToday;
-
-			for(int i=0; i<chunksLeftToday; i++){
-				JSONArray rep = Period
-						.getJSONObject(0) //today
-						.getJSONArray("Rep");
-				result[i] = rep
-						.getJSONObject(rep.length() - chunksLeftToday + i)
-						.getInt("T");
-			}
-
-			for(int i=0; i<chunksFromTomorrow; i++){
-				JSONArray rep = Period
-						.getJSONObject(1) //tomorrow
-						.getJSONArray("Rep");
-				result[i + chunksLeftToday] = rep
-						.getJSONObject(i)
-						.getInt("T");
+			JSONObject weatherObject = new JSONObject ( ThreeHourlyForecast );
+			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
+			JSONObject Location = DV.getJSONObject("Location");
+			JSONArray Period = Location.getJSONArray("Period");
+			
+			for ( int i = 0; i < Period.length(); ++i ) {
+				JSONObject j = Period.getJSONObject(i);
+				JSONArray a = j.getJSONArray("Rep");
+				JSONObject day = a.getJSONObject(0);
+				result[i] = day.getInt("Dm");
 			}
 		}
 		return result;
+    }
+
+	public static void main(String[] args){
+		// for testing purposes
+		Weather w = new Weather("settings");
+		w.getTodayThreeHourlyTemperatures();
 	}
 
 	// Returns a textual description of today's weather
-	public String getTodayWeatherDescription(){
-		return "Cloudy and mildly depressing";
-	}
+    public String getTodayWeatherDescription(){
+        return "Cloudy and mildly depressing";
+    }
 
-	// Returns type of today's weather (for use in selecting icons)
-	public WeatherType getTodayWeatherType(){
+    // Returns type of today's weather (for use in selecting icons)
+    public WeatherType getTodayWeatherType(){
 		if ( active ) {
 			doAPICallIfNecessary();
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
@@ -120,11 +110,11 @@ public class Weather {
 		} else {
 			return WeatherType.UNKNOWN;
 		}
-	}
+    }
 
-	// Returns high and low temperatures for each day for the next week,
-	// starting with today
-	public int[][] getWeekTemperatures(){
+    // Returns high and low temperatures for each day for the next week,
+    // starting with today
+    public int[][] getWeekTemperatures(){
 		int[][] result = {{0,0}, {0,0}, {0,0}, {0,0}, {0,0}};
 		if ( active ) {
 			doAPICallIfNecessary();
@@ -150,23 +140,72 @@ public class Weather {
 			}
 		}
 		return result;
-	}
+    }
 
-	// Returns textual descriptions of the weather each day this week,
-	// starting with today
-	public String[] getWeekWeatherDescription(){
-		return new String[]{"", "", "", "", ""};
-	}
+    // Returns textual descriptions of the weather each day this week,
+    // starting with today
+    public String[] getWeekWeatherDescription(){
+        String[] result = {"", "", "", "", ""};
+		if ( active ) {
+			String[] codes = {
+				"Clear night",
+				"Sunny day",
+				"Partly cloudy",
+				"Partly cloudy",
+				"Error",
+				"Mist",
+				"Fog",
+				"Cloudy",
+				"Overcast",
+				"Light rain shower",
+				"Light rain shower",
+				"Drizzle",
+				"Light rain",
+				"Heavy rain shower",
+				"Heavy rain shower",
+				"Heavy rain",
+				"Sleet shower",
+				"Sleet shower",
+				"Sleet",
+				"Hail shower",
+				"Hail shower",
+				"Hail",
+				"Light snow shower",
+				"Light snow shower",
+				"Light snow",
+				"Heavy snow shower",
+				"Heavy snow shower",
+				"Heavy snow",
+				"Thunder shower",
+				"Thunder shower",
+				"Thunder"
+			};
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
+			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
+			JSONObject Location = DV.getJSONObject("Location");
+			JSONArray Period = Location.getJSONArray("Period");
 
-	// Returns types of the weather each day this week, starting with today
-	public WeatherType[] getWeekWeatherTypes(){
+			for ( int i = 0; i < Period.length() && i < 5; ++i ) {
+				JSONObject j = Period.getJSONObject(i);
+				JSONArray a = j.getJSONArray("Rep");
+				JSONObject day = a.getJSONObject(0);
+				int weatherCode = day.getInt("W");
+				result[i] = codes[weatherCode];
+			}
+		}
+		return result;
+    }
+
+    // Returns types of the weather each day this week, starting with today
+    public WeatherType[] getWeekWeatherTypes(){
 		WeatherType[] result = {
-				WeatherType.UNKNOWN,
-				WeatherType.UNKNOWN,
-				WeatherType.UNKNOWN,
-				WeatherType.UNKNOWN,
-				WeatherType.UNKNOWN,
-		};
+                WeatherType.UNKNOWN,
+                WeatherType.UNKNOWN,
+                WeatherType.UNKNOWN,
+                WeatherType.UNKNOWN,
+                WeatherType.UNKNOWN,
+        };
 		if ( active ) {
 			doAPICallIfNecessary();
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
@@ -184,25 +223,25 @@ public class Weather {
 		}
 		return result;
 
-	}
+    }
 
-	// Calls the API and caches the results locally unless already have data
-	private void doAPICallIfNecessary(){
-		if (!haveData()){
-			downloadWeeklyForecast();
-			downloadThreeHourlyForecast();
+    // Calls the API and caches the results locally unless already have data
+    private void doAPICallIfNecessary(){
+        if (!haveData()){
+            downloadWeeklyForecast();
+            downloadThreeHourlyForecast();
 			lastUpdateTime = System.currentTimeMillis();
 			System.out.println ( "Did API calls" );
-		} else {
+        } else {
 			System.out.println ( "Used cache" );
 		}
-	}
+    }
 
-	// Returns true if we already have up-to-date data for the location
-	private boolean haveData(){
+    // Returns true if we already have up-to-date data for the location
+    private boolean haveData(){
 		//lastUpdateTime starts at 0 and currentTimeMillis is since 1970 so this will pass on first try
 		return System.currentTimeMillis() - lastUpdateTime < 1000*updateTime;
-	}
+    }
 	
 	private void downloadWeeklyForecast() {
 		String result = "";
@@ -249,8 +288,8 @@ public class Weather {
 		}
 	}
 
-	// Checks user settings for whether they use Celcius or Fahrenheit
-	private boolean useCelcius(){
-		return settings.getCelcius();
-	}
+    // Checks user settings for whether they use Celcius or Fahrenheit
+    private boolean useCelcius(){
+        return settings.getCelcius();
+    }
 }
