@@ -1,4 +1,11 @@
 package uk.ac.cam.interactiondesign25.main;
 
-public class Main {
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+    }
 }

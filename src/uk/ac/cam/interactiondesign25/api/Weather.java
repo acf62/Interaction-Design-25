@@ -304,8 +304,8 @@ public class Weather {
 		}
 	}
 
-	// Checks user settings for whether they use Celcius or Fahrenheit
-	private boolean useCelcius(){
-		return settings.getCelcius();
-	}
+    // Checks user settings for whether they use Celcius or Fahrenheit
+    private boolean useCelcius(){
+        return settings.getCelsius();
+    }
 }
