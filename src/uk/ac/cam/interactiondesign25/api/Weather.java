@@ -6,14 +6,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static uk.ac.cam.interactiondesign25.api.TemperatureConversion.toFahrenheit;
 
 public class Weather {
-    private Settings settings;
-    private int locationID;
+	private Settings settings;
+	private int locationID;
 	
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
@@ -183,7 +185,7 @@ public class Weather {
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
-			
+
 			for ( int i = 0; i < Period.length() && i < 5; ++i ) {
 				JSONObject j = Period.getJSONObject(i);
 				JSONArray a = j.getJSONArray("Rep");
