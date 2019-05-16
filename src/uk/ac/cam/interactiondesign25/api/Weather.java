@@ -143,7 +143,56 @@ public class Weather {
     // Returns textual descriptions of the weather each day this week,
     // starting with today
     public String[] getWeekWeatherDescription(){
-        return new String[]{"", "", "", "", ""};
+        String[] result = {"", "", "", "", ""};
+		if ( active ) {
+			String[] codes = {
+				"Clear night",
+				"Sunny day",
+				"Partly cloudy",
+				"Partly cloudy",
+				"Error",
+				"Mist",
+				"Fog",
+				"Cloudy",
+				"Overcast",
+				"Light rain shower",
+				"Light rain shower",
+				"Drizzle",
+				"Light rain",
+				"Heavy rain shower",
+				"Heavy rain shower",
+				"Heavy rain",
+				"Sleet shower",
+				"Sleet shower",
+				"Sleet",
+				"Hail shower",
+				"Hail shower",
+				"Hail",
+				"Light snow shower",
+				"Light snow shower",
+				"Light snow",
+				"Heavy snow shower",
+				"Heavy snow shower",
+				"Heavy snow",
+				"Thunder shower",
+				"Thunder shower",
+				"Thunder"
+			};
+			doAPICallIfNecessary();
+			JSONObject weatherObject = new JSONObject ( weeklyForecast );
+			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
+			JSONObject Location = DV.getJSONObject("Location");
+			JSONArray Period = Location.getJSONArray("Period");
+			
+			for ( int i = 0; i < Period.length() && i < 5; ++i ) {
+				JSONObject j = Period.getJSONObject(i);
+				JSONArray a = j.getJSONArray("Rep");
+				JSONObject day = a.getJSONObject(0);
+				int weatherCode = day.getInt("W");
+				result[i] = codes[weatherCode];
+			}
+		}
+		return result;
     }
 
     // Returns types of the weather each day this week, starting with today
