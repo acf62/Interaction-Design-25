@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main_scene.fxml"));
         primaryStage.setTitle("Settings");
         //String IconPath = getClass().getResource("/icon.png").toString();
         //primaryStage.getIcons().add(new Image(IconPath));
