@@ -18,13 +18,17 @@ import org.json.JSONObject;
 import static uk.ac.cam.interactiondesign25.api.TemperatureConversion.toFahrenheit;
 
 public class Weather {
+	//Stores application settings persistently
 	private Settings settings;
+	//The id used by the MET office database for the current targeted location
 	private int locationID;
 	
+	//The base URL for MET office database requests
 	private final String baseUrl = "http://datapoint.metoffice.gov.uk/public/data/";
+	//Personal API key used for database requests
 	private final String apiKey = "5887b42a-ab8e-4285-94e8-9ef8ca4fe411";
 	private final boolean active = true; //Used during development to reduce number of API calls
-	private final boolean test = false;
+	private final boolean test = false; //Used during development to enable or disable testing
 
 	private final long updateTime = 600; //update time in seconds
 
@@ -32,10 +36,13 @@ public class Weather {
 	private String weeklyForecast;
 	private String threeHourlyForecast;
 	
+	//Keeps track of when data was last downloaded from the MET office
 	private long lastUpdateTime = 0;
 	
+	//Stores all locations about which we have data
 	private Sitelist siteList;
 	
+	//Translation from integer to string of the MET office weather codes
 	private static final String[] codes = {
 		"Clear night",
 		"Sunny day",
@@ -71,6 +78,7 @@ public class Weather {
 	};
 	
 
+	//Main used for testing
 	public static void main(String[] args){
 		Weather w = new Weather("settingsTest");
 
@@ -144,6 +152,7 @@ public class Weather {
 		}
 	}
 
+	//Create a weather object with default location of cambridge
 	public Weather(String settingsFilename){
 		settings = new Settings(settingsFilename);
 		locationID = 310042; // default to cambridge
@@ -153,15 +162,19 @@ public class Weather {
 		}
 	}
 
+	//Change the location about which we are reporting the weather
 	public void setLocationID(int location){
 		locationID = location;
+		//Make sure that the data is reloaded next time it's needed
 		lastUpdateTime = 0;
 	}
 	
+	//Return a list of suggestions of sites we have data about
 	public List<String> autocomplete ( String input, int cutoffLength ) {
 		return siteList.autocomplete(input, cutoffLength);
 	}
 	
+	//Translates the name of a site to the id used internally
 	public int getLocationIDFromName ( String name ) {
 		return siteList.getId(name);
 	}
@@ -191,7 +204,7 @@ public class Weather {
 		return result;
 	}
 
-	// Returns today's 3-hourly temperature forecasts
+	// Returns today's 3-hourly temperature forecasts (array of 5 items)
 	public int[] getTodayThreeHourlyTemperatures(){
 		int[] result = {0,0,0,0,0};
 		if ( active ) {
@@ -296,7 +309,7 @@ public class Weather {
 	}
 
 	// Returns textual descriptions of the weather each day this week,
-	// starting with today
+	// starting with today (returns data for 5 days)
 	public String[] getWeekWeatherDescription(){
 		String[] result = {"", "", "", "", ""};
 		if ( active ) {
@@ -317,7 +330,7 @@ public class Weather {
 		return result;
 	}
 
-	// Returns types of the weather each day this week, starting with today
+	// Returns types of the weather each day this week, starting with today (returns data for 5 days)
 	public WeatherType[] getWeekWeatherTypes(){
 		WeatherType[] result = {
 				WeatherType.UNKNOWN,
@@ -366,6 +379,7 @@ public class Weather {
 		return System.currentTimeMillis() - lastUpdateTime < 1000*updateTime;
 	}
 	
+	//Download daily forecast data for the next 5 days
 	private void downloadWeeklyForecast() {
 		String result = "";
 		try {
@@ -389,6 +403,7 @@ public class Weather {
 		}
 	}
 	
+	//Download 3-hourly data for the next 5 days
 	private void downloadThreeHourlyForecast() {
 		String result = "";
 		try {
