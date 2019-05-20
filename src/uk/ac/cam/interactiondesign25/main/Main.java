@@ -23,7 +23,6 @@ public class Main extends Application {
     public static Scene locationScene, dayScene, settingsScene, weekScene;
 
 
-
     public static WeekController weekController;
     public static LocationController locationController;
 
@@ -33,7 +32,7 @@ public class Main extends Application {
             fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\locationscreen.fxml").toURI().toURL());
             locationScene = new Scene(fxmlLoader.load(),1365,768);
             locationController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\weekscreen.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\week_scene.fxml").toURI().toURL());
             weekScene = new Scene(fxmlLoader.load(),1365,768);
             weekController = fxmlLoader.getController();
             System.out.println(locationController== null);
@@ -45,8 +44,6 @@ public class Main extends Application {
         }
 
     }
-    // removed location static variable
-
 
 
 
