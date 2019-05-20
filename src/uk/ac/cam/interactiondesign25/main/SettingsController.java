@@ -95,7 +95,7 @@ public class SettingsController implements Initializable {
             celsius.setStyle(unselectedColor);
         }
 
-        if (settings.getRedGreenColourblind()) {
+        if (!settings.getBlueYellowColourblind()) {
             rgmode.setStyle(selectedColor);
             bymode.setStyle(unselectedColor);
         } else {
@@ -136,7 +136,7 @@ public class SettingsController implements Initializable {
             celsius.setStyle(unselectedColor);
         }
 
-        if (settings.getRedGreenColourblind()) {
+        if (!settings.getBlueYellowColourblind()) {
             rgmode.setStyle(selectedColor);
             bymode.setStyle(unselectedColor);
         } else {

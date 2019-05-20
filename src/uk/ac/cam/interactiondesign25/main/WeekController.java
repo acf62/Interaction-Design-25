@@ -83,7 +83,12 @@ public class WeekController implements Initializable {
         for (WeatherType weatherType : weatherTypes) {
             switch(weatherType) {
                 case RAINY:
-                    results[i] = "file:resources/rain.png";
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/rainCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/rain.png";
+                    }
                     break;
                 case PARTIALLY_CLOUDY:
                     if (Main.settings.getBlueYellowColourblind()) {
@@ -97,7 +102,12 @@ public class WeekController implements Initializable {
                     results[i] = "file:resources/unknown.png";
                     break;
                 case SNOWY:
-                    results[i] = "file:resources/snow.png";
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/snowCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/snow.png";
+                    }
                     break;
                 case THUNDER:
                     if (Main.settings.getBlueYellowColourblind()) {
@@ -116,7 +126,12 @@ public class WeekController implements Initializable {
                     }
                     break;
                 case CLOUDY:
-                    results[i] = "file:resources/cloudy.png";
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/cloudyCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/cloudy.png";
+                    }
                     break;
             }
             i++;
