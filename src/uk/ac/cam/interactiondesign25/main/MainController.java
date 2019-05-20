@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import uk.ac.cam.interactiondesign25.api.WeatherType;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +26,38 @@ public class MainController implements Initializable {
     @FXML
     private ImageView image5;
 
+
+    @FXML
+    private Text high1;
+    @FXML
+    private Text low1;
+    @FXML
+    private Text text1;
+    @FXML
+    private Text high2;
+    @FXML
+    private Text low2;
+    @FXML
+    private Text text2;
+    @FXML
+    private Text high3;
+    @FXML
+    private Text low3;
+    @FXML
+    private Text text3;
+    @FXML
+    private Text high4;
+    @FXML
+    private Text low4;
+    @FXML
+    private Text text4;
+    @FXML
+    private Text high5;
+    @FXML
+    private Text low5;
+    @FXML
+    private Text text5;
+
     @FXML
     private Button settingsButton;
 
@@ -37,25 +71,87 @@ public class MainController implements Initializable {
     private Button weekButton;
 
     @FXML
-    void settingsClick(ActionEvent event) {
+    void settingsClick() {
 
     }
 
     @FXML
-    void dayClick(ActionEvent event) {
+    void dayClick() {
 
     }
 
     @FXML
-    void weekClick(ActionEvent event) {
+    void weekClick() {
 
     }
 
     @FXML
-    void locationClick(ActionEvent event) {
+    void locationClick() {
 
     }
 
+    
+    private void setTriple(int number, String high, String low, String text){
+        switch (number){
+            case 1:
+                high1.setText(high);
+                low1.setText(low);
+                text1.setText(text);
+                break;
+            case 2:
+                high2.setText(high);
+                low2.setText(low);
+                text2.setText(text);
+                break;
+            case 3:
+                high3.setText(high);
+                low3.setText(low);
+                text3.setText(text);
+                break;
+            case 4:
+                high4.setText(high);
+                low4.setText(low);
+                text4.setText(text);
+                break;
+            case 5:
+                high5.setText(high);
+                low5.setText(low);
+                text5.setText(text);
+                break;
+        }
+    }
+
+    private Image typeToImage(WeatherType type) {
+        switch (type) {
+            case RAINY: return new Image("file:resources/rainy.png");
+            case SUNNY: return new Image("file:resources/sunny.png");
+            case CLOUDY: return new Image("file:resources/cloudy.png");
+            case PARTIALLY_CLOUDY: return new Image("file:resources/partly_cloudy.png");
+            case SNOWY: return new Image("file:resources/snowy.png");
+            case THUNDER: return new Image("file:resources/thunderstorm.png");
+            default: return null;
+        }
+    }
+
+    private void setImage(int number, WeatherType type) {
+        switch (number) {
+            case 1:
+                image1.setImage(typeToImage(type));
+                break;
+            case 2:
+                image2.setImage(typeToImage(type));
+                break;
+            case 3:
+                image3.setImage(typeToImage(type));
+                break;
+            case 4:
+                image4.setImage(typeToImage(type));
+                break;
+            case 5:
+                image5.setImage(typeToImage(type));
+                break;
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

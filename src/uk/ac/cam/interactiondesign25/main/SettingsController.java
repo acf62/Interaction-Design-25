@@ -86,16 +86,7 @@ public class SettingsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        System.out.println("inside intializer for settings controller");
-
         settings = Main.settings;
-
-        System.out.println(1);
-
-        System.out.println(celsius==null);
-        System.out.println(fahrenheit==null);
-
-        System.out.println(2);
 
         if (settings.getCelsius()) {
             celsius.setStyle(selectedColor);
@@ -112,5 +103,26 @@ public class SettingsController implements Initializable {
             rgmode.setStyle(unselectedColor);
             bymode.setStyle(selectedColor);
         }
+    }
+
+    public void sync() {
+        settings = Main.settings;
+
+        if (settings.getCelsius()) {
+            celsius.setStyle(selectedColor);
+            fahrenheit.setStyle(unselectedColor);
+        } else {
+            fahrenheit.setStyle(selectedColor);
+            celsius.setStyle(unselectedColor);
+        }
+
+        if (settings.getRedGreenColourblind()) {
+            rgmode.setStyle(selectedColor);
+            bymode.setStyle(unselectedColor);
+        } else {
+            rgmode.setStyle(unselectedColor);
+            bymode.setStyle(selectedColor);
+        }
+
     }
 }

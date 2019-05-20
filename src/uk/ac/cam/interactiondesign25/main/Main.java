@@ -92,6 +92,7 @@ public class Main extends Application {
         }
         else if (instr == "settings") {
             mainStage.setScene(settingsScene);
+            settingsController.sync();
         }
         else {
             System.out.println("Received incorrect screen");
