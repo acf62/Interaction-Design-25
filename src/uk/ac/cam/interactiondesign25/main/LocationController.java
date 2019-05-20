@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -15,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -98,8 +100,6 @@ public class LocationController implements Initializable  {
                 listSearch.getItems().add(site);
             }
 
-            System.out.println(stringList.size() + "  " +  searchBar.getText().length());
-
             if (stringList.size()==0 && searchBar.getText().length()!=0) {
                 listSearch.getItems().add("No Locations Found");
             }
@@ -148,6 +148,8 @@ public class LocationController implements Initializable  {
             }
         });
 
+
+
         recentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -156,6 +158,46 @@ public class LocationController implements Initializable  {
                     Main.weather.setLocationID(Main.weather.getLocationIDFromName(t1));
                 }
 
+            }
+        });
+
+        listSearch.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> stringListView) {
+                final ListCell<String> cell = new ListCell<String>() {
+                    @Override
+                    public void updateItem(String item,
+                                           boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            setFont(this.getFont().font(this.getFont().getName(), 30.0)); //set your desired size
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+
+        recentList.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> stringListView) {
+                final ListCell<String> cell = new ListCell<String>() {
+                    @Override
+                    public void updateItem(String item,
+                                           boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item);
+                            setFont(this.getFont().font(this.getFont().getName(), 30.0)); //set your desired size
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+                return cell;
             }
         });
 

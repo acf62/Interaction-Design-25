@@ -86,7 +86,12 @@ public class WeekController implements Initializable {
                     results[i] = "file:resources/rain.png";
                     break;
                 case PARTIALLY_CLOUDY:
-                    results[i] = "file:resources/partly_cloudy.png";
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/partly_cloudyCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/partly_cloudy.png";
+                    }
                     break;
                 case UNKNOWN:
                     results[i] = "file:resources/unknown.png";
@@ -95,9 +100,20 @@ public class WeekController implements Initializable {
                     results[i] = "file:resources/snow.png";
                     break;
                 case THUNDER:
-                    results[i] = "file:resources/thunderstorm.png";
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/thunderstormCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/thunderstorm.png";
+                    }
+                    break;
                 case SUNNY:
-                    results[i] = "file:resources/sunny.png";
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/sunnyCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/sunny.png";
+                    }
                     break;
                 case CLOUDY:
                     results[i] = "file:resources/cloudy.png";
@@ -173,10 +189,17 @@ public class WeekController implements Initializable {
             if (description[i].trim().contains(" ")) {
                 String[] texts = description[i].split(" ");
                 String temp = "";
+                String finalTemp = "";
                 for (String h : texts) {
-                    temp = temp + h + "\n";
+                    if (temp.length() + h.length() <= 10)  {
+                        temp = temp + " "  + h ;
+                    }
+                    else {
+                        finalTemp = finalTemp + temp + "\n";
+                        temp = h;
+                    }
                 }
-                description[i] = temp.trim();
+                description[i] = (finalTemp + " " + temp). trim();
             }
         }
 
