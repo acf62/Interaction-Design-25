@@ -80,7 +80,8 @@ public class Weather {
 
 	//Main used for testing
 	public static void main(String[] args){
-		Weather w = new Weather("settingsTest");
+		Settings settings = new Settings ( "settingsTest" );
+		Weather w = new Weather( settings );
 
 		try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "3hourlytestdata"))){
 			w.threeHourlyForecast = r.readLine();
@@ -153,8 +154,8 @@ public class Weather {
 	}
 
 	//Create a weather object with default location of cambridge
-	public Weather(String settingsFilename){
-		settings = new Settings(settingsFilename);
+	public Weather(Settings settings){
+		this.settings = settings;
 		locationID = 310042; // default to cambridge
 		if ( active) {
 			doAPICallIfNecessary();
