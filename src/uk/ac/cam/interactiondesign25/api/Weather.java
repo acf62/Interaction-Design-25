@@ -81,8 +81,8 @@ public class Weather {
 
 	//Main used for testing
 	public static void main(String[] args){
-		Settings settings = new Settings("settingsTest");
-		Weather w = new Weather(settings);
+		Settings settings = new Settings ( "settingsTest" );
+		Weather w = new Weather( settings );
 
 		try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "3hourlytestdata"))){
 			w.threeHourlyForecast = r.readLine();
@@ -161,6 +161,8 @@ public class Weather {
 		if ( active) {
 			doAPICallIfNecessary();
 			siteList = new Sitelist(baseUrl + "val/wxfcs/all/json/sitelist?key=" + apiKey );
+			System.out.println ( getLocationIDFromName("cAmBrIdGe") == 310042 );
+			System.out.println(siteList.autocomplete("cam", 10));
 		}
 	}
 

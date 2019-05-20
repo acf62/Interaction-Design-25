@@ -34,7 +34,7 @@ public class Main extends Application {
         try {
             settings = new Settings("settingsFile");
             weather = new Weather(settings);
-
+            
             FXMLLoader fxmlLoader1,fxmlLoader2,fxmlLoader3,fxmlLoader4;
             fxmlLoader1 = new FXMLLoader(new File("resources/location_scene.fxml").toURI().toURL());
             fxmlLoader2 = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());

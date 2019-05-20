@@ -1,5 +1,7 @@
 package uk.ac.cam.interactiondesign25.api;
 
+//The MET office uses numeric codes for weather conditions
+//WeatherType exists to group these codes together into groups which need their own icon
 public enum WeatherType {
 	
 	UNKNOWN,            // NA
@@ -12,7 +14,7 @@ public enum WeatherType {
 	
 	public static WeatherType convert ( int code ) {
 		if ( code <= 0 ) {
-			return WeatherType.UNKNOWN;
+			return WeatherType.UNKNOWN; //Unknown is an error case, it should not have its own icon
 		} else if ( code == 1 ) {
 			return WeatherType.SUNNY;
 		} else if ( code <= 5 ) {

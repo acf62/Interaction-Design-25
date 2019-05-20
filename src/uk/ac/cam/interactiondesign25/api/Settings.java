@@ -6,7 +6,7 @@ public class Settings {
     private String filename;
     private boolean Celsius;
     private boolean BlueYellowColourblind;
-    private boolean RedGreenColourblind;
+    //private boolean RedGreenColourblind;
 
     public Settings(String fn){
         filename = fn;
@@ -15,13 +15,13 @@ public class Settings {
             BufferedReader r = new BufferedReader(f);
             Celsius = r.readLine().equals("1");
             BlueYellowColourblind = r.readLine().equals("1");
-            RedGreenColourblind = r.readLine().equals("1");
+            //RedGreenColourblind = r.readLine().equals("1");
 
         } catch (FileNotFoundException e1) {
             // Initialise file - didn't exist
             Celsius = true;
             BlueYellowColourblind = false;
-            RedGreenColourblind = false;
+            //RedGreenColourblind = false;
             writeBack();
 
         } catch (IOException e) {
@@ -35,7 +35,7 @@ public class Settings {
             BufferedWriter w = new BufferedWriter(f);
             w.write(((Celsius)?"1":"0")+"\n");
             w.write(((BlueYellowColourblind)?"1":"0")+"\n");
-            w.write(((RedGreenColourblind)?"1":"0")+"\n");
+            //w.write(((RedGreenColourblind)?"1":"0")+"\n");
             w.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,10 +52,10 @@ public class Settings {
         writeBack();
     }
 
-    public void setRedGreenColourblind(boolean val){
+    /*public void setRedGreenColourblind(boolean val){
         RedGreenColourblind = val;
         writeBack();
-    }
+    }*/
 
     public boolean getCelsius(){
         return Celsius;
@@ -65,7 +65,7 @@ public class Settings {
         return BlueYellowColourblind;
     }
 
-    public boolean getRedGreenColourblind(){
+    /*public boolean getRedGreenColourblind(){
         return RedGreenColourblind;
-    }
+    }*/
 }
