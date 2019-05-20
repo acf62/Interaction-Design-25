@@ -11,12 +11,12 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+//Stores data about the sites for which the MET office provides data
 public class Sitelist {
+	//An individual location
 	private class Site {
-		public int id;
-		public String name;
-		//public String region;
-		//public String unitaryAuthArea;
+		public int id; //Internal ID used by the MET office
+		public String name; //Unqualified name of the site, e.g. "Cambridge"
 	}
 	
 	List<Site> sites = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Sitelist {
 				Site s = new Site();
 				JSONObject siteObject = location.getJSONObject(i);
 				s.id = siteObject.getInt("id");
-				s.name = siteObject.getString("name");
+				s.name = siteObject.getString("name").toLowerCase();
 				//s.region = siteObject.getString("region");
 				//s.unitaryAuthArea = siteObject.getString("unitaryAuthArea");
 				sites.add(s);
@@ -57,16 +57,17 @@ public class Sitelist {
 	}
 	
 	List<String> autocomplete ( String input, int cutoffLength ) {
+		String str = input.toLowerCase();
 		List<String> suggestions = new ArrayList<>();
 		while ( suggestions.size() < cutoffLength ) {
 			String closest = "";
 			int maxCloseness = 0;
 			for ( Site s : sites ) {
 				if ( !suggestions.contains ( s.name ) ) {
-					if ( closeness ( s.name, input ) > maxCloseness ) {
-						maxCloseness = closeness(s.name, input);
+					if ( closeness ( s.name, str ) > maxCloseness ) {
+						maxCloseness = closeness(s.name, str);
 						closest = s.name;
-					} else if ( closeness ( s.name, input ) == maxCloseness ) {
+					} else if ( closeness ( s.name, str ) == maxCloseness ) {
 						if ( closest.length() > s.name.length() ) {
 							closest = s.name;
 						}
@@ -91,8 +92,9 @@ public class Sitelist {
 	
 	public int getId ( String name ) {
 		int id = -1;
+		String str = name.toLowerCase();
 		for ( Site s : sites ) {
-			if ( s.name.equals(name) ) {
+			if ( s.name.equals(str) ) {
 				id = s.id;
 			}
 		}
