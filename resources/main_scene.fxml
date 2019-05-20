@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -20,7 +18,7 @@
                   </Text>
                </children>
             </HBox>
-            <Button fx:id="settingsButton" alignment="CENTER" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#settingsClick" style="-fx-background-color: WHITE;" />
+            <Button fx:id="settingsButton" alignment="CENTER" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#settingsClick" style="-fx-background-image: settings.png; -fx-background-color: WHITE;" />
          </children>
       </HBox>
       <VBox prefHeight="5000.0" prefWidth="100.0">
@@ -35,9 +33,9 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="10000.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
+                        <Text fx:id="high1" strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                        <Text fx:id="low1" strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
+                        <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
                      </children>
                   </VBox>
                </children>
@@ -47,12 +45,13 @@
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
                         <ImageView fx:id="image2" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
+                              <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="4:00-7:00" />
+                              <Text fx:id="high2" strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text fx:id="low2" strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
                            </children>
                         </VBox>
                      </children>
@@ -60,12 +59,13 @@
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
                         <ImageView fx:id="image3" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Raining" />
+                              <Text fx:id="text3" strokeType="OUTSIDE" strokeWidth="0.0" text="7:00-10:--" />
+                              <Text fx:id="high3" strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text fx:id="low3" strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
                            </children>
                         </VBox>
                      </children>
@@ -76,9 +76,9 @@
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" />
+                              <Text fx:id="text4" strokeType="OUTSIDE" strokeWidth="0.0" text="10:00-13:00" />
+                              <Text fx:id="high4" strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text fx:id="low4" strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
                            </children>
                         </VBox>
                      </children>
@@ -86,12 +86,13 @@
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
                         <ImageView fx:id="image5" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+=
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Raining" />
+                              <Text fx:id="text5" strokeType="OUTSIDE" strokeWidth="0.0" text="13:00-17:00" />
+                              <Text fx:id="high5" strokeType="OUTSIDE" strokeWidth="0.0" text="15°C" />
+                              <Text fx:id="low5" strokeType="OUTSIDE" strokeWidth="0.0" text="10°C" />
                            </children>
                         </VBox>
                      </children>

@@ -76,7 +76,14 @@ public class Sitelist {
 			}
 			suggestions.add(closest);
 		}
-		return suggestions;
+
+		List<String> result = new ArrayList<>();
+		for ( String s : suggestions ) {
+			if ( s.length() > 0 ) {
+				result.add(s);
+			}
+		}
+		return result;
 	}
 	
 	private int closeness ( String a, String b ) {
