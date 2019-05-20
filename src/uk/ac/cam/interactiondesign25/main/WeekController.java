@@ -77,6 +77,7 @@ public class WeekController implements Initializable {
     @FXML
     private Text text5;
 
+
     public String[] getImageLocationsFrom(WeatherType[] weatherTypes) {
         String[] results = new String[weatherTypes.length];
         int i=0;
@@ -147,6 +148,9 @@ public class WeekController implements Initializable {
         WeatherType[] weatherTypes = Main.weather.getWeekWeatherTypes();
         String[] images = getImageLocationsFrom(weatherTypes);
 
+        String suffix = Main.settings.getCelsius() ? "°C" : "°F";
+
+
         text1.setText(description[0]);
         text2.setText(description[1]);
         text3.setText(description[2]);
@@ -154,17 +158,17 @@ public class WeekController implements Initializable {
         text5.setText(description[4]);
 
 
-        hi1.setText(String.valueOf(temps[0][0]));
-        hi2.setText(String.valueOf(temps[1][0]));
-        hi3.setText(String.valueOf(temps[2][0]));
-        hi4.setText(String.valueOf(temps[3][0]));
-        hi5.setText(String.valueOf(temps[4][0]));
+        hi1.setText(String.valueOf(temps[0][0])+suffix);
+        hi2.setText(String.valueOf(temps[1][0])+suffix);
+        hi3.setText(String.valueOf(temps[2][0])+suffix);
+        hi4.setText(String.valueOf(temps[3][0])+suffix);
+        hi5.setText(String.valueOf(temps[4][0])+suffix);
 
-        lo1.setText(String.valueOf(temps[0][1]));
-        lo2.setText(String.valueOf(temps[1][1]));
-        lo3.setText(String.valueOf(temps[2][1]));
-        lo4.setText(String.valueOf(temps[3][1]));
-        lo5.setText(String.valueOf(temps[4][1]));
+        lo1.setText(String.valueOf(temps[0][1])+suffix);
+        lo2.setText(String.valueOf(temps[1][1])+suffix);
+        lo3.setText(String.valueOf(temps[2][1])+suffix);
+        lo4.setText(String.valueOf(temps[3][1])+suffix);
+        lo5.setText(String.valueOf(temps[4][1])+suffix);
 
 
 
@@ -200,6 +204,8 @@ public class WeekController implements Initializable {
         WeatherType[] weatherTypes = Main.weather.getWeekWeatherTypes();
         String[] images = getImageLocationsFrom(weatherTypes);
 
+        String suffix = Main.settings.getCelsius() ? "°C" : "°F";
+
         for (int i =0 ; i < description.length; i++) {
             if (description[i].trim().contains(" ")) {
                 String[] texts = description[i].split(" ");
@@ -224,17 +230,17 @@ public class WeekController implements Initializable {
         text4.setText(description[3]);
         text5.setText(description[4]);
 
-        hi1.setText(String.valueOf(temps[0][0]));
-        hi2.setText(String.valueOf(temps[1][0]));
-        hi3.setText(String.valueOf(temps[2][0]));
-        hi4.setText(String.valueOf(temps[3][0]));
-        hi5.setText(String.valueOf(temps[4][0]));
+        hi1.setText(String.valueOf(temps[0][0])+suffix);
+        hi2.setText(String.valueOf(temps[1][0])+suffix);
+        hi3.setText(String.valueOf(temps[2][0])+suffix);
+        hi4.setText(String.valueOf(temps[3][0])+suffix);
+        hi5.setText(String.valueOf(temps[4][0])+suffix);
 
-        lo1.setText(String.valueOf(temps[0][1]));
-        lo2.setText(String.valueOf(temps[1][1]));
-        lo3.setText(String.valueOf(temps[2][1]));
-        lo4.setText(String.valueOf(temps[3][1]));
-        lo5.setText(String.valueOf(temps[4][1]));
+        lo1.setText(String.valueOf(temps[0][1])+suffix);
+        lo2.setText(String.valueOf(temps[1][1])+suffix);
+        lo3.setText(String.valueOf(temps[2][1])+suffix);
+        lo4.setText(String.valueOf(temps[3][1])+suffix);
+        lo5.setText(String.valueOf(temps[4][1])+suffix);
 
 
 
