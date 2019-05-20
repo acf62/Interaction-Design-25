@@ -39,7 +39,7 @@ public class Main extends Application {
             fxmlLoader1 = new FXMLLoader(new File("resources/location_scene.fxml").toURI().toURL());
             fxmlLoader2 = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());
             fxmlLoader3 = new FXMLLoader(new File("resources/settings_scene.fxml").toURI().toURL());
-            //fxmlLoader4 = new FXMLLoader(new File("resources/main_scene.fxml").toURI().toURL());
+            fxmlLoader4 = new FXMLLoader(new File("resources/main_scene.fxml").toURI().toURL());
             locationScene = new Scene(fxmlLoader1.load(),1365,768);
             locationController = fxmlLoader1.getController();
 
@@ -49,8 +49,8 @@ public class Main extends Application {
             settingsScene = new Scene(fxmlLoader3.load(),1365,768);
             settingsController = fxmlLoader3.getController();
 
-            //dayScene = new Scene(fxmlLoader4.load(),1365,768);
-            //dayController = fxmlLoader4.getController();
+            dayScene = new Scene(fxmlLoader4.load(),1365,768);
+            dayController = fxmlLoader4.getController();
             /*System.out.println(locationController== null);
             System.out.println (weekController== null);
             System.out.println(settingsController==null);*/

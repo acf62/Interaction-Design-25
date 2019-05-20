@@ -150,7 +150,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Weather weather = Main.weather;
-        weather.setLocationID(weather.getLocationIDFromName("Cambridge, UK"));
+        weather.setLocationID(weather.getLocationIDFromName("Cambridge"));
         setTriple(1, weather.getTodayTemperatures()[0],
                 weather.getTodayTemperatures()[1], weather.getTodayWeatherDescription());
 
