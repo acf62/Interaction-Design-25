@@ -195,7 +195,7 @@ public class Weather {
 			result[0] = day.getInt("Dm");
 			result[1] = night.getInt("Nm");
 			
-			if ( !usecelsius() ) {
+			if ( !useCelsius() ) {
 				result[0] = toFahrenheit(result[0]);
 				result[1] = toFahrenheit(result[1]);
 			}
@@ -259,6 +259,12 @@ public class Weather {
 				result[i + chunksLeftToday] = rep
 						.getJSONObject(i)
 						.getInt("T");
+			}
+			
+			if ( !useCelsius() ) {
+				for ( int i = 0; i < result.length; ++i ) {
+					result[i] = toFahrenheit(result[i]);
+				}
 			}
 		}
 		return result;
@@ -378,7 +384,7 @@ public class Weather {
 				result[i][1] = night.getInt("Nm");
 			}
 			
-			if ( !usecelsius() ) {
+			if ( !useCelsius() ) {
 				for ( int i = 0; i < Period.length() && i < 5; ++i ) {
 					result[i][0] = toFahrenheit(result[i][0]);
 					result[i][1] = toFahrenheit(result[i][1]);
@@ -509,7 +515,7 @@ public class Weather {
 	}
 
 	// Checks user settings for whether they use celsius or Fahrenheit
-	private boolean usecelsius(){
+	private boolean useCelsius(){
 		return settings.getCelsius();
 	}
 }
