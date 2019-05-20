@@ -86,7 +86,6 @@
                   <HBox minHeight="200.0" minWidth="100.0" prefHeight="300.0" prefWidth="1500.0">
                      <children>
                         <ImageView fx:id="image5" fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-=
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
