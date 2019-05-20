@@ -11,19 +11,21 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-//Stores data about the sites for which the MET office provides data
+// Stores data about the sites for which the MET office provides data
 public class Sitelist {
-	//An individual location
+
+	// An individual location
 	private class Site {
-		public int id; //Internal ID used by the MET office
-		public String name; //Unqualified name of the site, e.g. "Cambridge"
+		public int id; // Internal ID used by the MET office
+		public String name; // Unqualified name of the site, e.g. "Cambridge"
 	}
 	
-	List<Site> sites = new ArrayList<>();
+	private List<Site> sites = new ArrayList<>();
 	
 	public Sitelist ( String link ) {
 		String json = "";
 		try {
+			// Make request and read in json
 			URL url = new URL( link );
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
@@ -33,32 +35,32 @@ public class Sitelist {
 				json += line;
 			}
 			rd.close();
-			
-			JSONObject all = new JSONObject ( json );
-			JSONObject locations = all.getJSONObject ( "Locations" );
-			JSONArray location = locations.getJSONArray ( "Location" );
+
+			// Convert to sites and store in list
+			JSONArray location = new JSONObject (json)
+					.getJSONObject ("Locations")
+					.getJSONArray ("Location");
 			for ( int i = 0; i < location.length(); ++i ) {
 				Site s = new Site();
 				JSONObject siteObject = location.getJSONObject(i);
 				s.id = siteObject.getInt("id");
 				s.name = siteObject.getString("name").toLowerCase();
-				//s.region = siteObject.getString("region");
-				//s.unitaryAuthArea = siteObject.getString("unitaryAuthArea");
 				sites.add(s);
 			}
-			
-		} catch (MalformedURLException ex) {
+		} catch (MalformedURLException e) {
 			System.out.println("URL malformed");
-			ex.printStackTrace();
-		} catch (IOException ex) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			System.out.println("IO exception");
-			ex.printStackTrace();
+			e.printStackTrace();
 		}
 	}
-	
+
+	// Returns list of autocomplete "suggestions" for a location name
 	List<String> autocomplete ( String input, int cutoffLength ) {
 		String str = input.toLowerCase();
 		List<String> suggestions = new ArrayList<>();
+		// Finds top "cutoffLength" number closest results
 		while ( suggestions.size() < cutoffLength ) {
 			String closest = "";
 			int maxCloseness = 0;
@@ -76,7 +78,7 @@ public class Sitelist {
 			}
 			suggestions.add(closest);
 		}
-
+		// Filter out empty strings
 		List<String> result = new ArrayList<>();
 		for ( String s : suggestions ) {
 			if ( s.length() > 0 ) {
@@ -85,10 +87,11 @@ public class Sitelist {
 		}
 		return result;
 	}
-	
+
+	// Measure of how "close" two place name strings are- total number of characters in common
 	private int closeness ( String a, String b ) {
 		int result = 0;
-		if ( a.equals (b) ) return a.length() + 1;
+		if ( a.equals (b) ) return a.length() + 1; //If strings are equal, return maximum closeness
 		for ( int i = 0; i < a.length() && i < b.length(); ++i ) {
 			if ( a.charAt(i) == b.charAt(i) ) {
 				++result;
@@ -96,7 +99,8 @@ public class Sitelist {
 		}
 		return result;
 	}
-	
+
+	// Returns ID of location given its name
 	public int getId ( String name ) {
 		int id = -1;
 		String str = name.toLowerCase();
@@ -106,11 +110,5 @@ public class Sitelist {
 			}
 		}
 		return id;
-	}
-	
-	public void print() {
-		for ( Site s : sites ) {
-			System.out.println ( s.name );
-		}
 	}
 }
