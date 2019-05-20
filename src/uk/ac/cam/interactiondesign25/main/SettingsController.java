@@ -39,14 +39,14 @@ public class SettingsController implements Initializable {
     private Button rgmode;
 
     @FXML
-    void celsiusClick(ActionEvent event) {
+    void celsiusClick() {
         settings.setCelsius(true);
         celsius.setStyle(selectedColor);
         fahrenheit.setStyle(unselectedColor);
     }
 
     @FXML
-    void fahrenheitClick(ActionEvent event) {
+    void fahrenheitClick() {
         settings.setCelsius(false);
         fahrenheit.setStyle(selectedColor);
         celsius.setStyle(unselectedColor);
@@ -119,6 +119,9 @@ public class SettingsController implements Initializable {
                 Main.receive("location");
             }
         });
+
+        celsius.setOnMouseClicked(e -> {settings.setCelsius(true);celsiusClick();});
+        fahrenheit.setOnMouseClicked(e -> {settings.setCelsius(false);fahrenheitClick();});
     }
 
     public void sync() {

@@ -39,8 +39,14 @@
                   </VBox>
                   <HBox minWidth="578.0" prefHeight="187.0" prefWidth="578.0">
                      <children>
-                        <Button fx:id="celsius" mnemonicParsing="false" prefHeight="65.0" prefWidth="357.0" text="Celsius" />
-                        <Button fx:id="fahrenheit" mnemonicParsing="false" prefHeight="65.0" prefWidth="329.0" text="Fahrenheit" />
+                        <Button fx:id="celsius" mnemonicParsing="false" prefHeight="65.0" prefWidth="357.0" text="Celsius">
+                           <font>
+                              <Font size="37.0" />
+                           </font></Button>
+                        <Button fx:id="fahrenheit" mnemonicParsing="false" prefHeight="65.0" prefWidth="329.0" text="Fahrenheit">
+                           <font>
+                              <Font size="37.0" />
+                           </font></Button>
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -78,11 +84,23 @@
             </HBox>
          </children>
       </VBox>
-      <HBox minHeight="100.0" prefHeight="200.0" prefWidth="1280.0">
+      <HBox minHeight="160.0" prefHeight="400.0" prefWidth="1280.0">
          <children>
-            <Button fx:id="dayButton" minHeight="100.0" mnemonicParsing="false" onAction="#dayClick" prefWidth="2000.0" text="Day" />
-            <Button fx:id="weekButton" minHeight="100.0" mnemonicParsing="false" onAction="#weekClick" prefWidth="2000.0" text="Week" />
-            <Button fx:id="locationButton" minHeight="100.0" mnemonicParsing="false" onAction="#locationClick" prefWidth="2000.0" text="Location" />
+            <Button fx:id="dayButton" minHeight="100.0" mnemonicParsing="false" onAction="#dayClick" prefHeight="400" prefWidth="2000.0" text="Day">
+            <font>
+               <Font size="74.0" />
+            </font>
+            </Button>
+            <Button fx:id="weekButton" minHeight="100.0" mnemonicParsing="false" onAction="#weekClick" prefHeight="400" prefWidth="2000.0" text="Week">
+            <font>
+               <Font size="74.0" />
+            </font>
+            </Button>
+            <Button fx:id="locationButton" minHeight="100.0" mnemonicParsing="false" onAction="#locationClick" prefHeight="400" prefWidth="2000.0" text="Location">
+            <font>
+               <Font size="74.0" />
+            </font>
+            </Button>
          </children>
       </HBox>
    </children>
