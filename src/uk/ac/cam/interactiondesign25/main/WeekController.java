@@ -17,10 +17,10 @@ import uk.ac.cam.interactiondesign25.api.WeatherType;
 import java.net.URL;
 import java.sql.Array;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class WeekController implements Initializable {
-
     @FXML
     private ImageView image1;
     @FXML
@@ -36,31 +36,25 @@ public class WeekController implements Initializable {
     private Button dayButton;
     @FXML
     private Button locationButton;
-
     @FXML
     private ImageView settingsButton;
-
 
     @FXML
     private Text hi1;
     @FXML
     private Text lo1;
-
     @FXML
     private Text hi2;
     @FXML
     private Text lo2;
-
     @FXML
     private Text hi3;
     @FXML
     private Text lo3;
-
     @FXML
     private Text hi4;
     @FXML
     private Text lo4;
-
     @FXML
     private Text hi5;
     @FXML
@@ -76,7 +70,6 @@ public class WeekController implements Initializable {
     private Text text4;
     @FXML
     private Text text5;
-
 
     public String[] getImageLocationsFrom(WeatherType[] weatherTypes) {
         String[] results = new String[weatherTypes.length];
@@ -138,7 +131,6 @@ public class WeekController implements Initializable {
             i++;
         }
         return results;
-
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -150,13 +142,11 @@ public class WeekController implements Initializable {
 
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 
-
         text1.setText(description[0]);
         text2.setText(description[1]);
         text3.setText(description[2]);
         text4.setText(description[3]);
         text5.setText(description[4]);
-
 
         hi1.setText(String.valueOf(temps[0][0])+suffix);
         hi2.setText(String.valueOf(temps[1][0])+suffix);
@@ -169,8 +159,6 @@ public class WeekController implements Initializable {
         lo3.setText(String.valueOf(temps[2][1])+suffix);
         lo4.setText(String.valueOf(temps[3][1])+suffix);
         lo5.setText(String.valueOf(temps[4][1])+suffix);
-
-
 
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
         image1.setImage(new Image(images[0]));
@@ -192,10 +180,6 @@ public class WeekController implements Initializable {
                 Main.receive("settings");
             }
         });
-
-
-
-
     }
 
     public void sync() {
@@ -242,8 +226,6 @@ public class WeekController implements Initializable {
         lo4.setText(String.valueOf(temps[3][1])+suffix);
         lo5.setText(String.valueOf(temps[4][1])+suffix);
 
-
-
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
         image1.setImage(new Image(images[0]));
         image2.setImage(new Image(images[1]));
@@ -257,5 +239,17 @@ public class WeekController implements Initializable {
                 Main.receive("location");
             }
         });
+    }
+
+    private static String[] getDayNames() {
+        String[] days = new String[]{"Mon", "Tues", "Weds", "Thur", "Fri", "Sat", "Sun"};
+
+        String[] toReturn = new String[5];
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        for(int i=0; i<5; i++){
+            toReturn[i] = days[(day+i-1)%7];
+        }
+
+        return toReturn;
     }
 }
