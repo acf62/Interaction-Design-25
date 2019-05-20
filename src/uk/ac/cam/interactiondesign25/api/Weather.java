@@ -160,6 +160,8 @@ public class Weather {
 		if ( active) {
 			doAPICallIfNecessary();
 			siteList = new Sitelist(baseUrl + "val/wxfcs/all/json/sitelist?key=" + apiKey );
+			System.out.println ( getLocationIDFromName("cAmBrIdGe") == 310042 );
+			System.out.println(siteList.autocomplete("cam", 10));
 		}
 	}
 
