@@ -21,6 +21,8 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class WeekController implements Initializable {
+
+    //The icons for each day
     @FXML
     private ImageView image1;
     @FXML
@@ -32,6 +34,7 @@ public class WeekController implements Initializable {
     @FXML
     private ImageView image5;
 
+    //Navigation burrons. Week button is missing because it isn't clickable on this screen
     @FXML
     private Button dayButton;
     @FXML
@@ -39,6 +42,7 @@ public class WeekController implements Initializable {
     @FXML
     private ImageView settingsButton;
 
+    //High and low temperatures for each day
     @FXML
     private Text hi1;
     @FXML
@@ -60,6 +64,7 @@ public class WeekController implements Initializable {
     @FXML
     private Text lo5;
 
+    //Descriptions of the weather for each day
     @FXML
     private Text text1;
     @FXML
