@@ -11,6 +11,9 @@ import uk.ac.cam.interactiondesign25.api.Weather;
 import uk.ac.cam.interactiondesign25.api.WeatherType;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 
@@ -60,35 +63,23 @@ public class MainController implements Initializable {
     private Text text5;
 
     @FXML
-    private Button settingsButton;
-
-    @FXML
-    private Button dayButton;
-
-    @FXML
-    private Button locationButton;
-
-    @FXML
-    private Button weekButton;
-
-    @FXML
     void settingsClick() {
-
+        Main.receive("settings");
     }
 
     @FXML
     void dayClick() {
-
+        Main.receive("day");
     }
 
     @FXML
     void weekClick() {
-
+        Main.receive("week");
     }
 
     @FXML
     void locationClick() {
-
+        Main.receive("location");
     }
 
 
@@ -162,8 +153,15 @@ public class MainController implements Initializable {
         weather.setLocationID(weather.getLocationIDFromName("Cambridge, UK"));
         setTriple(1, weather.getTodayTemperatures()[0],
                 weather.getTodayTemperatures()[1], weather.getTodayWeatherDescription());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, 30);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         for (int i = 2; i <= 5 ; i++){
-            setTriple(i, weather.getTodayThreeHourlyTemperatures()[i-2], weather.getTodayTemperatures()[i-2], "Time");
+            calendar.add(Calendar.HOUR, 3);
+            setTriple(i, weather.getTodayThreeHourlyTemperatures()[i-2], weather.getTodayTemperatures()[i-2], format.format(calendar.getTime()));
         }
         setImage(0, weather.getTodayWeatherType());
         setImage(1, weather.getTodayWeatherType());
