@@ -74,12 +74,12 @@ public class Main extends Application {
     }
 
     public static void receive(String instr) {
-        if (instr == "week") {
+        if (instr.equals("week")) {
             mainStage.setScene(weekScene);
             System.out.println(weekController==null);
             weekController.sync();
         }
-        if (instr == "location") {
+        if (instr.equals("location")) {
             mainStage.setScene(locationScene);
         }
 

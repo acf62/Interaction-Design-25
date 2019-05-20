@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import uk.ac.cam.interactiondesign25.api.Weather;
 import uk.ac.cam.interactiondesign25.api.WeatherType;
 
 import java.net.URL;
@@ -90,8 +91,10 @@ public class MainController implements Initializable {
 
     }
 
-    
-    private void setTriple(int number, String high, String low, String text){
+
+    private void setTriple(int number, int h, int l, String text){
+        String high = String.valueOf(h);
+        String low = String.valueOf(l);
         switch (number){
             case 1:
                 high1.setText(high);
@@ -155,6 +158,18 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        image1.setImage(new Image("file:resources/sunny.png"));
+        Weather weather = new Weather("settingsTest");
+        weather.setLocationID(weather.getLocationIDFromName("Cambridge, UK"));
+        setTriple(1, weather.getTodayTemperatures()[0],
+                weather.getTodayTemperatures()[1], weather.getTodayWeatherDescription());
+        for (int i = 2; i <= 5 ; i++){
+            setTriple(i, weather.getTodayThreeHourlyTemperatures()[i-2], weather.getTodayTemperatures()[i-2], "Time");
+        }
+        setImage(0, weather.getTodayWeatherType());
+        setImage(1, weather.getTodayWeatherType());
+        setImage(2, weather.getTodayWeatherType());
+        setImage(3, weather.getTodayWeatherType());
+        setImage(4, weather.getTodayWeatherType());
+
     }
 }

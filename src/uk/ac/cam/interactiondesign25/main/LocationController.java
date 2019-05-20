@@ -1,37 +1,22 @@
 package uk.ac.cam.interactiondesign25.main;
 
-import com.sun.javafx.css.StyleCache;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Cell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.skin.VirtualFlow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import uk.ac.cam.interactiondesign25.api.Sitelist;
-import uk.ac.cam.interactiondesign25.api.Weather;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
@@ -107,7 +92,7 @@ public class LocationController implements Initializable  {
         if (event.getCode().equals(KeyCode.ENTER)){
             listSearch.setFixedCellSize(75);
             listSearch.getItems().removeAll(listSearch.getItems());
-            for (String site : Main.weather.autocomplete(searchBar.getText().strip(),5)) {
+            for (String site : Main.weather.autocomplete(searchBar.getText().trim(),5)) {
                 listSearch.getItems().add(site);
             }
         }
