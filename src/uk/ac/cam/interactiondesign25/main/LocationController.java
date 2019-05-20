@@ -168,5 +168,11 @@ public class LocationController implements Initializable  {
             }
         });
 
+        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("settings");
+            }
+        });
     }
 }

@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uk.ac.cam.interactiondesign25.api.Settings;
 import uk.ac.cam.interactiondesign25.api.Weather;
 
 import java.io.File;
@@ -16,19 +17,22 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    public static Weather weather = new Weather("settingsFile");
+    public static Weather weather;
 
     public static Stage mainStage;
 
     public static Scene locationScene, dayScene, settingsScene, weekScene;
 
-
+    public static Settings settings;
 
     public static WeekController weekController;
     public static LocationController locationController;
+    public static SettingsController settingsController;
 
     static {
         try {
+            weather = new Weather("settingsFile");
+            settings = new Settings("settingsFile");
             FXMLLoader fxmlLoader;
             fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\locationscreen.fxml").toURI().toURL());
             locationScene = new Scene(fxmlLoader.load(),1365,768);
@@ -36,8 +40,12 @@ public class Main extends Application {
             fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\weekscreen.fxml").toURI().toURL());
             weekScene = new Scene(fxmlLoader.load(),1365,768);
             weekController = fxmlLoader.getController();
-            System.out.println(locationController== null);
+            fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\settings.fxml").toURI().toURL());
+            settingsScene = new Scene(fxmlLoader.load(),1365,768);
+            settingsController = fxmlLoader.getController();
+            /*System.out.println(locationController== null);
             System.out.println (weekController== null);
+            System.out.println(settingsController==null);*/
         }
         catch (Exception e) {
             System.out.println("Exception in Static Initializer of main");
@@ -79,8 +87,14 @@ public class Main extends Application {
             System.out.println(weekController==null);
             weekController.sync();
         }
-        if (instr == "location") {
+        else if (instr == "location") {
             mainStage.setScene(locationScene);
+        }
+        else if (instr == "settings") {
+            mainStage.setScene(settingsScene);
+        }
+        else {
+            System.out.println("Received incorrect screen");
         }
 
     }

@@ -105,10 +105,6 @@ public class WeekController implements Initializable {
             }
             i++;
         }
-        for (String image : results) {
-            System.out.print(image);
-        }
-        System.out.println();
         return results;
 
     }
@@ -152,6 +148,13 @@ public class WeekController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Main.receive("location");
+            }
+        });
+
+        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("settings");
             }
         });
 
