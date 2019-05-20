@@ -170,13 +170,13 @@ public class WeekController implements Initializable {
         String[] images = getImageLocationsFrom(weatherTypes);
 
         for (int i =0 ; i < description.length; i++) {
-            if (description[i].strip().contains(" ")) {
+            if (description[i].trim().contains(" ")) {
                 String[] texts = description[i].split(" ");
                 String temp = "";
                 for (String h : texts) {
                     temp = temp + h + "\n";
                 }
-                description[i] = temp.stripTrailing();
+                description[i] = temp.trim();
             }
         }
 
