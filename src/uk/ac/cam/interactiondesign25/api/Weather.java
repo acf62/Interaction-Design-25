@@ -264,6 +264,43 @@ public class Weather {
 		return result;
 	}
 	
+	// Returns today's 3-hourly weather types (array of 5 items)
+	// Selects next five 3-hour chunks, starting from the current one
+	public WeatherType[] getTodayThreeHourlyWeatherTypes(){
+		WeatherType[] result = {WeatherType.UNKNOWN, WeatherType.UNKNOWN, WeatherType.UNKNOWN, WeatherType.UNKNOWN, WeatherType.UNKNOWN};
+		if ( active ) {
+			doAPICallIfNecessary();
+			JSONArray Period = new JSONObject ( threeHourlyForecast )
+					.getJSONObject("SiteRep")
+					.getJSONObject("DV")
+					.getJSONObject("Location")
+					.getJSONArray("Period");
+
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			int chunksLeftToday = (26-currentHour)/3;
+			int chunksFromTomorrow = 5 - chunksLeftToday;
+
+			for(int i=0; i<chunksLeftToday; i++){
+				JSONArray rep = Period
+						.getJSONObject(0) //today
+						.getJSONArray("Rep");
+				result[i] = WeatherType.convert(rep
+						.getJSONObject(rep.length() - chunksLeftToday + i)
+						.getInt("W"));
+			}
+			// May have to go into tomorrow to get 5 chunks
+			for(int i=0; i<chunksFromTomorrow; i++){
+				JSONArray rep = Period
+						.getJSONObject(1) //tomorrow
+						.getJSONArray("Rep");
+				result[i + chunksLeftToday] = WeatherType.convert(rep
+						.getJSONObject(i)
+						.getInt("W"));
+			}
+		}
+		return result;
+	}
+	
 	// Returns the times associated with the three hour temperatures
 	public String[] getTodayThreeHourTimes() {
 		int times[] = {0,0,0,0,0};
