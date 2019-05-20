@@ -170,6 +170,5 @@ public class MainController implements Initializable {
         setImage(2, weather.getTodayWeatherType());
         setImage(3, weather.getTodayWeatherType());
         setImage(4, weather.getTodayWeatherType());
-
     }
 }

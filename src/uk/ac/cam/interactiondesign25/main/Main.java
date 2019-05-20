@@ -34,13 +34,13 @@ public class Main extends Application {
             weather = new Weather("settingsFile");
             settings = new Settings("settingsFile");
             FXMLLoader fxmlLoader;
-            fxmlLoader = new FXMLLoader(new File("resources/locationscreen.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("resources/location_scene.fxml").toURI().toURL());
             locationScene = new Scene(fxmlLoader.load(),1365,768);
             locationController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("resources/weekscreen.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());
             weekScene = new Scene(fxmlLoader.load(),1365,768);
             weekController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("resources/settings.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("resources/settings_scene.fxml").toURI().toURL());
             settingsScene = new Scene(fxmlLoader.load(),1365,768);
             settingsController = fxmlLoader.getController();
             /*System.out.println(locationController== null);
