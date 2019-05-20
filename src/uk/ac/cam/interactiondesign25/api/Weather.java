@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import uk.ac.cam.interactiondesign25.main.WeekController;
 
 import static uk.ac.cam.interactiondesign25.api.TemperatureConversion.toFahrenheit;
 
@@ -77,7 +76,6 @@ public class Weather {
 		"Thunder shower",
 		"Thunder"
 	};
-	
 
 	//Main used for testing
 	public static void main(String[] args){
@@ -161,16 +159,13 @@ public class Weather {
 		if ( active) {
 			doAPICallIfNecessary();
 			siteList = new Sitelist(baseUrl + "val/wxfcs/all/json/sitelist?key=" + apiKey );
-			System.out.println ( getLocationIDFromName("cAmBrIdGe") == 310042 );
-			System.out.println(siteList.autocomplete("cam", 10));
 		}
 	}
 
 	//Change the location about which we are reporting the weather
 	public void setLocationID(int location){
 		locationID = location;
-		//Make sure that the data is reloaded next time it's needed
-		lastUpdateTime = 0;
+		lastUpdateTime = 0; //Make sure that the data is reloaded next time it's needed
 	}
 	
 	//Return a list of suggestions of sites we have data about
@@ -188,11 +183,11 @@ public class Weather {
 		int[] result = {0,0};
 		if ( active ) {
 			doAPICallIfNecessary();
+
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
-			
 			JSONObject j = Period.getJSONObject(0);
 			JSONArray a = j.getJSONArray("Rep");
 			JSONObject day = a.getJSONObject(0);
@@ -209,6 +204,7 @@ public class Weather {
 	}
 
 	// Returns today's 3-hourly temperature forecasts (array of 5 items)
+	// Selects next five 3-hour chunks, starting from the current one
 	public int[] getTodayThreeHourlyTemperatures(){
 		int[] result = {0,0,0,0,0};
 		if ( active ) {
@@ -231,7 +227,7 @@ public class Weather {
 						.getJSONObject(rep.length() - chunksLeftToday + i)
 						.getInt("T");
 			}
-
+			// May have to go into tomorrow to get 5 chunks
 			for(int i=0; i<chunksFromTomorrow; i++){
 				JSONArray rep = Period
 						.getJSONObject(1) //tomorrow
@@ -246,7 +242,7 @@ public class Weather {
 
 	// Returns a textual description of today's weather
     public String getTodayWeatherDescription(){
-		String result = "";
+		String result;
 		if ( active ) {
 			doAPICallIfNecessary();
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
@@ -267,14 +263,15 @@ public class Weather {
 	public WeatherType getTodayWeatherType(){
 		if ( active ) {
 			doAPICallIfNecessary();
+
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
 			JSONArray Period = Location.getJSONArray("Period");
-			
 			JSONObject j = Period.getJSONObject(0);
 			JSONArray a = j.getJSONArray("Rep");
 			JSONObject day = a.getJSONObject(0);
+
 			int weatherCode = day.getInt("W");
 			return WeatherType.convert(weatherCode);
 		} else {
@@ -288,6 +285,7 @@ public class Weather {
 		int[][] result = {{0,0}, {0,0}, {0,0}, {0,0}, {0,0}};
 		if ( active ) {
 			doAPICallIfNecessary();
+
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
@@ -298,6 +296,7 @@ public class Weather {
 				JSONArray a = j.getJSONArray("Rep");
 				JSONObject day = a.getJSONObject(0);
 				JSONObject night = a.getJSONObject(1);
+
 				result[i][0] = day.getInt("Dm");
 				result[i][1] = night.getInt("Nm");
 			}
@@ -318,6 +317,7 @@ public class Weather {
 		String[] result = {"", "", "", "", ""};
 		if ( active ) {
 			doAPICallIfNecessary();
+
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
@@ -343,8 +343,10 @@ public class Weather {
 				WeatherType.UNKNOWN,
 				WeatherType.UNKNOWN,
 		};
+
 		if ( active ) {
 			doAPICallIfNecessary();
+
 			JSONObject weatherObject = new JSONObject ( weeklyForecast );
 			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
 			JSONObject Location = DV.getJSONObject("Location");
@@ -354,6 +356,7 @@ public class Weather {
 				JSONObject j = Period.getJSONObject(i);
 				JSONArray a = j.getJSONArray("Rep");
 				JSONObject day = a.getJSONObject(0);
+
 				int weatherCode = day.getInt("W");
 				result[i] = WeatherType.convert(weatherCode);
 			}
@@ -388,7 +391,6 @@ public class Weather {
 		String result = "";
 		try {
 			URL url = new URL(baseUrl + "val/wxfcs/all/json/" + locationID + "?res=daily&key=" + apiKey );
-			//url = new URL(baseUrl + "val/wxfcs/all/json/sitelist" + "?key=" + apiKey );
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			BufferedReader rd = new BufferedReader ( new InputStreamReader ( conn.getInputStream() ) );
