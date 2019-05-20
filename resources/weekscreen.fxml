@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.interactiondesign25.main.WeekController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="900">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Week Weather" textAlignment="CENTER" wrappingWidth="850">
+               <font>
+                  <Font size="74.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="1170.0">
+               <children>
+                  <ImageView fx:id="settingsButton" fitHeight="127.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@settings-512.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="721.0" prefWidth="1920.0">
+         <children>
+            <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="image1" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
+                     <children>
+                        <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox maxHeight="122.0" prefHeight="222.0" prefWidth="384.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="hi1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="lo1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="image2" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
+                     <children>
+                        <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox maxHeight="122.0" prefHeight="222.0" prefWidth="384.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="hi2" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="lo2" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="image3" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
+                     <children>
+                        <Text fx:id="text3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="122.0" prefWidth="384.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="hi3" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="lo3" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="image4" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
+                     <children>
+                        <Text fx:id="text4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="122.0" prefWidth="384.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="hi4" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="lo4" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="image5" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
+                     <children>
+                        <Text fx:id="text5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="122.0" prefWidth="384.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="hi5" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text fx:id="lo5" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
+                                 <font>
+                                    <Font size="53.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="400.0" prefWidth="1920.0">
+         <children>
+            <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" text="Day">
+               <font>
+                  <Font size="74.0" />
+               </font>
+            </Button>
+            <Button defaultButton="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" text="Week">
+               <font>
+                  <Font size="74.0" />
+               </font>
+            </Button>
+            <Button fx:id="locationButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" text="Location" textAlignment="CENTER">
+               <font>
+                  <Font size="74.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

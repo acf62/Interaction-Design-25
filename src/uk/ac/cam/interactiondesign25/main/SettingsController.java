@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+
 import uk.ac.cam.interactiondesign25.api.Settings;
 
 import java.net.URL;
@@ -12,7 +13,7 @@ import java.util.ResourceBundle;
 public class SettingsController implements Initializable {
     private String selectedColor = "-fx-background-color: #9b9b9b; ";
     private String unselectedColor = "-fx-background-color: #ededed; ";
-    private Settings settings;
+    public Settings settings;
 
     @FXML
     private Button celsius;
@@ -84,6 +85,7 @@ public class SettingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         if (settings.getCelsius()) {
             celsius.setStyle(selectedColor);
             fahrenheit.setStyle(unselectedColor);
