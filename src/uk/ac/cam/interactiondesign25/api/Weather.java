@@ -202,6 +202,30 @@ public class Weather {
 		}
 		return result;
 	}
+	
+	public int getTodayWindSpeed() {
+		int result = 0;
+		if ( active ) {
+			doAPICallIfNecessary();
+			JSONArray Period = new JSONObject ( threeHourlyForecast )
+					.getJSONObject("SiteRep")
+					.getJSONObject("DV")
+					.getJSONObject("Location")
+					.getJSONArray("Period");
+
+			JSONArray rep = Period
+				.getJSONObject(0) //today
+				.getJSONArray("Rep");
+				
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			int chunksLeftToday = (26-currentHour)/3;
+			int availableChunks = rep.length();
+			int currentChunk = availableChunks - chunksLeftToday;
+
+			result = rep.getJSONObject(currentChunk).getInt("S");
+		}
+		return result;
+	}
 
 	// Returns today's 3-hourly temperature forecasts (array of 5 items)
 	// Selects next five 3-hour chunks, starting from the current one
@@ -240,6 +264,7 @@ public class Weather {
 		return result;
 	}
 	
+	// Returns the times associated with the three hour temperatures
 	public String[] getTodayThreeHourTimes() {
 		int times[] = {0,0,0,0,0};
 		int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
