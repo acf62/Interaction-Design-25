@@ -243,6 +243,21 @@ public class Weather {
 		}
 		return result;
 	}
+	
+	public String[] getTodayThreeHourTimes() {
+		int times[] = {0,0,0,0,0};
+		int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		times[0] = currentHour;
+		for ( int i = 1; i < 5; ++i ) {
+			times[i] = (times[i-1] + 3)%24;
+		}
+		String[] result = {"","","","",""};
+		for ( int i = 0 ; i < 5; ++i ) {
+			result[i] = Integer.toString(times[i])+":00";
+		}
+		return result;
+		
+	}
 
 	// Returns a textual description of today's weather
     public String getTodayWeatherDescription(){
