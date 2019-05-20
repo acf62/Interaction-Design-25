@@ -53,20 +53,17 @@ public class SettingsController implements Initializable {
     }
 
     @FXML
-    void rgClick(ActionEvent event) {
-        settings.setRedGreenColourblind(true);
+    void rgClick() {
         settings.setBlueYellowColourblind(false);
         rgmode.setStyle(selectedColor);
         bymode.setStyle(unselectedColor);
     }
 
     @FXML
-    void byClick(ActionEvent event) {
+    void byClick() {
         settings.setBlueYellowColourblind(true);
-        settings.setRedGreenColourblind(false);
         rgmode.setStyle(unselectedColor);
         bymode.setStyle(selectedColor);
-
     }
 
     @FXML
@@ -122,6 +119,10 @@ public class SettingsController implements Initializable {
 
         celsius.setOnMouseClicked(e -> {settings.setCelsius(true);celsiusClick();});
         fahrenheit.setOnMouseClicked(e -> {settings.setCelsius(false);fahrenheitClick();});
+        rgmode.setOnMouseClicked(e -> rgClick());
+        bymode.setOnMouseClicked(e -> byClick());
+
+
     }
 
     public void sync() {

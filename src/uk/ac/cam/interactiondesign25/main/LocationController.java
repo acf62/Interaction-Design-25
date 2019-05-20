@@ -105,7 +105,7 @@ public class LocationController implements Initializable  {
             }
 
             if (event.getCode().equals(KeyCode.ENTER)) {
-                searchBar.setText(searchBar.getText().stripTrailing());
+                searchBar.setText(searchBar.getText().trim());
                 searchBar.positionCaret(searchBar.getText().length());
             }
 

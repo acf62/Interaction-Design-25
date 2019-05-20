@@ -70,8 +70,16 @@
                   </VBox>
                   <HBox minWidth="578.0" prefHeight="187.0" prefWidth="578.0">
                      <children>
-                        <Button fx:id="rgmode" mnemonicParsing="false" prefHeight="65.0" prefWidth="357.0" text="Red-green" />
-                        <Button fx:id="bymode" mnemonicParsing="false" prefHeight="65.0" prefWidth="329.0" text="Blue-yellow" />
+                        <Button fx:id="rgmode" mnemonicParsing="false" prefHeight="65.0" prefWidth="357.0" text="Off" >
+                        <font>
+                           <Font size="37.0" />
+                        </font>
+                        </Button>
+                        <Button fx:id="bymode" mnemonicParsing="false" prefHeight="65.0" prefWidth="329.0" text="On" >
+                        <font>
+                           <Font size="37.0" />
+                        </font>
+                        </Button>
                      </children>
                      <padding>
                         <Insets right="100.0" />
