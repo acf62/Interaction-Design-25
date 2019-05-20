@@ -1,10 +1,12 @@
 package uk.ac.cam.interactiondesign25.main;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+import javafx.scene.input.MouseEvent;
 import uk.ac.cam.interactiondesign25.api.Settings;
 
 import java.net.URL;
@@ -103,6 +105,20 @@ public class SettingsController implements Initializable {
             rgmode.setStyle(unselectedColor);
             bymode.setStyle(selectedColor);
         }
+
+        weekButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("week");
+            }
+        });
+
+        locationButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("location");
+            }
+        });
     }
 
     public void sync() {

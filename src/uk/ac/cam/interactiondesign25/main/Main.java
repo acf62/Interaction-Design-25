@@ -34,13 +34,13 @@ public class Main extends Application {
             weather = new Weather("settingsFile");
             settings = new Settings("settingsFile");
             FXMLLoader fxmlLoader;
-            fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\locationscreen.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("resources/locationscreen.fxml").toURI().toURL());
             locationScene = new Scene(fxmlLoader.load(),1365,768);
             locationController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\weekscreen.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("resources/weekscreen.fxml").toURI().toURL());
             weekScene = new Scene(fxmlLoader.load(),1365,768);
             weekController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\settings.fxml").toURI().toURL());
+            fxmlLoader = new FXMLLoader(new File("resources/settings.fxml").toURI().toURL());
             settingsScene = new Scene(fxmlLoader.load(),1365,768);
             settingsController = fxmlLoader.getController();
             /*System.out.println(locationController== null);
@@ -54,8 +54,6 @@ public class Main extends Application {
 
     }
     // removed location static variable
-
-
 
 
     @Override
