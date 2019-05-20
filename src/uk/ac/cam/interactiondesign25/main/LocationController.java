@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LocationController implements Initializable  {
@@ -89,13 +90,25 @@ public class LocationController implements Initializable  {
 
     @FXML
     void keyPressFromSearchBar(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.ENTER)){
+
             listSearch.setFixedCellSize(75);
             listSearch.getItems().removeAll(listSearch.getItems());
-            for (String site : Main.weather.autocomplete(searchBar.getText().trim(),5)) {
+            List<String> stringList = Main.weather.autocomplete(searchBar.getText().trim(),5);
+            for (String site : stringList) {
                 listSearch.getItems().add(site);
             }
-        }
+
+            System.out.println(stringList.size() + "  " +  searchBar.getText().length());
+
+            if (stringList.size()==0 && searchBar.getText().length()!=0) {
+                listSearch.getItems().add("No Locations Found");
+            }
+
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                searchBar.setText(searchBar.getText().stripTrailing());
+                searchBar.positionCaret(searchBar.getText().length());
+            }
+
 
 
     }
