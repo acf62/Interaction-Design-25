@@ -33,16 +33,18 @@ public class Main extends Application {
         try {
             weather = new Weather("settingsFile");
             settings = new Settings("settingsFile");
-            FXMLLoader fxmlLoader;
-            fxmlLoader = new FXMLLoader(new File("resources/locationscreen.fxml").toURI().toURL());
-            locationScene = new Scene(fxmlLoader.load(),1365,768);
-            locationController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("resources/weekscreen.fxml").toURI().toURL());
-            weekScene = new Scene(fxmlLoader.load(),1365,768);
-            weekController = fxmlLoader.getController();
-            fxmlLoader = new FXMLLoader(new File("resources/settings.fxml").toURI().toURL());
-            settingsScene = new Scene(fxmlLoader.load(),1365,768);
-            settingsController = fxmlLoader.getController();
+            FXMLLoader fxmlLoader1,fxmlLoader2,fxmlLoader3,fxmlLoader4;
+            fxmlLoader1 = new FXMLLoader(new File("resources/locationscreen.fxml").toURI().toURL());
+            fxmlLoader2 = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());
+            fxmlLoader3 = new FXMLLoader(new File("resources/settings_scene.fxml").toURI().toURL());
+            locationScene = new Scene(fxmlLoader1.load(),1365,768);
+            locationController = fxmlLoader1.getController();
+
+            weekScene = new Scene(fxmlLoader2.load(),1365,768);
+            weekController = fxmlLoader2.getController();
+
+            settingsScene = new Scene(fxmlLoader3.load(),1365,768);
+            settingsController = fxmlLoader3.getController();
             /*System.out.println(locationController== null);
             System.out.println (weekController== null);
             System.out.println(settingsController==null);*/
@@ -82,8 +84,7 @@ public class Main extends Application {
             mainStage.setScene(weekScene);
             weekController.sync();
         }
-
-        if (instr.equals("location")) {
+        else if (instr.equals("location")) {
             mainStage.setScene(locationScene);
         }
         else if (instr.equals("settings")) {
