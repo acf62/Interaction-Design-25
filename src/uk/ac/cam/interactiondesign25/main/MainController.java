@@ -99,7 +99,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         topText.setText("Today in " + Main.settings.getCurrentLocation());
-        settingsButton.setImage(new Image("file:resources/settings-512.png"));
+        settingsButton.setImage(new Image(String.valueOf(MainController.class.getResource("/settings-512.png"))));
 
         // Adding Interactivity to buttons
         weekButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -125,55 +125,55 @@ public class MainController implements Initializable {
 
     // Helper function to load appropriate images based on Color Blind Modes
 
-    public String getImageString(WeatherType weatherType) {
+    public Image getImage(WeatherType weatherType) {
         if (!Main.settings.getBlueYellowColourblind()) {
             switch (weatherType) {
                 case RAINY:
-                    return "file:resources/rain.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/rain.png")));
                 case UNKNOWN:
-                    return "file:resources/unknown.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/unknown.png")));
                 case SUNNY:
-                    return "file:resources/sunny.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/sunny.png")));
                 case SNOWY:
-                    return "file:resources/snow.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/snow.png")));
                 case PARTIALLY_CLOUDY:
-                    return "file:resources/partly_cloudy.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/partly_cloudy.png")));
                 case CLOUDY:
-                    return "file:resources/cloudy.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/cloudy.png")));
                 case THUNDER:
-                    return "file:resources/thunderstorm.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/thunderstorm.png")));
                 case CLEAR_NIGHT:
-                    return "file:resources/clear_night.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/clear_night.png")));
             }
         }
         else {
             switch (weatherType) {
                 case RAINY:
-                    return "file:resources/rainCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/rainCB.png")));
                 case UNKNOWN:
-                    return "file:resources/unknown.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/unknown.png")));
                 case SUNNY:
-                    return "file:resources/sunnyCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/sunnyCB.png")));
                 case SNOWY:
-                    return "file:resources/snowCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/snowCB.png")));
                 case PARTIALLY_CLOUDY:
-                    return "file:resources/partly_cloudyCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/partly_cloudyCB.png")));
                 case CLOUDY:
-                    return "file:resources/cloudyCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/cloudyCB.png")));
                 case THUNDER:
-                    return "file:resources/thunderstormCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/thunderstormCB.png")));
                 case CLEAR_NIGHT:
-                    return "file:resources/clear_nightCB.png";
+                    return new Image(String.valueOf(MainController.class.getResource("/clear_nightCB.png")));
             }
         }
-        return "file:resources/unknown.png";
+        return new Image(String.valueOf(MainController.class.getResource("/unknown.png")));
     }
 
     // Sync function for changes when page is reloaded
 
     public void sync() {
         Weather weather = Main.weather;
-        mainImage.setImage(new Image(getImageString(weather.getTodayWeatherType())));
+        mainImage.setImage(getImage(weather.getTodayWeatherType()));
         topText.setText("Today in " + Main.settings.getCurrentLocation());
 
         int[] hilo = weather.getTodayTemperatures();
@@ -199,11 +199,11 @@ public class MainController implements Initializable {
         tempPeriod5.setText(String.valueOf(fiveTemps[4])+suffix);
 
         WeatherType[] weatherType = weather.getTodayThreeHourlyWeatherTypes();
-        imagePeriod1.setImage(new Image(getImageString(weatherType[0])));
-        imagePeriod2.setImage(new Image(getImageString(weatherType[1])));
-        imagePeriod3.setImage(new Image(getImageString(weatherType[2])));
-        imagePeriod4.setImage(new Image(getImageString(weatherType[3])));
-        imagePeriod5.setImage(new Image(getImageString(weatherType[4])));
+        imagePeriod1.setImage(getImage(weatherType[0]));
+        imagePeriod2.setImage(getImage(weatherType[1]));
+        imagePeriod3.setImage(getImage(weatherType[2]));
+        imagePeriod4.setImage(getImage(weatherType[3]));
+        imagePeriod5.setImage(getImage(weatherType[4]));
 
     }
 }

@@ -131,8 +131,8 @@ public class LocationController implements Initializable  {
         recentList.setFixedCellSize(60);
         recentList.getItems().setAll(temp);
 
-        settingsButton.setImage(new Image("file:resources/settings-512.png"));
-        searchIcon.setImage(new Image("file:resources/search.png"));
+        settingsButton.setImage(new Image(String.valueOf(MainController.class.getResource("/settings-512.png"))));
+        searchIcon.setImage(new Image(String.valueOf(MainController.class.getResource("/search.png"))));
 
         // Adding a listener to search list to dynamically load elements
         listSearch.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
