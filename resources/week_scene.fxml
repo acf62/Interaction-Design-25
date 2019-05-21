@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -8,27 +9,26 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.interactiondesign25.main.WeekController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="900">
+      <HBox prefHeight="150.0" prefWidth="900.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Week Weather" textAlignment="CENTER" wrappingWidth="850">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Week Weather" wrappingWidth="850.0">
                <font>
-                  <Font size="74.0" />
+                  <Font size="83.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
             </Text>
             <HBox alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="1170.0">
                <children>
-                  <ImageView fx:id="settingsButton" fitHeight="127.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@settings-512.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="settingsButton" fitHeight="127.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
          </children>
       </HBox>
       <HBox prefHeight="721.0" prefWidth="1920.0">
          <children>
-            <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+            <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -41,34 +41,35 @@
                            <font>
                               <Font size="48.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox maxHeight="122.0" prefHeight="222.0" prefWidth="384.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="hi1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="lo1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text fx:id="hi1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="lo1" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+            <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -81,34 +82,35 @@
                            <font>
                               <Font size="48.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox maxHeight="122.0" prefHeight="222.0" prefWidth="384.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="hi2" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="lo2" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text fx:id="hi2" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="lo2" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
-            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -121,34 +123,35 @@
                            <font>
                               <Font size="48.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox prefHeight="122.0" prefWidth="384.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="hi3" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="lo3" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text fx:id="hi3" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="lo3" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
-            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -161,34 +164,35 @@
                            <font>
                               <Font size="48.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox prefHeight="122.0" prefWidth="384.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="hi4" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="lo4" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text fx:id="hi4" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="lo4" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
-            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0">
+            <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -201,48 +205,49 @@
                            <font>
                               <Font size="48.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox prefHeight="122.0" prefWidth="384.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="hi5" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="lo5" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting">
-                                 <font>
-                                    <Font size="53.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text fx:id="hi5" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Text fx:id="lo5" strokeType="OUTSIDE" strokeWidth="0.0" text="Resting" textAlignment="CENTER">
+                           <font>
+                              <Font size="53.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
+                        </Text>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox prefHeight="400.0" prefWidth="1920.0">
+      <HBox prefHeight="300.0" prefWidth="1920.0">
          <children>
-            <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" text="Day">
+            <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
                <font>
                   <Font size="74.0" />
                </font>
             </Button>
-            <Button defaultButton="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" text="Week">
+            <Button defaultButton="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Week">
                <font>
                   <Font size="74.0" />
                </font>
             </Button>
-            <Button fx:id="locationButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" text="Location" textAlignment="CENTER">
+            <Button fx:id="locationButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Location" textAlignment="CENTER">
                <font>
                   <Font size="74.0" />
                </font>

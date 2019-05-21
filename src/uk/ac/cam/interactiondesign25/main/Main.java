@@ -28,7 +28,7 @@ public class Main extends Application {
     public static WeekController weekController;
     public static LocationController locationController;
     public static SettingsController settingsController;
-    public static LocationController dayController;
+    public static MainController dayController;
 
     static {
         try {
@@ -40,16 +40,16 @@ public class Main extends Application {
             fxmlLoader2 = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());
             fxmlLoader3 = new FXMLLoader(new File("resources/settings_scene.fxml").toURI().toURL());
             fxmlLoader4 = new FXMLLoader(new File("resources/main_scene.fxml").toURI().toURL());
-            locationScene = new Scene(fxmlLoader1.load(),1365,768);
+            locationScene = new Scene(fxmlLoader1.load(),1365,915);
             locationController = fxmlLoader1.getController();
 
-            weekScene = new Scene(fxmlLoader2.load(),1365,768);
+            weekScene = new Scene(fxmlLoader2.load(),1365,915);
             weekController = fxmlLoader2.getController();
 
-            settingsScene = new Scene(fxmlLoader3.load(),1365,768);
+            settingsScene = new Scene(fxmlLoader3.load(),1365,915);
             settingsController = fxmlLoader3.getController();
 
-            dayScene = new Scene(fxmlLoader4.load(),1365,768);
+            dayScene = new Scene(fxmlLoader4.load(),1365,915);
             dayController = fxmlLoader4.getController();
             /*System.out.println(locationController== null);
             System.out.println (weekController== null);
@@ -76,13 +76,13 @@ public class Main extends Application {
         /*rootSettings = FXMLLoader.load(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\GUI.fxml").toURI().toURL());
         settingsScene = new Scene(rootSettings, 1365, 768);*/ // Need to set up the Initializer to point to correct Setttings file?
 
-        primaryStage.setScene(locationScene);
+        primaryStage.setScene(dayScene);
 
 
         primaryStage.setTitle("Weather Application");
         primaryStage.show();
 
-        primaryStage.setMinHeight(768);
+        primaryStage.setMinHeight(915);
         primaryStage.setMinWidth(1365);
 
         mainStage = primaryStage;
@@ -99,6 +99,10 @@ public class Main extends Application {
         else if (instr.equals("settings")) {
             mainStage.setScene(settingsScene);
             settingsController.sync();
+        }
+        else if (instr.equals("day")) {
+            mainStage.setScene(dayScene);
+            dayController.sync();
         }
         else {
             System.out.println("Received incorrect screen");

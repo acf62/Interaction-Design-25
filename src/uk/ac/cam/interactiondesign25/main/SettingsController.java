@@ -117,6 +117,13 @@ public class SettingsController implements Initializable {
             }
         });
 
+        dayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("day");
+            }
+        });
+
         celsius.setOnMouseClicked(e -> {settings.setCelsius(true);celsiusClick();});
         fahrenheit.setOnMouseClicked(e -> {settings.setCelsius(false);fahrenheitClick();});
         rgmode.setOnMouseClicked(e -> rgClick());

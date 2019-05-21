@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -212,6 +213,13 @@ public class LocationController implements Initializable  {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Main.receive("settings");
+            }
+        });
+
+        DayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("day");
             }
         });
     }
