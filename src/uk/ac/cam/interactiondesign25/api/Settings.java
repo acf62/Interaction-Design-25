@@ -4,10 +4,13 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Class responsible for persistent storage of settings and recently used locations
 public class Settings {
-    private String filename;
+    private String filename; // file where settings are stored
+    // Settings
     private boolean Celsius;
     private boolean BlueYellowColourblind;
+    // Recent locations
     private String currentLocationName;
     private List<String> recentLocations = new ArrayList<>();
 
@@ -25,7 +28,7 @@ public class Settings {
             }
 
         } catch (FileNotFoundException e1) {
-            // Initialise file - didn't exist
+            // Initialise file - it didn't already exist
             Celsius = true;
             BlueYellowColourblind = false;
             currentLocationName = "Cambridge";
@@ -36,7 +39,7 @@ public class Settings {
         }
     }
 
-    // Writes over the file with the current boolean values
+    // Writes back to the file, storing the information persistently
     private void writeBack(){
         try (FileWriter f = new FileWriter(filename)) {
             BufferedWriter w = new BufferedWriter(f);
