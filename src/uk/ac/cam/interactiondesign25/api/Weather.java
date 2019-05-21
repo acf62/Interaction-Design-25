@@ -86,14 +86,14 @@ public class Weather {
 			try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "3hourlytestdata"))){
 				w.threeHourlyForecast = r.readLine();
 			} catch (IOException e){
-				System.out.println("Setup failed");
+				;
 				throw new Error();
 			}
 			
 			try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "dailytestdata"))){
 				w.weeklyForecast = r.readLine();
 			} catch (IOException e){
-				System.out.println("Setup failed");
+				;
 				throw new Error();
 			}
 		}
@@ -101,32 +101,32 @@ public class Weather {
 		int[] expected = new int[]{17, 10};
 		int[] result = w.getTodayTemperatures();
 		if (!Arrays.equals(expected, result)) {
-			System.out.println("getTodayTemperatures() broken");
+			;
 		}
 
 		expected = new int[]{16, 14, 11, 10, 10}; //depends on time of day
 		result = w.getTodayThreeHourlyTemperatures();
 		if (false) {
-			System.out.println("getTodayThreeHourlyTemperatures() broken");
+			;
 		}
 
 		String exp = "Partly cloudy";
 		String res = w.getTodayWeatherDescription();
 		if (!exp.equals(res)){
-			System.out.println("getTodayWeatherDescription() broken");
+			;
 			System.out.println(res);
 		}
 
 		WeatherType e = WeatherType.PARTIALLY_CLOUDY;
 		WeatherType r = w.getTodayWeatherType();
 		if (e != r){
-			System.out.println("getTodayWeatherType() broken");
+			;
 		}
 
 		int[][] Expected = new int[][]{{17, 10}, {14, 10}, {16, 8}, {18, 10}, {17, 10}};
 		int[][] Result = w.getWeekTemperatures();
 		if (!Arrays.deepEquals(Expected, Result)){
-			System.out.println("getWeekTemperatures() broken");
+			;
 		}
 		
 		int windSpeed = w.getTodayWindSpeed();
@@ -141,7 +141,7 @@ public class Weather {
 		};
 		String[] Res = w.getWeekWeatherDescription();
 		if (!Arrays.equals(Exp, Res)){
-			System.out.println("getWeekWeatherDescription() broken");
+			;
 		}
 
 		WeatherType[] E = new WeatherType[]{
@@ -153,7 +153,7 @@ public class Weather {
 		};
 		WeatherType[] R = w.getWeekWeatherTypes();
 		if (!Arrays.equals(E, R)){
-			System.out.println("getWeekWeatherTypes() broken");
+			;
 		}
 	}
 
@@ -514,10 +514,10 @@ public class Weather {
 			rd.close();
 			weeklyForecast = result;
 		} catch (MalformedURLException ex) {
-			System.out.println("URL malformed");
+			;
 			ex.printStackTrace();
 		} catch (IOException ex) {
-			System.out.println("IO exception");
+			;
 			ex.printStackTrace();
 		}
 	}
@@ -537,9 +537,9 @@ public class Weather {
 			rd.close();
 			threeHourlyForecast = result;
 		} catch (MalformedURLException ex) {
-			System.out.println("URL malformed");
+			;
 		} catch (IOException ex) {
-			System.out.println("IO exception");
+			;
 			ex.printStackTrace();
 		}
 	}

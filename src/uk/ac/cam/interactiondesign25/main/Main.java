@@ -55,7 +55,7 @@ public class Main extends Application {
             dayController = fxmlLoader4.getController();
         }
         catch (Exception e) {
-            System.out.println("Exception in Static Initializer of main");
+            ;
             e.printStackTrace();
         }
 
@@ -103,7 +103,7 @@ public class Main extends Application {
             dayController.sync();
         }
         else {
-            System.out.println("Received incorrect screen");
+            ;
         }
 
     }

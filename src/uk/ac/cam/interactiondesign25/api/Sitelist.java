@@ -48,10 +48,10 @@ public class Sitelist {
 				sites.add(s);
 			}
 		} catch (MalformedURLException e) {
-			System.out.println("URL malformed");
+			;
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("IO exception");
+			;
 			e.printStackTrace();
 		}
 	}
