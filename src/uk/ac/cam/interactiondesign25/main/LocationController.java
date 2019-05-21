@@ -78,7 +78,7 @@ public class LocationController implements Initializable  {
         recentList.getItems().removeAll();
         LinkedList<String> temp = new LinkedList<>();
         for (String string : recents) {
-            if (!string.isEmpty() && string!=null) {
+            if (!string.isEmpty() && string!=null && !string.trim().equals("No Locations Found")) {
                 temp.add(string);
             }
         }
@@ -139,7 +139,7 @@ public class LocationController implements Initializable  {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 boolean found = false;
-                if (newValue != null  && !newValue.isEmpty()) {
+                if (newValue != null  && !newValue.isEmpty() && !newValue.trim().equals("No Locations Found")) {
                     for (String string:recents) {
                         if (string.equals(newValue)) {
                             found = true;

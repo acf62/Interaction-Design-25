@@ -42,7 +42,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
                      <children>
-                        <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                        <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200.0">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -88,7 +88,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
                      <children>
-                        <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                        <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -134,7 +134,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
                      <children>
-                        <Text fx:id="text3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                        <Text fx:id="text3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -180,7 +180,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
                      <children>
-                        <Text fx:id="text4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                        <Text fx:id="text4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -226,7 +226,7 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
                      <children>
-                        <Text fx:id="text5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="376.13671875">
+                        <Text fx:id="text5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="200">
                            <font>
                               <Font size="48.0" />
                            </font>
