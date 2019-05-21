@@ -163,6 +163,8 @@ public class WeekController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        topText.setText("This Week in " + Main.settings.getCurrentLocation());
+
         int[][] temps = Main.weather.getWeekTemperatures();
         String[] description = Main.weather.getWeekWeatherDescription();
         WeatherType[] weatherTypes = Main.weather.getWeekWeatherTypes();
@@ -233,6 +235,8 @@ public class WeekController implements Initializable {
         String[] description = Main.weather.getWeekWeatherDescription();
         WeatherType[] weatherTypes = Main.weather.getWeekWeatherTypes();
         String[] images = getImageLocationsFrom(weatherTypes);
+
+        topText.setText("This Week in " + Main.settings.getCurrentLocation());
 
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 

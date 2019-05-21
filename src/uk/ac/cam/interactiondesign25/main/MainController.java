@@ -98,6 +98,7 @@ public class MainController implements Initializable {
     // Initialize Main controller with location page
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        topText.setText("Today in " + Main.settings.getCurrentLocation());
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
 
         // Adding Interactivity to buttons
@@ -173,6 +174,7 @@ public class MainController implements Initializable {
     public void sync() {
         Weather weather = Main.weather;
         mainImage.setImage(new Image(getImageString(weather.getTodayWeatherType())));
+        topText.setText("Today in " + Main.settings.getCurrentLocation());
 
         int[] hilo = weather.getTodayTemperatures();
 

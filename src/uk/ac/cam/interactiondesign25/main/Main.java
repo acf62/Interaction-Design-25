@@ -63,18 +63,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        // todo redo this!!!
-        Parent rootLocation, rootDay , rootWeek, rootSettings;
-
-        /*
-
-        rootDay = fxmlLoader.load(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\main_scene.fxml").toURI().toURL());
-        dayScene = new Scene(rootDay, 1365, 768); */
-
-        /*rootSettings = FXMLLoader.load(new File("C:\\Users\\Hari\\Desktop\\Year 2\\InteractionDesign\\Interaction-Design-25\\resources\\GUI.fxml").toURI().toURL());
-        settingsScene = new Scene(rootSettings, 1365, 768);*/ // Need to set up the Initializer to point to correct Setttings file?
-
         primaryStage.setScene(dayScene);
 
 
@@ -83,6 +71,13 @@ public class Main extends Application {
 
         primaryStage.setMinHeight(965);
         primaryStage.setMinWidth(1365);
+
+        primaryStage.widthProperty().addListener((obs,oldVal,newVal) -> {
+            primaryStage.setWidth((double)newVal);
+        });
+        primaryStage.heightProperty().addListener((obs,oldVal,newVal) -> {
+            primaryStage.setHeight((double)newVal);
+        });
 
         mainStage = primaryStage;
     }

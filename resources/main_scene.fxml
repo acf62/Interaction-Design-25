@@ -199,7 +199,7 @@
       </VBox>
       <HBox minHeight="150" prefHeight="150.0" prefWidth="1920.0">
          <children>
-            <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
+            <Button defaultButton="true" fx:id="dayButton" mnemonicParsing="false" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
                <font>
                   <Font size="74.0" />
                </font></Button>
