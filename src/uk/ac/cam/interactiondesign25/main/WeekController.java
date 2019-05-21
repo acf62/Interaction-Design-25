@@ -96,61 +96,61 @@ public class WeekController implements Initializable {
             switch(weatherType) {
                 case RAINY:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/rainCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/rainCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/rain.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/rain.png"));
                     }
                     break;
                 case PARTIALLY_CLOUDY:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/partly_cloudyCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/partly_cloudyCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/partly_cloudy.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/partly_cloudy.png"));
                     }
                     break;
                 case UNKNOWN:
-                    results[i] = "file:resources/unknown.png";
+                    results[i] = String.valueOf(MainController.class.getResource("/unknown.png"));
                     break;
                 case SNOWY:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/snowCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/snowCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/snow.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/snow.png"));
                     }
                     break;
                 case THUNDER:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/thunderstormCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/thunderstormCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/thunderstorm.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/thunderstorm.png"));
                     }
                     break;
                 case SUNNY:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/sunnyCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/sunnyCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/sunny.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/sunny.png"));
                     }
                     break;
                 case CLOUDY:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/cloudyCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/cloudyCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/cloudy.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/cloudy.png"));
                     }
                     break;
                 case CLEAR_NIGHT:
                     if (Main.settings.getBlueYellowColourblind()) {
-                        results[i] = "file:resources/clear_nightCB.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/clear_nightCB.png"));
                     }
                     else {
-                        results[i] = "file:resources/clear_night.png";
+                        results[i] = String.valueOf(MainController.class.getResource("/clear_night.png"));
                     }
                     break;
             }
@@ -198,7 +198,7 @@ public class WeekController implements Initializable {
         lo4.setText(String.valueOf(temps[3][1])+suffix);
         lo5.setText(String.valueOf(temps[4][1])+suffix);
 
-        settingsButton.setImage(new Image("file:resources/settings-512.png"));
+        settingsButton.setImage(new Image(String.valueOf(WeekController.class.getResource("/settings-512.png"))));
         image1.setImage(new Image(images[0]));
         image2.setImage(new Image(images[1]));
         image3.setImage(new Image(images[2]));
@@ -277,7 +277,7 @@ public class WeekController implements Initializable {
         lo4.setText(String.valueOf(temps[3][1])+suffix);
         lo5.setText(String.valueOf(temps[4][1])+suffix);
 
-        settingsButton.setImage(new Image("file:resources/settings-512.png"));
+        settingsButton.setImage(new Image(String.valueOf(WeekController.class.getResource("/settings-512.png"))));
         image1.setImage(new Image(images[0]));
         image2.setImage(new Image(images[1]));
         image3.setImage(new Image(images[2]));

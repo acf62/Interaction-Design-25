@@ -38,10 +38,10 @@ public class Main extends Application {
             weather.setLocationID ( weather.getLocationIDFromName( settings.getCurrentLocation() ) );
             
             FXMLLoader fxmlLoader1,fxmlLoader2,fxmlLoader3,fxmlLoader4;
-            fxmlLoader1 = new FXMLLoader(new File("resources/location_scene.fxml").toURI().toURL());
-            fxmlLoader2 = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());
-            fxmlLoader3 = new FXMLLoader(new File("resources/settings_scene.fxml").toURI().toURL());
-            fxmlLoader4 = new FXMLLoader(new File("resources/main_scene.fxml").toURI().toURL());
+            fxmlLoader1 = new FXMLLoader(Main.class.getResource("/location_scene.fxml"));
+            fxmlLoader2 = new FXMLLoader(Main.class.getResource("/week_scene.fxml"));
+            fxmlLoader3 = new FXMLLoader(Main.class.getResource("/settings_scene.fxml"));
+            fxmlLoader4 = new FXMLLoader(Main.class.getResource("/main_scene.fxml"));
             locationScene = new Scene(fxmlLoader1.load(),1365,965);
             locationController = fxmlLoader1.getController();
 
