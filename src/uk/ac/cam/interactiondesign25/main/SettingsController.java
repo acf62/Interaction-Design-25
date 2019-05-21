@@ -38,6 +38,7 @@ public class SettingsController implements Initializable {
     @FXML
     private Button rgmode;
 
+    // Functions based on changing temperature units
     @FXML
     void celsiusClick() {
         settings.setCelsius(true);
@@ -52,35 +53,19 @@ public class SettingsController implements Initializable {
         celsius.setStyle(unselectedColor);
     }
 
+    // Functions to change color blind modes
     @FXML
     void rgClick() {
         settings.setBlueYellowColourblind(false);
         rgmode.setStyle(selectedColor);
         bymode.setStyle(unselectedColor);
     }
-
     @FXML
     void byClick() {
         settings.setBlueYellowColourblind(true);
         rgmode.setStyle(unselectedColor);
         bymode.setStyle(selectedColor);
     }
-
-    @FXML
-    void dayClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void weekClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void locationClick(ActionEvent event) {
-
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -131,7 +116,7 @@ public class SettingsController implements Initializable {
 
 
     }
-
+    // Sync up the settings page
     public void sync() {
         settings = Main.settings;
 

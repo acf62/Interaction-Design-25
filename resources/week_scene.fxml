@@ -11,7 +11,7 @@
    <children>
       <HBox prefHeight="150.0" prefWidth="900.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Week Weather" wrappingWidth="850.0">
+            <Text fx:id="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="Week Weather" wrappingWidth="850.0">
                <font>
                   <Font size="83.0" />
                </font>
@@ -30,9 +30,14 @@
          <children>
             <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
+                  <Text fx:id="dayName1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Text>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image1" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="image1" fitHeight="200.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
@@ -71,9 +76,14 @@
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
+                  <Text fx:id="dayName2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Text>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image2" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="image2" fitHeight="200.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
@@ -112,9 +122,14 @@
             </VBox>
             <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
+                  <Text fx:id="dayName3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Text>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image3" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="image3" fitHeight="200.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
@@ -153,9 +168,14 @@
             </VBox>
             <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
+                  <Text fx:id="dayName4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Text>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image4" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="image4" fitHeight="200.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
@@ -194,9 +214,14 @@
             </VBox>
             <VBox layoutX="394.0" layoutY="10.0" maxWidth="384.0" minWidth="150.0" prefHeight="1000.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
+                  <Text fx:id="dayName5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Text>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="image5" fitHeight="250.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="image5" fitHeight="200.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="250.0" prefWidth="384.0">
@@ -235,7 +260,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox prefHeight="300.0" prefWidth="1920.0">
+      <HBox prefHeight="150.0" prefWidth="1920.0" minHeight="150">
          <children>
             <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="1000.0" prefWidth="1000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
                <font>

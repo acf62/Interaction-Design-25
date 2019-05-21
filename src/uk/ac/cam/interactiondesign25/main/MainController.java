@@ -93,76 +93,14 @@ public class MainController implements Initializable {
     private Button weekButton;
 
     @FXML
-    void dayClick(ActionEvent event) {
+    private Text topText;
 
-    }
-
-    @FXML
-    void weekClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void locationClick(ActionEvent event) {
-
-    }
-
-    /*private void setTriple(int number, int h, int l, String text){
-        String high = String.valueOf(h);
-        String low = String.valueOf(l);
-        switch (number){
-            case 1:
-                high1.setText(high);
-                low1.setText(low);
-                text1.setText(text);
-                break;
-            case 2:
-                high2.setText(high);
-                low2.setText(low);
-                text2.setText(text);
-                break;
-            case 3:
-                high3.setText(high);
-                low3.setText(low);
-                text3.setText(text);
-                break;
-            case 4:
-                high4.setText(high);
-                low4.setText(low);
-                text4.setText(text);
-                break;
-            case 5:
-                high5.setText(high);
-                low5.setText(low);
-                text5.setText(text);
-                break;
-        }
-    }*/
-
-
-    /*private void setImage(int number, WeatherType type) {
-        switch (number) {
-            case 1:
-                image1.setImage(typeToImage(type));
-                break;
-            case 2:
-                image2.setImage(typeToImage(type));
-                break;
-            case 3:
-                image3.setImage(typeToImage(type));
-                break;
-            case 4:
-                image4.setImage(typeToImage(type));
-                break;
-            case 5:
-                image5.setImage(typeToImage(type));
-                break;
-        }
-    }*/
-
+    // Initialize Main controller with location page
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
+
+        // Adding Interactivity to buttons
         weekButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -183,6 +121,8 @@ public class MainController implements Initializable {
             }
         });
     }
+
+    // Helper function to load appropriate images based on Color Blind Modes
 
     public String getImageString(WeatherType weatherType) {
         if (!Main.settings.getBlueYellowColourblind()) {
@@ -227,6 +167,8 @@ public class MainController implements Initializable {
         }
         return "file:resources/unknown.png";
     }
+
+    // Sync function for changes when page is reloaded
 
     public void sync() {
         Weather weather = Main.weather;

@@ -28,6 +28,31 @@ public class LocationController implements Initializable  {
 
     private String[] recents = {"","","","","","","","",""};
 
+    @FXML
+    private ListView<String> recentList;
+
+    @FXML
+    private ListView<String> listSearch;
+
+    @FXML
+    private VBox mainVBox;
+
+    @FXML
+    private ImageView settingsButton;
+
+    @FXML
+    private ImageView searchIcon;
+
+    @FXML
+    private Button DayButton;
+
+    @FXML
+    private TextArea searchBar;
+
+    @FXML
+    private Button WeekButton;
+
+    // This function adds entries to the Recents Tab (Top 9) based on selections made from the Search
     public void addToRecents(String location) {
         int i = 0;
         for (String recent : recents) {
@@ -63,35 +88,7 @@ public class LocationController implements Initializable  {
         Main.settings.setRecents(temp);
     }
 
-    @FXML
-    private ListView<String> recentList;
-
-    @FXML
-    private ListView<String> listSearch;
-
-    @FXML
-    private VBox mainVBox;
-
-    @FXML
-    private ImageView settingsButton;
-
-    @FXML
-    private ImageView searchIcon;
-
-    @FXML
-    private Button DayButton;
-
-    @FXML
-    private TextArea searchBar;
-
-    @FXML
-    private Button WeekButton;
-
-    @FXML
-    void openSettings(ActionEvent event) {
-
-    }
-
+    // This function interactively responds to key strokes from the search bar
     @FXML
     void keyPressFromSearchBar(KeyEvent event) {
 
@@ -111,27 +108,15 @@ public class LocationController implements Initializable  {
                 searchBar.positionCaret(searchBar.getText().length());
             }
 
-
-
     }
 
-    @FXML
-    void openDayTab(ActionEvent event) {
-        // need to redirect to the other tab
-
-    }
-
-    @FXML
-    void openWeekTab(ActionEvent event) {
-        // need to redirect to weej tab
-
-    }
-
+    // Initialize location page
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
         searchIcon.setImage(new Image("file:resources/search.png"));
 
+        // Adding a listener to search list to dynamically load elements
         listSearch.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -151,7 +136,7 @@ public class LocationController implements Initializable  {
             }
         });
 
-
+        // Adding a listener to recents list to dynamically reorder top recent elements
 
         recentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -165,6 +150,7 @@ public class LocationController implements Initializable  {
             }
         });
 
+        // Font Size Changes
         listSearch.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> stringListView) {
@@ -184,7 +170,6 @@ public class LocationController implements Initializable  {
                 return cell;
             }
         });
-
         recentList.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> stringListView) {
@@ -204,6 +189,8 @@ public class LocationController implements Initializable  {
                 return cell;
             }
         });
+
+        // Adding interactivity to the buttons
 
         WeekButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

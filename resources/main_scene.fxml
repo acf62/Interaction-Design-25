@@ -11,7 +11,7 @@
    <children>
       <HBox prefHeight="150.0" prefWidth="900.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" VBox.vgrow="ALWAYS">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Weather" wrappingWidth="902.0">
+            <Text fx:id="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Weather" wrappingWidth="902.0">
                <font>
                   <Font size="83.0" />
                </font>
@@ -197,17 +197,17 @@
             </HBox>
          </children>
       </VBox>
-      <HBox prefHeight="280.0" prefWidth="1920.0">
+      <HBox prefHeight="150.0" prefWidth="1920.0" minHeight="150">
          <children>
-            <Button fx:id="dayButton" mnemonicParsing="false" onAction="#dayClick" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
+            <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
                <font>
                   <Font size="74.0" />
                </font></Button>
-            <Button fx:id="weekButton" mnemonicParsing="false" onAction="#weekClick" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Week">
+            <Button fx:id="weekButton" mnemonicParsing="false" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Week">
                <font>
                   <Font size="74.0" />
                </font></Button>
-            <Button fx:id="locationButton" mnemonicParsing="false" onAction="#locationClick" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Location">
+            <Button fx:id="locationButton" mnemonicParsing="false" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Location">
                <font>
                   <Font size="74.0" />
                </font></Button>

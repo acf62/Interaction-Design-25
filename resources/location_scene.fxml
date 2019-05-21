@@ -78,14 +78,14 @@
             </HBox>
          </children>
       </VBox>
-      <HBox prefHeight="350" prefWidth="${mainVBox.width}">
+      <HBox prefHeight="150" prefWidth="${mainVBox.width}" minHeight="150">
          <children>
-            <Button fx:id="DayButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#openDayTab" prefHeight="1000000.0" prefWidth="1000000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
+            <Button fx:id="DayButton" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="1000000.0" prefWidth="1000000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
                <font>
                   <Font size="74.0" />
                </font>
             </Button>
-            <Button fx:id="WeekButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#openWeekTab" prefHeight="1000000.0" prefWidth="1000000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Week">
+            <Button fx:id="WeekButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="1000000.0" prefWidth="1000000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Week">
                <font>
                   <Font size="74.0" />
                </font>

@@ -30,6 +30,7 @@ public class Main extends Application {
     public static SettingsController settingsController;
     public static MainController dayController;
 
+    // Loads up components required for the duration of execution of app
     static {
         try {
             settings = new Settings("settingsFile");
@@ -41,20 +42,17 @@ public class Main extends Application {
             fxmlLoader2 = new FXMLLoader(new File("resources/week_scene.fxml").toURI().toURL());
             fxmlLoader3 = new FXMLLoader(new File("resources/settings_scene.fxml").toURI().toURL());
             fxmlLoader4 = new FXMLLoader(new File("resources/main_scene.fxml").toURI().toURL());
-            locationScene = new Scene(fxmlLoader1.load(),1365,915);
+            locationScene = new Scene(fxmlLoader1.load(),1365,965);
             locationController = fxmlLoader1.getController();
 
-            weekScene = new Scene(fxmlLoader2.load(),1365,915);
+            weekScene = new Scene(fxmlLoader2.load(),1365,965);
             weekController = fxmlLoader2.getController();
 
-            settingsScene = new Scene(fxmlLoader3.load(),1365,915);
+            settingsScene = new Scene(fxmlLoader3.load(),1365,965);
             settingsController = fxmlLoader3.getController();
 
-            dayScene = new Scene(fxmlLoader4.load(),1365,915);
+            dayScene = new Scene(fxmlLoader4.load(),1365,965);
             dayController = fxmlLoader4.getController();
-            /*System.out.println(locationController== null);
-            System.out.println (weekController== null);
-            System.out.println(settingsController==null);*/
         }
         catch (Exception e) {
             System.out.println("Exception in Static Initializer of main");
@@ -83,12 +81,15 @@ public class Main extends Application {
         primaryStage.setTitle("Weather Application");
         primaryStage.show();
 
-        primaryStage.setMinHeight(915);
+        primaryStage.setMinHeight(965);
         primaryStage.setMinWidth(1365);
+        primaryStage.setMaxHeight(965);
+        primaryStage.setMaxWidth(1365);
 
         mainStage = primaryStage;
     }
 
+    // Logic for switching between different scenes
     public static void receive(String instr) {
         if (instr.equals("week")) {
             mainStage.setScene(weekScene);
