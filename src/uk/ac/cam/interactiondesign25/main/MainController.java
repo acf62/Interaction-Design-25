@@ -1,11 +1,14 @@
 package uk.ac.cam.interactiondesign25.main;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import uk.ac.cam.interactiondesign25.api.Weather;
 import uk.ac.cam.interactiondesign25.api.WeatherType;
@@ -17,73 +20,94 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 
+
 public class MainController implements Initializable {
 
     @FXML
-    private ImageView image1;
-    @FXML
-    private ImageView image2;
-    @FXML
-    private ImageView image3;
-    @FXML
-    private ImageView image4;
-    @FXML
-    private ImageView image5;
-
+    private ImageView imagePeriod1;
 
     @FXML
-    private Text high1;
-    @FXML
-    private Text low1;
-    @FXML
-    private Text text1;
-    @FXML
-    private Text high2;
-    @FXML
-    private Text low2;
-    @FXML
-    private Text text2;
-    @FXML
-    private Text high3;
-    @FXML
-    private Text low3;
-    @FXML
-    private Text text3;
-    @FXML
-    private Text high4;
-    @FXML
-    private Text low4;
-    @FXML
-    private Text text4;
-    @FXML
-    private Text high5;
-    @FXML
-    private Text low5;
-    @FXML
-    private Text text5;
+    private ImageView imagePeriod2;
 
     @FXML
-    void settingsClick() {
-        Main.receive("settings");
+    private ImageView imagePeriod3;
+
+    @FXML
+    private Text tempPeriod5;
+
+    @FXML
+    private Button dayButton;
+
+    @FXML
+    private ImageView imagePeriod4;
+
+    @FXML
+    private Button locationButton;
+
+    @FXML
+    private ImageView imagePeriod5;
+
+    @FXML
+    private Text hiDay;
+
+    @FXML
+    private ImageView mainImage;
+
+    @FXML
+    private Text textDay;
+
+    @FXML
+    private ImageView settingsButton;
+
+    @FXML
+    private Text tempPeriod2;
+
+    @FXML
+    private Text timePeriod4;
+
+    @FXML
+    private Text tempPeriod1;
+
+    @FXML
+    private Text timePeriod5;
+
+    @FXML
+    private Text timePeriod2;
+
+    @FXML
+    private Text tempPeriod4;
+
+    @FXML
+    private Text timePeriod3;
+
+    @FXML
+    private Text tempPeriod3;
+
+    @FXML
+    private Text loDay;
+
+    @FXML
+    private Text timePeriod1;
+
+    @FXML
+    private Button weekButton;
+
+    @FXML
+    void dayClick(ActionEvent event) {
+
     }
 
     @FXML
-    void dayClick() {
-        Main.receive("day");
+    void weekClick(ActionEvent event) {
+
     }
 
     @FXML
-    void weekClick() {
-        Main.receive("week");
+    void locationClick(ActionEvent event) {
+
     }
 
-    @FXML
-    void locationClick() {
-        Main.receive("location");
-    }
-
-
-    private void setTriple(int number, int h, int l, String text){
+    /*private void setTriple(int number, int h, int l, String text){
         String high = String.valueOf(h);
         String low = String.valueOf(l);
         switch (number){
@@ -113,21 +137,10 @@ public class MainController implements Initializable {
                 text5.setText(text);
                 break;
         }
-    }
+    }*/
 
-    private Image typeToImage(WeatherType type) {
-        switch (type) {
-            case RAINY: return new Image("file:resources/rainy.png");
-            case SUNNY: return new Image("file:resources/sunny.png");
-            case CLOUDY: return new Image("file:resources/cloudy.png");
-            case PARTIALLY_CLOUDY: return new Image("file:resources/partly_cloudy.png");
-            case SNOWY: return new Image("file:resources/snowy.png");
-            case THUNDER: return new Image("file:resources/thunderstorm.png");
-            default: return null;
-        }
-    }
 
-    private void setImage(int number, WeatherType type) {
+    /*private void setImage(int number, WeatherType type) {
         switch (number) {
             case 1:
                 image1.setImage(typeToImage(type));
@@ -145,28 +158,108 @@ public class MainController implements Initializable {
                 image5.setImage(typeToImage(type));
                 break;
         }
-    }
+    }*/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Weather weather = Main.weather;
-        weather.setLocationID(weather.getLocationIDFromName("Cambridge"));
-        setTriple(1, weather.getTodayTemperatures()[0],
-                weather.getTodayTemperatures()[1], weather.getTodayWeatherDescription());
+        settingsButton.setImage(new Image("file:resources/settings-512.png"));
+        weekButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("week");
+            }
+        });
+        locationButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("location");
+            }
+        });
+        sync();
+        settingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("settings");
+            }
+        });
+    }
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MINUTE, 30);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        for (int i = 2; i <= 5 ; i++){
-            calendar.add(Calendar.HOUR, 3);
-            setTriple(i, weather.getTodayThreeHourlyTemperatures()[i-2], weather.getTodayTemperatures()[i-2], format.format(calendar.getTime()));
+    public String getImageString(WeatherType weatherType) {
+        if (!Main.settings.getBlueYellowColourblind()) {
+            switch (weatherType) {
+                case RAINY:
+                    return "file:resources/rain.png";
+                case UNKNOWN:
+                    return "file:resources/unknown.png";
+                case SUNNY:
+                    return "file:resources/sunny.png";
+                case SNOWY:
+                    return "file:resources/snow.png";
+                case PARTIALLY_CLOUDY:
+                    return "file:resources/partly_cloudy.png";
+                case CLOUDY:
+                    return "file:resources/cloudy.png";
+                case THUNDER:
+                    return "file:resources/thunderstorm.png";
+                case CLEAR_NIGHT:
+                    return "file:resources/clear_night.png";
+            }
         }
-        setImage(0, weather.getTodayWeatherType());
-        setImage(1, weather.getTodayWeatherType());
-        setImage(2, weather.getTodayWeatherType());
-        setImage(3, weather.getTodayWeatherType());
-        setImage(4, weather.getTodayWeatherType());
+        else {
+            switch (weatherType) {
+                case RAINY:
+                    return "file:resources/rainCB.png";
+                case UNKNOWN:
+                    return "file:resources/unknown.png";
+                case SUNNY:
+                    return "file:resources/sunnyCB.png";
+                case SNOWY:
+                    return "file:resources/snowCB.png";
+                case PARTIALLY_CLOUDY:
+                    return "file:resources/partly_cloudyCB.png";
+                case CLOUDY:
+                    return "file:resources/cloudyCB.png";
+                case THUNDER:
+                    return "file:resources/thunderstormCB.png";
+                case CLEAR_NIGHT:
+                    return "file:resources/clear_nightCB.png";
+            }
+        }
+        return "file:resources/unknown.png";
+    }
+
+    public void sync() {
+        Weather weather = Main.weather;
+        mainImage.setImage(new Image(getImageString(weather.getTodayWeatherType())));
+
+        int[] hilo = weather.getTodayTemperatures();
+
+        String suffix = Main.settings.getCelsius() ? "°C" : "°F";
+
+        hiDay.setText(String.valueOf(hilo[0])+suffix);
+        loDay.setText(String.valueOf(hilo[1])+suffix);
+        textDay.setText(weather.getTodayWeatherDescription() + "\n" + "Wind Speed " + weather.getTodayWindSpeed() + " mph");
+
+        String[] fiveTimes = weather.getTodayThreeHourTimes();
+        timePeriod1.setText(fiveTimes[0]);
+        timePeriod2.setText(fiveTimes[1]);
+        timePeriod3.setText(fiveTimes[2]);
+        timePeriod4.setText(fiveTimes[3]);
+        timePeriod5.setText(fiveTimes[4]);
+
+        int[] fiveTemps = weather.getTodayThreeHourlyTemperatures();
+        tempPeriod1.setText(String.valueOf(fiveTemps[0])+suffix);
+        tempPeriod2.setText(String.valueOf(fiveTemps[1])+suffix);
+        tempPeriod3.setText(String.valueOf(fiveTemps[2])+suffix);
+        tempPeriod4.setText(String.valueOf(fiveTemps[3])+suffix);
+        tempPeriod5.setText(String.valueOf(fiveTemps[4])+suffix);
+
+        WeatherType[] weatherType = weather.getTodayThreeHourlyWeatherTypes();
+        imagePeriod1.setImage(new Image(getImageString(weatherType[0])));
+        imagePeriod2.setImage(new Image(getImageString(weatherType[1])));
+        imagePeriod3.setImage(new Image(getImageString(weatherType[2])));
+        imagePeriod4.setImage(new Image(getImageString(weatherType[3])));
+        imagePeriod5.setImage(new Image(getImageString(weatherType[4])));
+
     }
 }

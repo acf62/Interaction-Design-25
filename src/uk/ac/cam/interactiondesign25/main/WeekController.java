@@ -21,6 +21,8 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class WeekController implements Initializable {
+
+    //The icons for each day
     @FXML
     private ImageView image1;
     @FXML
@@ -32,6 +34,7 @@ public class WeekController implements Initializable {
     @FXML
     private ImageView image5;
 
+    //Navigation burrons. Week button is missing because it isn't clickable on this screen
     @FXML
     private Button dayButton;
     @FXML
@@ -39,6 +42,7 @@ public class WeekController implements Initializable {
     @FXML
     private ImageView settingsButton;
 
+    //High and low temperatures for each day
     @FXML
     private Text hi1;
     @FXML
@@ -60,6 +64,7 @@ public class WeekController implements Initializable {
     @FXML
     private Text lo5;
 
+    //Descriptions of the weather for each day
     @FXML
     private Text text1;
     @FXML
@@ -127,6 +132,14 @@ public class WeekController implements Initializable {
                         results[i] = "file:resources/cloudy.png";
                     }
                     break;
+                case CLEAR_NIGHT:
+                    if (Main.settings.getBlueYellowColourblind()) {
+                        results[i] = "file:resources/clear_nightCB.png";
+                    }
+                    else {
+                        results[i] = "file:resources/clear_night.png";
+                    }
+                    break;
             }
             i++;
         }
@@ -180,6 +193,13 @@ public class WeekController implements Initializable {
                 Main.receive("settings");
             }
         });
+
+        dayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("day");
+            }
+        });
     }
 
     public void sync() {
@@ -190,7 +210,7 @@ public class WeekController implements Initializable {
 
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 
-        for (int i =0 ; i < description.length; i++) {
+        /*for (int i =0 ; i < description.length; i++) {
             if (description[i].trim().contains(" ")) {
                 String[] texts = description[i].split(" ");
                 String temp = "";
@@ -206,6 +226,18 @@ public class WeekController implements Initializable {
                 }
                 description[i] = (finalTemp + " " + temp). trim();
             }
+        }*/
+
+        for (int i =0 ; i <description.length ; i++) {
+            if (description[i].trim().contains(" ")) {
+                String[] texts = description[i].split(" ");
+                String temp = "";
+                for (String h : texts) {
+                    temp = temp + h + "\n";
+                }
+                description[i] = temp;
+            }
+
         }
 
         text1.setText(description[0]);

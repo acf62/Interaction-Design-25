@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -59,6 +60,7 @@ public class LocationController implements Initializable  {
         }
         recentList.setFixedCellSize(60);
         recentList.getItems().setAll(temp);
+        Main.settings.setRecents(temp);
     }
 
     @FXML
@@ -143,6 +145,7 @@ public class LocationController implements Initializable  {
                     if (!found) {
                         addToRecents(newValue);
                     }
+                    Main.settings.setCurrentLocation(newValue);
                     Main.weather.setLocationID(Main.weather.getLocationIDFromName(newValue));
                 }
             }
@@ -155,6 +158,7 @@ public class LocationController implements Initializable  {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if (t1 != null  && !t1.isEmpty()) {
                     System.out.println(s+ " " + t1);
+                    Main.settings.setCurrentLocation(t1);
                     Main.weather.setLocationID(Main.weather.getLocationIDFromName(t1));
                 }
 
@@ -212,6 +216,13 @@ public class LocationController implements Initializable  {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Main.receive("settings");
+            }
+        });
+
+        DayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Main.receive("day");
             }
         });
     }

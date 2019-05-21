@@ -82,18 +82,20 @@ public class Weather {
 		Settings settings = new Settings ( "settingsTest" );
 		Weather w = new Weather( settings );
 
-		try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "3hourlytestdata"))){
-			w.threeHourlyForecast = r.readLine();
-		} catch (IOException e){
-			System.out.println("Setup failed");
-			throw new Error();
-		}
-
-		try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "dailytestdata"))){
-			w.weeklyForecast = r.readLine();
-		} catch (IOException e){
-			System.out.println("Setup failed");
-			throw new Error();
+		if ( w.test ) {
+			try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "3hourlytestdata"))){
+				w.threeHourlyForecast = r.readLine();
+			} catch (IOException e){
+				System.out.println("Setup failed");
+				throw new Error();
+			}
+			
+			try(BufferedReader r = new BufferedReader(new FileReader("." + File.separator + "resources" + File.separator + "dailytestdata"))){
+				w.weeklyForecast = r.readLine();
+			} catch (IOException e){
+				System.out.println("Setup failed");
+				throw new Error();
+			}
 		}
 
 		int[] expected = new int[]{17, 10};
@@ -126,6 +128,9 @@ public class Weather {
 		if (!Arrays.deepEquals(Expected, Result)){
 			System.out.println("getWeekTemperatures() broken");
 		}
+		
+		int windSpeed = w.getTodayWindSpeed();
+		System.out.println(windSpeed);
 
 		String[] Exp = new String[]{
 				"Partly cloudy",
@@ -195,10 +200,43 @@ public class Weather {
 			result[0] = day.getInt("Dm");
 			result[1] = night.getInt("Nm");
 			
-			if ( !usecelsius() ) {
+			if ( !useCelsius() ) {
 				result[0] = toFahrenheit(result[0]);
 				result[1] = toFahrenheit(result[1]);
 			}
+		}
+		return result;
+	}
+	
+	public int getTodayWindSpeed() {
+		int result = 0;
+		if ( active ) {
+			doAPICallIfNecessary();
+			JSONArray Period = new JSONObject ( threeHourlyForecast )
+					.getJSONObject("SiteRep")
+					.getJSONObject("DV")
+					.getJSONObject("Location")
+					.getJSONArray("Period");
+
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			int chunksLeftToday = (26-currentHour)/3;
+			int chunksFromTomorrow = 5 - chunksLeftToday;
+			
+			System.out.println ( currentHour );
+			System.out.println ( chunksLeftToday);
+			System.out.println ( Period.getJSONObject(0).getString("value"));
+			System.out.println ( Period.getJSONObject(0).getString("value").substring(8,10));
+			System.out.println ( Calendar.getInstance().get(Calendar.DATE));
+			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
+			int currentDay = Calendar.getInstance().get(Calendar.DATE);
+			int offset = currentDay - firstDay;
+			
+			JSONArray rep = Period
+					.getJSONObject(offset) //today
+					.getJSONArray("Rep");
+			result = rep
+					.getJSONObject(rep.length() - chunksLeftToday)
+					.getInt("S");
 		}
 		return result;
 	}
@@ -218,10 +256,20 @@ public class Weather {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			int chunksLeftToday = (26-currentHour)/3;
 			int chunksFromTomorrow = 5 - chunksLeftToday;
+			
+			System.out.println ( currentHour );
+			System.out.println ( chunksLeftToday);
+			System.out.println ( Period.getJSONObject(0).getString("value"));
+			System.out.println ( Period.getJSONObject(0).getString("value").substring(8,10));
+			System.out.println ( Calendar.getInstance().get(Calendar.DATE));
+			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
+			int currentDay = Calendar.getInstance().get(Calendar.DATE);
+			int offset = currentDay - firstDay;
+			
 
-			for(int i=0; i<chunksLeftToday; i++){
+			for(int i=0; i<chunksLeftToday && i < 5; i++){
 				JSONArray rep = Period
-						.getJSONObject(0) //today
+						.getJSONObject(offset) //today
 						.getJSONArray("Rep");
 				result[i] = rep
 						.getJSONObject(rep.length() - chunksLeftToday + i)
@@ -230,14 +278,79 @@ public class Weather {
 			// May have to go into tomorrow to get 5 chunks
 			for(int i=0; i<chunksFromTomorrow; i++){
 				JSONArray rep = Period
-						.getJSONObject(1) //tomorrow
+						.getJSONObject(offset+1) //tomorrow
 						.getJSONArray("Rep");
 				result[i + chunksLeftToday] = rep
 						.getJSONObject(i)
 						.getInt("T");
 			}
+			
+			if ( !useCelsius() ) {
+				for ( int i = 0; i < result.length; ++i ) {
+					result[i] = toFahrenheit(result[i]);
+				}
+			}
 		}
 		return result;
+	}
+	
+	// Returns today's 3-hourly weather types (array of 5 items)
+	// Selects next five 3-hour chunks, starting from the current one
+	public WeatherType[] getTodayThreeHourlyWeatherTypes(){
+		WeatherType[] result = {WeatherType.UNKNOWN,WeatherType.UNKNOWN,WeatherType.UNKNOWN,WeatherType.UNKNOWN,WeatherType.UNKNOWN};
+		if ( active ) {
+			doAPICallIfNecessary();
+			JSONArray Period = new JSONObject ( threeHourlyForecast )
+					.getJSONObject("SiteRep")
+					.getJSONObject("DV")
+					.getJSONObject("Location")
+					.getJSONArray("Period");
+
+			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+			int chunksLeftToday = (26-currentHour)/3;
+			int chunksFromTomorrow = 5 - chunksLeftToday;
+			
+			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
+			int currentDay = Calendar.getInstance().get(Calendar.DATE);
+			int offset = currentDay - firstDay;
+			
+
+			for(int i=0; i<chunksLeftToday && i < 5; i++){
+				JSONArray rep = Period
+						.getJSONObject(offset) //today
+						.getJSONArray("Rep");
+				result[i] = WeatherType.convert(rep
+						.getJSONObject(rep.length() - chunksLeftToday + i)
+						.getInt("W"));
+			}
+			// May have to go into tomorrow to get 5 chunks
+			for(int i=0; i<chunksFromTomorrow; i++){
+				JSONArray rep = Period
+						.getJSONObject(offset+1) //tomorrow
+						.getJSONArray("Rep");
+				result[i + chunksLeftToday] = WeatherType.convert(rep
+						.getJSONObject(i)
+						.getInt("W"));
+			}
+		}
+		return result;
+	}
+	
+	// Returns the times associated with the three hour temperatures
+	public String[] getTodayThreeHourTimes() {
+		int times[] = {0,0,0,0,0};
+		int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		times[0] = currentHour/3;
+		times[0]*=3;
+		for ( int i = 1; i < 5; ++i ) {
+			times[i] = (times[i-1] + 3)%24;
+		}
+		String[] result = {"","","","",""};
+		for ( int i = 0 ; i < 5; ++i ) {
+			result[i] = Integer.toString(times[i])+":00";
+		}
+		return result;
+		
 	}
 
 	// Returns a textual description of today's weather
@@ -301,7 +414,7 @@ public class Weather {
 				result[i][1] = night.getInt("Nm");
 			}
 			
-			if ( !usecelsius() ) {
+			if ( !useCelsius() ) {
 				for ( int i = 0; i < Period.length() && i < 5; ++i ) {
 					result[i][0] = toFahrenheit(result[i][0]);
 					result[i][1] = toFahrenheit(result[i][1]);
@@ -432,7 +545,7 @@ public class Weather {
 	}
 
 	// Checks user settings for whether they use celsius or Fahrenheit
-	private boolean usecelsius(){
+	private boolean useCelsius(){
 		return settings.getCelsius();
 	}
 }

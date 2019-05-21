@@ -5,6 +5,7 @@ package uk.ac.cam.interactiondesign25.api;
 public enum WeatherType {
 	
 	UNKNOWN,            // NA
+	CLEAR_NIGHT,        // 0
     SUNNY,              // 1
     PARTIALLY_CLOUDY,   // 2, 3, 5
     CLOUDY,             // 6-8
@@ -13,8 +14,10 @@ public enum WeatherType {
     THUNDER;            // 28-30
 	
 	public static WeatherType convert ( int code ) {
-		if ( code <= 0 ) {
-			return WeatherType.UNKNOWN; //Unknown is an error case, it should not have its own icon
+		if ( code < 0 ) {
+			return WeatherType.UNKNOWN;
+		} else if ( code == 0 ) {
+			return WeatherType.CLEAR_NIGHT;
 		} else if ( code == 1 ) {
 			return WeatherType.SUNNY;
 		} else if ( code <= 5 ) {
