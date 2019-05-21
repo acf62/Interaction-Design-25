@@ -88,7 +88,7 @@ public class WeekController implements Initializable {
     private Text dayName5;
 
 
-    // Helper functions to load appropriate images based on Color Blind Mode choice
+    // Helper functions to load the weather images based on Color Blind Mode choice
     public String[] getImageLocationsFrom(WeatherType[] weatherTypes) {
         String[] results = new String[weatherTypes.length];
         int i=0;
@@ -159,7 +159,7 @@ public class WeekController implements Initializable {
         return results;
     }
 
-    // Initialize page
+    // Initialize page to the current day and selected location
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -205,7 +205,8 @@ public class WeekController implements Initializable {
         image4.setImage(new Image(images[3]));
         image5.setImage(new Image(images[4]));
 
-        // Adding interactivity
+        // Adding interactivity so that the relevant pages are loaded
+        // when the location, settings or day buttons are clicked
 
         locationButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -229,7 +230,7 @@ public class WeekController implements Initializable {
         });
     }
 
-    // Sync up the page
+    // Syncs up the page with the latest weather, location and so on
     public void sync() {
         int[][] temps = Main.weather.getWeekTemperatures();
         String[] description = Main.weather.getWeekWeatherDescription();
@@ -292,6 +293,7 @@ public class WeekController implements Initializable {
         });
     }
 
+    // Returns the day names for the next five days starting from today
     private static String[] getDayNames() {
         String[] days = new String[]{"Mon", "Tues", "Weds", "Thur", "Fri", "Sat", "Sun"};
 

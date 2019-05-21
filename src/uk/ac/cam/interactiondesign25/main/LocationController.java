@@ -210,8 +210,8 @@ public class LocationController implements Initializable  {
             }
         });
 
-        // Adding interactivity to the buttons
-
+        // Adding interactivity to the buttons so that the relevant pages are loaded
+        // when the week, settings or day buttons are clicked
         WeekButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
