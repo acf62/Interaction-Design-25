@@ -206,9 +206,10 @@ public class Weather {
 	}
 	
 	public int getTodayWindSpeed() {
-		int result = 0;
+		int result;
 		if ( active ) {
 			doAPICallIfNecessary();
+			// Trawl through the json
 			JSONArray Period = new JSONObject ( threeHourlyForecast )
 					.getJSONObject("SiteRep")
 					.getJSONObject("DV")
@@ -217,13 +218,7 @@ public class Weather {
 
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			int chunksLeftToday = (26-currentHour)/3;
-			int chunksFromTomorrow = 5 - chunksLeftToday;
-			
-			/*System.out.println ( currentHour );
-			System.out.println ( chunksLeftToday);
-			System.out.println ( Period.getJSONObject(0).getString("value"));
-			System.out.println ( Period.getJSONObject(0).getString("value").substring(8,10));
-			System.out.println ( Calendar.getInstance().get(Calendar.DATE));*/
+
 			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
 			int currentDay = Calendar.getInstance().get(Calendar.DATE);
 			int offset = currentDay - firstDay;
@@ -253,17 +248,11 @@ public class Weather {
 			int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 			int chunksLeftToday = (26-currentHour)/3;
 			int chunksFromTomorrow = 5 - chunksLeftToday;
-			
-			/*System.out.println ( currentHour );
-			System.out.println ( chunksLeftToday);
-			System.out.println ( Period.getJSONObject(0).getString("value"));
-			System.out.println ( Period.getJSONObject(0).getString("value").substring(8,10));
-			System.out.println ( Calendar.getInstance().get(Calendar.DATE));*/
+
 			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
 			int currentDay = Calendar.getInstance().get(Calendar.DATE);
 			int offset = currentDay - firstDay;
-			
-
+			// Get chunks from today
 			for(int i=0; i<chunksLeftToday && i < 5; i++){
 				JSONArray rep = Period
 						.getJSONObject(offset) //today
@@ -272,7 +261,7 @@ public class Weather {
 						.getJSONObject(rep.length() - chunksLeftToday + i)
 						.getInt("T");
 			}
-			// May have to go into tomorrow to get 5 chunks
+			// May have to go into tomorrow to get up to 5 chunks
 			for(int i=0; i<chunksFromTomorrow; i++){
 				JSONArray rep = Period
 						.getJSONObject(offset+1) //tomorrow
@@ -310,7 +299,6 @@ public class Weather {
 			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
 			int currentDay = Calendar.getInstance().get(Calendar.DATE);
 			int offset = currentDay - firstDay;
-			
 
 			for(int i=0; i<chunksLeftToday && i < 5; i++){
 				JSONArray rep = Period
@@ -457,11 +445,12 @@ public class Weather {
 		if ( active ) {
 			doAPICallIfNecessary();
 
-			JSONObject weatherObject = new JSONObject ( weeklyForecast );
-			JSONObject DV = weatherObject.getJSONObject("SiteRep").getJSONObject("DV");
-			JSONObject Location = DV.getJSONObject("Location");
-			JSONArray Period = Location.getJSONArray("Period");
-			
+			JSONArray Period = new JSONObject ( weeklyForecast )
+							.getJSONObject("SiteRep")
+							.getJSONObject("DV")
+							.getJSONObject("Location")
+							.getJSONArray("Period");
+
 			for ( int i = 0; i < Period.length() && i < 5; ++i ) {
 				JSONObject j = Period.getJSONObject(i);
 				JSONArray a = j.getJSONArray("Rep");
@@ -472,7 +461,6 @@ public class Weather {
 			}
 		}
 		return result;
-
 	}
 
 	// Calls the API and caches the results locally unless already have data
@@ -509,10 +497,8 @@ public class Weather {
 			rd.close();
 			weeklyForecast = result;
 		} catch (MalformedURLException ex) {
-			;
 			ex.printStackTrace();
 		} catch (IOException ex) {
-			;
 			ex.printStackTrace();
 		}
 	}
@@ -532,9 +518,8 @@ public class Weather {
 			rd.close();
 			threeHourlyForecast = result;
 		} catch (MalformedURLException ex) {
-			;
+			ex.printStackTrace();
 		} catch (IOException ex) {
-			;
 			ex.printStackTrace();
 		}
 	}

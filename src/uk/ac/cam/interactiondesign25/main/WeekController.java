@@ -217,7 +217,8 @@ public class WeekController implements Initializable {
         image4.setImage(new Image(images[3]));
         image5.setImage(new Image(images[4]));
 
-        // Adding interactivity
+        // Adding interactivity so that the relevant pages are loaded
+        // when the location, settings or day buttons are clicked
 
         locationButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
