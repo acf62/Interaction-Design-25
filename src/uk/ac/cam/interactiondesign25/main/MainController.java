@@ -155,10 +155,12 @@ public class MainController implements Initializable {
 
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 
+        // Set text for High,Low temperatures and the description of text
         hiDay.setText(String.valueOf(hilo[0])+suffix);
         loDay.setText(String.valueOf(hilo[1])+suffix);
         textDay.setText(weather.getTodayWeatherDescription() + "\n" + "Wind Speed " + weather.getTodayWindSpeed() + " mph");
 
+        // Set time segments for each of the 3-hour segments
         String[] fiveTimes = weather.getTodayThreeHourTimes();
         timePeriod1.setText(fiveTimes[0]);
         timePeriod2.setText(fiveTimes[1]);
@@ -166,6 +168,7 @@ public class MainController implements Initializable {
         timePeriod4.setText(fiveTimes[3]);
         timePeriod5.setText(fiveTimes[4]);
 
+        // Set temperatures for each of the 3-hour segments
         int[] fiveTemps = weather.getTodayThreeHourlyTemperatures();
         tempPeriod1.setText(String.valueOf(fiveTemps[0])+suffix);
         tempPeriod2.setText(String.valueOf(fiveTemps[1])+suffix);
@@ -173,6 +176,7 @@ public class MainController implements Initializable {
         tempPeriod4.setText(String.valueOf(fiveTemps[3])+suffix);
         tempPeriod5.setText(String.valueOf(fiveTemps[4])+suffix);
 
+        // Set images for each of the 3-hour segments
         WeatherType[] weatherType = weather.getTodayThreeHourlyWeatherTypes();
         imagePeriod1.setImage(getImage(weatherType[0]));
         imagePeriod2.setImage(getImage(weatherType[1]));

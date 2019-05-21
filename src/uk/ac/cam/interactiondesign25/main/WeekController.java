@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class WeekController implements Initializable {
 
-    //The icons for each day
+    //The weather icons for each day
     @FXML
     private ImageView image1;
     @FXML
@@ -34,6 +34,8 @@ public class WeekController implements Initializable {
     @FXML
     private ImageView image5;
     @FXML
+
+    // The buttons to switch between the scenes
     private Button dayButton;
     @FXML
     private Button locationButton;
@@ -76,6 +78,7 @@ public class WeekController implements Initializable {
     @FXML
     private Text topText;
 
+    // Fields for the Day header
     @FXML
     private Text dayName1;
     @FXML
@@ -88,7 +91,9 @@ public class WeekController implements Initializable {
     private Text dayName5;
 
 
-    // Helper functions to load the weather images based on Color Blind Mode choice
+    // Helper functions to load appropriate images based on Color Blind Mode choice
+    // For each WeatherType (see the enum in backend), it selects appropriate image (This includes factoring in the Color Blind Modes)
+
     public String[] getImageLocationsFrom(WeatherType[] weatherTypes) {
         String[] results = new String[weatherTypes.length];
         int i=0;
@@ -159,7 +164,10 @@ public class WeekController implements Initializable {
         return results;
     }
 
-    // Initialize page to the current day and selected location
+    // Initialize page
+    // This involves :
+    // 1. Setting the images, text , temperatures to the corresponding components on the screen on initializing
+    // 2. Adding listeners to buttons to listen to Events
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -180,18 +188,21 @@ public class WeekController implements Initializable {
 
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 
+        // Setting the text description
         text1.setText(description[0]);
         text2.setText(description[1]);
         text3.setText(description[2]);
         text4.setText(description[3]);
         text5.setText(description[4]);
 
+        // Setting the Hi temperatures for each day
         hi1.setText(String.valueOf(temps[0][0])+suffix);
         hi2.setText(String.valueOf(temps[1][0])+suffix);
         hi3.setText(String.valueOf(temps[2][0])+suffix);
         hi4.setText(String.valueOf(temps[3][0])+suffix);
         hi5.setText(String.valueOf(temps[4][0])+suffix);
 
+        // Setting the Low temperatures for each day
         lo1.setText(String.valueOf(temps[0][1])+suffix);
         lo2.setText(String.valueOf(temps[1][1])+suffix);
         lo3.setText(String.valueOf(temps[2][1])+suffix);
@@ -199,6 +210,7 @@ public class WeekController implements Initializable {
         lo5.setText(String.valueOf(temps[4][1])+suffix);
 
         settingsButton.setImage(new Image(String.valueOf(WeekController.class.getResource("/settings-512.png"))));
+        // Set the images accordingly
         image1.setImage(new Image(images[0]));
         image2.setImage(new Image(images[1]));
         image3.setImage(new Image(images[2]));
@@ -230,7 +242,8 @@ public class WeekController implements Initializable {
         });
     }
 
-    // Syncs up the page with the latest weather, location and so on
+    // Sync up the page
+    // TO make sure that changing location or settings change the data displayed for the Week Screen
     public void sync() {
         int[][] temps = Main.weather.getWeekTemperatures();
         String[] description = Main.weather.getWeekWeatherDescription();
@@ -260,18 +273,21 @@ public class WeekController implements Initializable {
 
         }
 
+        // Setting the text description
         text1.setText(description[0]);
         text2.setText(description[1]);
         text3.setText(description[2]);
         text4.setText(description[3]);
         text5.setText(description[4]);
 
+        // Setting the Hi temperatures for each day
         hi1.setText(String.valueOf(temps[0][0])+suffix);
         hi2.setText(String.valueOf(temps[1][0])+suffix);
         hi3.setText(String.valueOf(temps[2][0])+suffix);
         hi4.setText(String.valueOf(temps[3][0])+suffix);
         hi5.setText(String.valueOf(temps[4][0])+suffix);
 
+        // Setting the Low temperatures for each day
         lo1.setText(String.valueOf(temps[0][1])+suffix);
         lo2.setText(String.valueOf(temps[1][1])+suffix);
         lo3.setText(String.valueOf(temps[2][1])+suffix);
@@ -279,6 +295,8 @@ public class WeekController implements Initializable {
         lo5.setText(String.valueOf(temps[4][1])+suffix);
 
         settingsButton.setImage(new Image(String.valueOf(WeekController.class.getResource("/settings-512.png"))));
+
+        // Adding the images
         image1.setImage(new Image(images[0]));
         image2.setImage(new Image(images[1]));
         image3.setImage(new Image(images[2]));
@@ -293,7 +311,7 @@ public class WeekController implements Initializable {
         });
     }
 
-    // Returns the day names for the next five days starting from today
+    // Get the day labels to be displayed alongside each Day
     private static String[] getDayNames() {
         String[] days = new String[]{"Mon", "Tues", "Weds", "Thur", "Fri", "Sat", "Sun"};
 

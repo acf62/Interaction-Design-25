@@ -56,6 +56,8 @@ public class LocationController implements Initializable  {
     // This function adds entries to the Recents Tab (Top 9) based on selections made from the Search
     public void addToRecents(String location) {
         int i = 0;
+
+        // Get the first index beyond the already existing recent list items
         for (String recent : recents) {
             if (!recent.isEmpty()) {
                 i++;
@@ -64,6 +66,8 @@ public class LocationController implements Initializable  {
                 break;
             }
         }
+
+        // The logic to shift the previous elements one element down then add the new element
         if (i==recents.length) {
             for (int j =recents.length-1; j>=1; j--){
                 recents[j] = recents[j-1];
@@ -77,6 +81,7 @@ public class LocationController implements Initializable  {
             recents[0]=location;
         }
 
+        // Display the recent items on the List View
         recentList.getItems().removeAll();
         LinkedList<String> temp = new LinkedList<>();
         for (String string : recents) {
@@ -100,10 +105,11 @@ public class LocationController implements Initializable  {
                 listSearch.getItems().add(site);
             }
 
+            // If no matches found , print "No Locations Found"
             if (stringList.size()==0 && searchBar.getText().length()!=0) {
                 listSearch.getItems().add("No Locations Found");
             }
-
+            // Enter code functionality ; If enter key is pressed ; select closes possible match
             if (event.getCode().equals(KeyCode.ENTER)) {
                 searchBar.setText(searchBar.getText().trim());
                 searchBar.positionCaret(searchBar.getText().length());
