@@ -19,7 +19,6 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -60,7 +59,7 @@ public class LocationController implements Initializable  {
         }
         recentList.setFixedCellSize(60);
         recentList.getItems().setAll(temp);
-        Main.settings.setRecents(temp);
+        Main.settings.setRecentLocations(temp);
     }
 
     @FXML
@@ -129,6 +128,22 @@ public class LocationController implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize recent locations
+        List<String> r = Main.settings.getRecentLocations();
+        for (int i=0; i<recents.length && i<r.size(); i++){
+            recents[i] = r.get(i);
+        }
+
+        recentList.getItems().removeAll();
+        LinkedList<String> temp = new LinkedList<>();
+        for (String string : recents) {
+            if (!string.isEmpty() && string!=null) {
+                temp.add(string);
+            }
+        }
+        recentList.setFixedCellSize(60);
+        recentList.getItems().setAll(temp);
+
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
         searchIcon.setImage(new Image("file:resources/search.png"));
 
