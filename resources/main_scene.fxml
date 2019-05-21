@@ -9,7 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.cam.interactiondesign25.main.MainController">
    <children>
-      <HBox prefHeight="150.0" prefWidth="900.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" VBox.vgrow="ALWAYS">
+      <HBox prefHeight="150.0" prefWidth="900.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
          <children>
             <Text fx:id="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Weather" wrappingWidth="902.0">
                <font>
@@ -26,7 +26,7 @@
             </HBox>
          </children>
       </HBox>
-      <VBox prefHeight="671.0" prefWidth="1920.0">
+      <VBox prefHeight="721.0" prefWidth="1920.0">
          <children>
             <HBox prefHeight="200.0" prefWidth="1920.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                <children>
@@ -61,7 +61,7 @@
                   <Insets left="50.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="357.0" prefWidth="1920.0">
+            <HBox prefHeight="419.0" prefWidth="1920.0">
                <children>
                   <VBox prefHeight="337.0" prefWidth="1000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10">
                      <children>
@@ -197,7 +197,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox prefHeight="150.0" prefWidth="1920.0" minHeight="150">
+      <HBox minHeight="150" prefHeight="150.0" prefWidth="1920.0">
          <children>
             <Button fx:id="dayButton" mnemonicParsing="false" prefHeight="10000.0" prefWidth="10000.0" style=" -fx-border-color:black; -fx-border-width: 3; -fx-border-style: solid; -fx-border-radius:10" text="Day">
                <font>

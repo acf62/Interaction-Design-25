@@ -9,7 +9,7 @@ public class Settings {
     private boolean Celsius;
     private boolean BlueYellowColourblind;
     private String currentLocationName;
-    private List<String> recents = new ArrayList<>();
+    private List<String> recentLocations = new ArrayList<>();
 
     public Settings(String fn){
         filename = fn;
@@ -21,7 +21,7 @@ public class Settings {
             currentLocationName = r.readLine();
             String recent = null;
             while ( (recent = r.readLine()) != null ) {
-                recents.add(recent);
+                recentLocations.add(recent);
             }
 
         } catch (FileNotFoundException e1) {
@@ -43,7 +43,7 @@ public class Settings {
             w.write(((Celsius)?"1":"0")+"\n");
             w.write(((BlueYellowColourblind)?"1":"0")+"\n");
             w.write(currentLocationName+"\n");
-            for ( String s : recents ) {
+            for ( String s : recentLocations) {
                 w.write ( s + "\n" );
             }
             w.flush();
@@ -67,8 +67,8 @@ public class Settings {
         writeBack();
     }
 
-    public void setRecents ( List<String> l ) {
-        recents = l;
+    public void setRecentLocations(List<String> l ) {
+        recentLocations = l;
         writeBack();
     }
 
@@ -84,7 +84,7 @@ public class Settings {
         return currentLocationName;
     }
 
-    public List<String> getRecents () {
-        return recents;
+    public List<String> getRecentLocations() {
+        return recentLocations;
     }
 }
