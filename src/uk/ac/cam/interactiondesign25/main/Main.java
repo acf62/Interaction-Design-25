@@ -34,6 +34,7 @@ public class Main extends Application {
         try {
             settings = new Settings("settingsFile");
             weather = new Weather(settings);
+            weather.setLocationID ( weather.getLocationIDFromName( settings.getCurrentLocation() ) );
             
             FXMLLoader fxmlLoader1,fxmlLoader2,fxmlLoader3,fxmlLoader4;
             fxmlLoader1 = new FXMLLoader(new File("resources/location_scene.fxml").toURI().toURL());
