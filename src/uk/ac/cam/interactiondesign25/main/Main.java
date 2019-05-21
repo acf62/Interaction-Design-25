@@ -55,7 +55,6 @@ public class Main extends Application {
             dayController = fxmlLoader4.getController();
         }
         catch (Exception e) {
-            ;
             e.printStackTrace();
         }
 
@@ -64,8 +63,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setScene(dayScene);
-
-
         primaryStage.setTitle("Weather Application");
         primaryStage.show();
 
@@ -75,6 +72,7 @@ public class Main extends Application {
         primaryStage.setHeight(965);
         primaryStage.setMaxHeight(1120);
         primaryStage.setMaxWidth(1600);
+
         primaryStage.widthProperty().addListener((obs,oldVal,newVal) -> {
             primaryStage.setWidth((double)newVal);
         });
@@ -102,12 +100,7 @@ public class Main extends Application {
             mainStage.setScene(dayScene);
             dayController.sync();
         }
-        else {
-            ;
-        }
-
     }
-
 
     public static void main(String[] args) {
         launch(args);
