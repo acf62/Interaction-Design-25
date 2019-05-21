@@ -1,11 +1,9 @@
 package uk.ac.cam.interactiondesign25.main;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,86 +12,64 @@ import uk.ac.cam.interactiondesign25.api.Weather;
 import uk.ac.cam.interactiondesign25.api.WeatherType;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-
-
 public class MainController implements Initializable {
-
     @FXML
     private ImageView imagePeriod1;
-
     @FXML
     private ImageView imagePeriod2;
-
     @FXML
     private ImageView imagePeriod3;
-
-    @FXML
-    private Text tempPeriod5;
-
-    @FXML
-    private Button dayButton;
-
     @FXML
     private ImageView imagePeriod4;
-
-    @FXML
-    private Button locationButton;
-
     @FXML
     private ImageView imagePeriod5;
 
     @FXML
+    private Text tempPeriod1;
+    @FXML
+    private Text tempPeriod2;
+    @FXML
+    private Text tempPeriod3;
+    @FXML
+    private Text tempPeriod4;
+    @FXML
+    private Text tempPeriod5;
+
+    @FXML
+    private Text timePeriod1;
+    @FXML
+    private Text timePeriod2;
+    @FXML
+    private Text timePeriod3;
+    @FXML
+    private Text timePeriod4;
+    @FXML
+    private Text timePeriod5;
+
+    @FXML
+    private Button dayButton;
+    @FXML
+    private Button locationButton;
+
+    @FXML
+    private Text loDay;
+    @FXML
     private Text hiDay;
+
+    @FXML
+    private Text textDay;
+    @FXML
+    private Text topText;
 
     @FXML
     private ImageView mainImage;
 
     @FXML
-    private Text textDay;
-
-    @FXML
     private ImageView settingsButton;
-
-    @FXML
-    private Text tempPeriod2;
-
-    @FXML
-    private Text timePeriod4;
-
-    @FXML
-    private Text tempPeriod1;
-
-    @FXML
-    private Text timePeriod5;
-
-    @FXML
-    private Text timePeriod2;
-
-    @FXML
-    private Text tempPeriod4;
-
-    @FXML
-    private Text timePeriod3;
-
-    @FXML
-    private Text tempPeriod3;
-
-    @FXML
-    private Text loDay;
-
-    @FXML
-    private Text timePeriod1;
-
     @FXML
     private Button weekButton;
-
-    @FXML
-    private Text topText;
 
     // Initialize Main controller with location page
     @Override
@@ -124,7 +100,6 @@ public class MainController implements Initializable {
     }
 
     // Helper function to load appropriate images based on Color Blind Modes
-
     public Image getImage(WeatherType weatherType) {
         if (!Main.settings.getBlueYellowColourblind()) {
             switch (weatherType) {
