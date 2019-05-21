@@ -25,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class LocationController implements Initializable  {
 
+    // Controls the location page
+
     private String[] recents = {"","","","",""};
 
     @FXML

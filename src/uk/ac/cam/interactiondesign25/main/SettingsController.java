@@ -13,6 +13,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SettingsController implements Initializable {
+
+    // Colors for selected or unselected buttons in the settings page
     private String selectedColor = "-fx-background-color: #A9A9A9; ";
     private String unselectedColor = "-fx-background-color: #ededed; ";
     public Settings settings;
@@ -39,6 +41,8 @@ public class SettingsController implements Initializable {
     private Button rgmode;
 
     // Functions based on changing temperature units
+    // Submits the relevant changes to settings so it is recorded and
+    // changes the colours of the buttons to show which one is selected
     @FXML
     void celsiusClick() {
         settings.setCelsius(true);
@@ -54,6 +58,7 @@ public class SettingsController implements Initializable {
     }
 
     // Functions to change color blind modes
+    // Also submits the changes to settings and changes the button colors
     @FXML
     void rgClick() {
         settings.setBlueYellowColourblind(false);
@@ -67,6 +72,8 @@ public class SettingsController implements Initializable {
         bymode.setStyle(selectedColor);
     }
 
+
+    // Initialises the settings page to whatever option has previously been selected
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
