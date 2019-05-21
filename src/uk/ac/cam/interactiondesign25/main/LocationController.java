@@ -60,6 +60,7 @@ public class LocationController implements Initializable  {
         }
         recentList.setFixedCellSize(60);
         recentList.getItems().setAll(temp);
+        Main.settings.setRecents(temp);
     }
 
     @FXML
@@ -144,6 +145,7 @@ public class LocationController implements Initializable  {
                     if (!found) {
                         addToRecents(newValue);
                     }
+                    Main.settings.setCurrentLocation(newValue);
                     Main.weather.setLocationID(Main.weather.getLocationIDFromName(newValue));
                 }
             }
@@ -156,6 +158,7 @@ public class LocationController implements Initializable  {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if (t1 != null  && !t1.isEmpty()) {
                     System.out.println(s+ " " + t1);
+                    Main.settings.setCurrentLocation(t1);
                     Main.weather.setLocationID(Main.weather.getLocationIDFromName(t1));
                 }
 
