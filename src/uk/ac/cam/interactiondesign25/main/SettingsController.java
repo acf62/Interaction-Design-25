@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SettingsController implements Initializable {
-    private String selectedColor = "-fx-background-color: #9b9b9b; ";
+    private String selectedColor = "-fx-background-color: #ddeaff; ";
     private String unselectedColor = "-fx-background-color: #ededed; ";
     public Settings settings;
 
