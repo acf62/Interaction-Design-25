@@ -79,6 +79,7 @@ public class Weather {
 
 	//Main used for testing
 	public static void main(String[] args){
+		/*
 		Settings settings = new Settings ( "settingsTest" );
 		Weather w = new Weather( settings );
 
@@ -112,10 +113,6 @@ public class Weather {
 
 		String exp = "Partly cloudy";
 		String res = w.getTodayWeatherDescription();
-		if (!exp.equals(res)){
-			;
-			System.out.println(res);
-		}
 
 		WeatherType e = WeatherType.PARTIALLY_CLOUDY;
 		WeatherType r = w.getTodayWeatherType();
@@ -130,7 +127,6 @@ public class Weather {
 		}
 		
 		int windSpeed = w.getTodayWindSpeed();
-		System.out.println(windSpeed);
 
 		String[] Exp = new String[]{
 				"Partly cloudy",
@@ -155,6 +151,7 @@ public class Weather {
 		if (!Arrays.equals(E, R)){
 			;
 		}
+		*/
 	}
 
 	//Create a weather object with default location of cambridge
@@ -222,11 +219,11 @@ public class Weather {
 			int chunksLeftToday = (26-currentHour)/3;
 			int chunksFromTomorrow = 5 - chunksLeftToday;
 			
-			System.out.println ( currentHour );
+			/*System.out.println ( currentHour );
 			System.out.println ( chunksLeftToday);
 			System.out.println ( Period.getJSONObject(0).getString("value"));
 			System.out.println ( Period.getJSONObject(0).getString("value").substring(8,10));
-			System.out.println ( Calendar.getInstance().get(Calendar.DATE));
+			System.out.println ( Calendar.getInstance().get(Calendar.DATE));*/
 			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
 			int currentDay = Calendar.getInstance().get(Calendar.DATE);
 			int offset = currentDay - firstDay;
@@ -257,11 +254,11 @@ public class Weather {
 			int chunksLeftToday = (26-currentHour)/3;
 			int chunksFromTomorrow = 5 - chunksLeftToday;
 			
-			System.out.println ( currentHour );
+			/*System.out.println ( currentHour );
 			System.out.println ( chunksLeftToday);
 			System.out.println ( Period.getJSONObject(0).getString("value"));
 			System.out.println ( Period.getJSONObject(0).getString("value").substring(8,10));
-			System.out.println ( Calendar.getInstance().get(Calendar.DATE));
+			System.out.println ( Calendar.getInstance().get(Calendar.DATE));*/
 			int firstDay = Integer.parseInt(Period.getJSONObject(0).getString("value").substring(8,10));
 			int currentDay = Calendar.getInstance().get(Calendar.DATE);
 			int offset = currentDay - firstDay;
@@ -487,9 +484,7 @@ public class Weather {
 			downloadWeeklyForecast();
 			downloadThreeHourlyForecast();
 			lastUpdateTime = System.currentTimeMillis();
-			System.out.println ( "Did API calls" );
 		} else {
-			System.out.println ( "Used cache" );
 		}
 	}
 

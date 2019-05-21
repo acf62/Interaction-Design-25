@@ -160,7 +160,7 @@ public class LocationController implements Initializable  {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if (t1 != null  && !t1.isEmpty()) {
-                    System.out.println(s+ " " + t1);
+                    //System.out.println(s+ " " + t1);
                     Main.settings.setCurrentLocation(t1);
                     Main.weather.setLocationID(Main.weather.getLocationIDFromName(t1));
                 }
