@@ -33,8 +33,6 @@ public class WeekController implements Initializable {
     private ImageView image4;
     @FXML
     private ImageView image5;
-
-    //Navigation burrons. Week button is missing because it isn't clickable on this screen
     @FXML
     private Button dayButton;
     @FXML
@@ -75,7 +73,22 @@ public class WeekController implements Initializable {
     private Text text4;
     @FXML
     private Text text5;
+    @FXML
+    private Text topText;
 
+    @FXML
+    private Text dayName1;
+    @FXML
+    private Text dayName2;
+    @FXML
+    private Text dayName3;
+    @FXML
+    private Text dayName4;
+    @FXML
+    private Text dayName5;
+
+
+    // Helper functions to load appropriate images based on Color Blind Mode choice
     public String[] getImageLocationsFrom(WeatherType[] weatherTypes) {
         String[] results = new String[weatherTypes.length];
         int i=0;
@@ -145,13 +158,25 @@ public class WeekController implements Initializable {
         }
         return results;
     }
+
+    // Initialize page
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        topText.setText("This Week in " + Main.settings.getCurrentLocation());
 
         int[][] temps = Main.weather.getWeekTemperatures();
         String[] description = Main.weather.getWeekWeatherDescription();
         WeatherType[] weatherTypes = Main.weather.getWeekWeatherTypes();
         String[] images = getImageLocationsFrom(weatherTypes);
+
+        String[] dayNames = getDayNames();
+        dayName1.setText(dayNames[0]);
+        dayName2.setText(dayNames[1]);
+        dayName3.setText(dayNames[2]);
+        dayName4.setText(dayNames[3]);
+        dayName5.setText(dayNames[4]);
+
 
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 
@@ -180,6 +205,8 @@ public class WeekController implements Initializable {
         image4.setImage(new Image(images[3]));
         image5.setImage(new Image(images[4]));
 
+        // Adding interactivity
+
         locationButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -202,31 +229,23 @@ public class WeekController implements Initializable {
         });
     }
 
+    // Sync up the page
     public void sync() {
         int[][] temps = Main.weather.getWeekTemperatures();
         String[] description = Main.weather.getWeekWeatherDescription();
         WeatherType[] weatherTypes = Main.weather.getWeekWeatherTypes();
         String[] images = getImageLocationsFrom(weatherTypes);
 
+        topText.setText("This Week in " + Main.settings.getCurrentLocation());
+
         String suffix = Main.settings.getCelsius() ? "°C" : "°F";
 
-        /*for (int i =0 ; i < description.length; i++) {
-            if (description[i].trim().contains(" ")) {
-                String[] texts = description[i].split(" ");
-                String temp = "";
-                String finalTemp = "";
-                for (String h : texts) {
-                    if (temp.length() + h.length() <= 10)  {
-                        temp = temp + " "  + h ;
-                    }
-                    else {
-                        finalTemp = finalTemp + temp + "\n";
-                        temp = h;
-                    }
-                }
-                description[i] = (finalTemp + " " + temp). trim();
-            }
-        }*/
+        String[] dayNames = getDayNames();
+        dayName1.setText(dayNames[0]);
+        dayName2.setText(dayNames[1]);
+        dayName3.setText(dayNames[2]);
+        dayName4.setText(dayNames[3]);
+        dayName5.setText(dayNames[4]);
 
         for (int i =0 ; i <description.length ; i++) {
             if (description[i].trim().contains(" ")) {
