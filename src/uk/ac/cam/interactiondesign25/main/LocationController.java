@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class LocationController implements Initializable  {
 
-    private String[] recents = {"","","","","","","","",""};
+    private String[] recents = {"","","","",""};
 
     @FXML
     private ListView<String> recentList;
@@ -63,7 +63,7 @@ public class LocationController implements Initializable  {
             }
         }
         if (i==recents.length) {
-            for (int j =4; j>=1; j--){
+            for (int j =recents.length-1; j>=1; j--){
                 recents[j] = recents[j-1];
             }
             recents[0]=location;
@@ -82,7 +82,7 @@ public class LocationController implements Initializable  {
                 temp.add(string);
             }
         }
-        recentList.setFixedCellSize(60);
+        recentList.setFixedCellSize(90);
         recentList.getItems().setAll(temp);
         Main.settings.setRecentLocations(temp);
     }
@@ -128,7 +128,7 @@ public class LocationController implements Initializable  {
                 temp.add(string);
             }
         }
-        recentList.setFixedCellSize(60);
+        recentList.setFixedCellSize(90);
         recentList.getItems().setAll(temp);
 
         settingsButton.setImage(new Image("file:resources/settings-512.png"));
@@ -179,7 +179,7 @@ public class LocationController implements Initializable  {
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            setFont(this.getFont().font(this.getFont().getName(), 30.0)); //set your desired size
+                            setFont(this.getFont().font(this.getFont().getName(), 40.0)); //set your desired size
                         } else {
                             setText(null);
                         }
@@ -198,7 +198,7 @@ public class LocationController implements Initializable  {
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item);
-                            setFont(this.getFont().font(this.getFont().getName(), 30.0)); //set your desired size
+                            setFont(this.getFont().font(this.getFont().getName(), 40.0)); //set your desired size
                         } else {
                             setText(null);
                         }

@@ -71,7 +71,10 @@ public class Main extends Application {
 
         primaryStage.setMinHeight(965);
         primaryStage.setMinWidth(1365);
-
+        primaryStage.setWidth(1365);
+        primaryStage.setHeight(965);
+        primaryStage.setMaxHeight(1120);
+        primaryStage.setMaxWidth(1600);
         primaryStage.widthProperty().addListener((obs,oldVal,newVal) -> {
             primaryStage.setWidth((double)newVal);
         });
