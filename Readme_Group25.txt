@@ -1,6 +1,13 @@
 Our project can be found in its entirety at https://github.com/acf62/Interaction-Design-25
 
-To run:
-Unzip this project and open it in IntelliJ. Ensure that you have javafx installed and a recent JDK (works fine on JDK 8). Run scr/uk/ac/cam/interactiondesign25/main/Main. This should work.
+To run: (These instructions are for windows)
 
-Our apologies for the late submission and sub-par method of running- we have had significant technical difficulties with making a .jar file.
+Ensure that a java jdk of version 11 or higher is installed, and that the path to the java binary is in the PATH variable
+
+Note: The window has quite a large minimum size, so make sure that your display is not zoomed in (this can be checked in display settings which can be accessed by right-clicking the desktop)
+
+Open a command prompt and navigate to the root of the project directory (same folder this file is in)
+
+Run the following command:
+
+java --module-path .\Library\javafx-sdk-11.0.2\lib\ --add-modules javafx.controls,javafx.fxml -jar .\Interaction_Design_25.jar
